@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<!-- Mirrored from themazine.com/mr/gifall-html/blog-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 16:53:15 GMT -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        home
+    </title>
+        <!-- Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&amp;family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}" />
+    <link rel="manifest" href="{% static 'images/favicons/site.html ' %}" />
+   <meta name="description" content="Gifall HTML 5 Template " />
+    <link rel="stylesheet" href="{% static 'vendors/animate/animate.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/animate/custom-animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-select/css/bootstrap-select.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/bxslider/jquery.bxslider.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/jquery-magnific-popup/jquery.magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/jquery-ui/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.pips.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/odometer/odometer.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/swiper/swiper.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/timepicker/timePicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/tiny-slider/tiny-slider.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/vegas/vegas.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/thm-icons/style.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/slick-slider/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/language-switcher/polyglot-language-switcher.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/reey-font/stylesheet.css' %}">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="{% static 'css/gifall.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/gifall-responsive.css' %}" />
+
+</head>
+
+<body>
+    <!-- Start Preloader -->
+    <!-- <div class="loader-wrap">
+        <div class="preloader">
+            <div class="preloader-close">x</div>
+            <div id="handle-preloader" class="handle-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                    <div class="txt-loading">
+                        <span data-text-preloader="g" class="letters-loading">
+                            g
+                        </span>
+                        <span data-text-preloader="i" class="letters-loading">
+                            i
+                        </span>
+                        <span data-text-preloader="f" class="letters-loading">
+                            f
+                        </span>
+                        <span data-text-preloader="a" class="letters-loading">
+                            a
+                        </span>
+                        <span data-text-preloader="l" class="letters-loading">
+                            l
+                        </span>
+                        <span data-text-preloader="l" class="letters-loading">
+                            l
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- End Preloader -->
+
+    <div class="page-wrapper">
+
+        <!--Start Main Header One-->
+        <header class="main-header main-header-one style2">
+            <!--Start Main Header One Top-->
+            <!-- <div class="main-header-one__top">
+                <div class="auto-container">
+                    <div class="main-header-one__top-inner">
+
+                        <div class="main-header-one__top-left">
+                            <div class="logo-box-one">
+                                <a href="index.html">
+                                    <img src="images/resources/logo-1.png" alt="Awesome Logo" title="">
+                                </a>
+                            </div>
+
+                            <ul class="main-header-menu-box">
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Cause</a></li>
+                                <li><a href="#">Charity</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="main-header-one__top-middle">
+                            <div class="main-header__contact-info">
+                                <ul>
+                                    <li>
+                                        <div class="inner">
+                                            <div class="icon-box">
+                                                <span class="icon-globe-hemisphere"></span>
+                                            </div>
+                                            <div class="text-box">
+                                                <p>The Strand, 14 sector Australia</p>
+                                                <h4>Melbourne, Australia</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="inner">
+                                            <div class="icon-box">
+                                                <span class="icon-chat-circle"></span>
+                                            </div>
+                                            <div class="text-box">
+                                                <p>You may send an email</p>
+                                                <h4><a href="mailto:yourmail@email.com">helpus24@gmail.com</a></h4>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="inner">
+                                            <div class="icon-box">
+                                                <span class="icon-phone-call"></span>
+                                            </div>
+                                            <div class="text-box">
+                                                <p>Helpline and support</p>
+                                                <h4><a href="tel:8857002451">88 57 00 24 51</a></h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="main-header-two__top-right">
+                            <ul class="header-social-links">
+                                <li>
+                                    <a class="style2" href="#"><span class="icon-linkedin"></span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-twitter"></span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-facebook-logo"></span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-skype"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!--End Main Header One Top-->
+
+
+            <!--Start Main Header One Bottom-->
+            <div class="main-header-one__bottom">
+                <div class="main-header-one__bottom-inner">
+                    <nav class="main-menu main-menu-one">
+                        <div class="main-menu__wrapper clearfix">
+                            <div class="auto-container">
+                                <div class="main-menu__wrapper-inner">
+
+                                    <div class="main-header-one__bottom-left">
+                                        <div class="main-header-two__bottom-left-text">
+                                            <div class="text-box">
+                                                <h4>You can make a difference today!</h4>
+                                            </div>
+
+                                            <div class="btn-box">
+                                                <a href="donation.html">Donation</a>
+                                            </div>
+                                        </div>
+                                        <div class="main-menu-box">
+                                            <a href="#" class="mobile-nav__toggler">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                            <ul class="main-menu__list">
+                                                <li class="dropdown">
+                                                    <a href="index.html">Home</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="index.html">Home One</a>
+                                                        </li>
+                                                        <li><a href="index-2.html">Home Two</a></li>
+                                                        <li><a href="index-3.html">Home Three</a></li>
+                                                        <li class="dropdown">
+                                                            <a href="#">Header Styles</a>
+                                                            <ul>
+                                                                <li><a href="index.html">Header One</a></li>
+                                                                <li><a href="index-2.html">Header Two</a></li>
+                                                                <li><a href="index-3.html">Header Three</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li>
+                                                    <a href="about.html">About</a>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Donations</a>
+                                                    <ul>
+                                                        <li><a href="donation.html">Donation</a></li>
+                                                        <li><a href="donation-list.html">Donation List</a>
+                                                        </li>
+                                                        <li><a href="donation-single.html">Donation Details</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Events</a>
+                                                    <ul>
+                                                        <li><a href="events.html">Events</a></li>
+                                                        <li><a href="events-single.html">Events Details</a></li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Pages</a>
+                                                    <ul>
+                                                        <li><a href="volunteers.html">Volunteers 01</a></li>
+                                                        <li><a href="become-volunteer.html">Volunteer 02</a></li>
+                                                        <li><a href="portfolio.html">Portfolio</a></li>
+                                                        <li><a href="faq.html">Faq</a>
+                                                        <li><a href="shop.html">Shop</a></li>
+                                                        <li><a href="shop-details.html">Shop Details</a></li>
+                                                        <li><a href="cart.html">Cart</a></li>
+                                                        <li><a href="checkout.html">Checkout</a></li>
+                                                        <li><a href="404.html">404</a></li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown current">
+                                                    <a href="#">Blog</a>
+                                                    <ul>
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="blog-list.html">Blog List</a></li>
+                                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                                    </ul>
+                                                </li>
+
+                                                <li>
+                                                    <a href="contact.html">Contact</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="main-header-one__bottom-right">
+                                        <div class="btn-box1">
+                                            <a href="contact.html">Join us now </a>
+                                        </div>
+
+                                        <div class="btn-box2">
+                                            <a href="volunteers.html">Become a Volunteer</a>
+                                        </div>
+
+                                        <div class="header-search-box">
+                                            <a href="#" class="main-menu__search search-toggler icon-search">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--End Main Header One Bottom-->
+        </header>
+        <!--End Main Header One-->
+
+        <div class="stricky-header stricky-header--one style2 stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+
+
+        {% block 'content' %}
+        {% endblock 'content' %}
+
+        <!--Start Footer One -->
+        <footer class="footer-one">
+            <div class="footer-one__bg" style="background-image: url(images/pattern/footer-v1-bg.jpg);"></div>
+            <div class="shape1"><img src="images/shapes/footer-v1-shape1.png" alt="#"></div>
+            <div class="shape2"><img src="images/shapes/footer-v1-shape2.png" alt="#"></div>
+            <div class="shape3"><img src="images/shapes/footer-v1-shape3.png" alt="#"></div>
+            <!--Start Footer-->
+            <div class="footer">
+                <div class="container">
+
+                    <div class="footer-one__top">
+                        <div class="row">
+                            <div class="col-xl-5">
+                                <div class="footer-one__top-text">
+                                    <h2>Subscribe our newsletter</h2>
+                                    <p>Get the latest news other tips </p>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-7">
+                                <div class="footer-one__top-form">
+                                    <form class="subscribe-form" action="#">
+                                        <div class="input-box">
+                                            <input type="email" name="email" placeholder="Email Address">
+                                        </div>
+                                        <button type="submit">
+                                            <span class="text">Subscribe</span>
+                                            <i class="icon-send-message"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="footer-one__middel">
+                        <div class="row">
+
+                            <!--Start Footer Widget Single-->
+                            <div class="col-xl-3 col-lg-6 col-md-6  wow animated fadeInUp" data-wow-delay="0.1s">
+                                <div class="footer-widget__single">
+                                    <div class="footer-widget__single-about">
+                                        <div class="logo-box">
+                                            <a href="index.html"><img src="images/resources/logo-2.png"
+                                                    alt="#"></a>
+                                        </div>
+
+                                        <div class="footer-widget__single-about-text">
+                                            <p>Our Gifall charity At vero eos et
+                                                accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                            </p>
+                                        </div>
+
+                                        <div class="footer-widget__single-about-btn">
+                                            <a class="thm-btn" href="content.html">
+                                                <span class="txt">Join Now</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Footer Widget Single-->
+
+                            <!--Start Footer One Right Single-->
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.2s">
+                                <div class="footer-one__single footer-one__single-address">
+                                    <div class="title">
+                                        <h3>Address</h3>
+                                    </div>
+
+                                    <ul class="footer-one__single-address-box">
+                                        <li>
+                                            <div class="title-box">
+                                                <h3>Our Address</h3>
+                                            </div>
+                                            <div class="inner">
+                                                <div class="icon-box">
+                                                    <span class="icon-location1"></span>
+                                                </div>
+
+                                                <div class="content-box">
+                                                    <p>101 Merritt 5, north tower <br> 14851 New York, USA</p>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="title-box">
+                                                <h3>Customer Help</h3>
+                                            </div>
+                                            <div class="inner">
+                                                <div class="icon-box">
+                                                    <span class="icon-phone"></span>
+                                                </div>
+
+                                                <div class="content-box">
+                                                    <p><a href="tel:02929216215">02 92 92 16 215</a></p>
+                                                    <p><a href="tel:08811220077">+088 11 22 00 77</a></p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--End Footer One Right Single-->
+
+                            <!--Start Footer One Right Single-->
+                            <div class="col-xl-2 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
+                                <div class="footer-one__single footer-one__single-explore">
+                                    <div class="title">
+                                        <h3>Explore Link</h3>
+                                    </div>
+
+                                    <ul class="footer-one__single-explore-list">
+                                        <li><a href="about.html">Charity</a></li>
+                                        <li><a href="donation.html">Donation</a></li>
+                                        <li><a href="about.html">Fundrising
+                                            </a></li>
+                                        <li><a href="about.html">Our Campaign
+                                            </a></li>
+                                        <li><a href="volunteers.html">Volunteer</a></li>
+                                        <li><a href="about.html">About us</a></li>
+                                        <li><a href="contact.html">Contact Us
+                                            </a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <!--End Footer One Right Single-->
+
+                            <!--Start Footer One Right Single-->
+                            <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.4s">
+                                <div class="footer-one__single footer-one__single-post">
+                                    <div class="title">
+                                        <h3>Latest Post </h3>
+                                    </div>
+
+                                    <ul class="footer-one__single-post-box">
+                                        <li>
+                                            <div class="img-box">
+                                                <img src="images/footer/footer-v1-img1.jpg" alt="#">
+                                            </div>
+                                            <div class="content-box">
+                                                <span>12 Feb 2023</span>
+                                                <p><a href="blog.html">18 Best Charity Marketing <br> Campaigns</a></p>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="img-box">
+                                                <img src="images/footer/footer-v1-img2.jpg" alt="#">
+                                            </div>
+                                            <div class="content-box">
+                                                <span>14 Feb 2023</span>
+                                                <p><a href="blog.html">Charity Of The Month <br> Golden Futures</a></p>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--End Footer One Right Single-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Footer-->
+
+            <div class="footer-one__bottom">
+                <div class="container">
+                    <div class="bottom-inner">
+
+                        <div class="footer-one__bottom-left">
+                            <div class="title-box">
+                                <h4>Follow Social</h4>
+                            </div>
+                            <div class="social-links">
+                                <ul>
+                                    <li><a href="#"><span class="icon-facebook-logo"></span></a></li>
+                                    <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                    <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                    <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="copyright">
+                            <p>©2023 <a href="index.html">Template_Mr</a> All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!--End Footer One-->
+
+    </div>
+    <!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler">
+                <i class="icon-plus"></i>
+            </span>
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image">
+                    <img src="images/resources/mobile-nav-logo.png" alt="" />
+                </a>
+            </div>
+            <div class="mobile-nav__container"></div>
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:info@example.com">info@example.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:123456789">444 000 777 66</a>
+                </li>
+            </ul>
+            <div class="mobile-nav__social">
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="#" class="fab fa-pinterest-p"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">search here</label>
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="thm-btn">
+                    <i class="icon-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <i class="icon-down-arrow"></i>
+    </a>
+
+    <script src="{% static 'vendors/jquery/jquery-3.6.0.min.js ' }"></script>
+   <script src="{% static 'vendors/bootstrap/js/bootstrap.bundle.min.js' }"></script>
+    <script src="{% static 'vendors/bootstrap-select/js/bootstrap-select.min.js' }"></script>
+    <script src="{% static 'vendors/bxslider/jquery.bxslider.min.js' }"></script>
+    <script src="{% static 'vendors/circleType/jquery.circleType.js' }"></script>
+    <script src="{% static 'vendors/circleType/jquery.lettering.min.js' }"></script>
+    <script src="{% static 'vendors/isotope/isotope.js' }"></script>
+    <script src="{% static 'vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js' }"></script>
+    <script src="{% static 'vendors/jquery-appear/jquery.appear.min.js' }"></script>
+    <script src="{% static 'vendors/jquery-magnific-popup/jquery.magnific-popup.min.js' }"></script>
+    <script src="{% static 'vendors/jquery-migrate/jquery-migrate.min.js' }"></script>
+    <script src="{% static 'vendors/jquery-ui/jquery-ui.js' }"></script>
+    <script src="{% static 'vendors/jquery-validate/jquery.validate.min.js' }"></script>
+    <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' }"></script>
+    <script src="{% static 'vendors/nouislider/nouislider.min.js' } "></script>
+   <script src="{% static 'vendors/odometer/odometer.min.js' }"></script>
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' }"></script>
+    <script src="{% static 'vendors/parallax/parallax.min.js' }"></script>
+    <script src="{% static 'vendors/swiper/swiper.min.js' }"></script>
+    <script src="{% static 'vendors/timepicker/timePicker.js' }"></script>
+    <script src="{% static 'vendors/tiny-slider/tiny-slider.min.js' }"></script>
+    <script src="{% static 'vendors/typed-2.0.11/typed-2.0.11.js' }"></script>
+    <script src="{% static 'vendors/vegas/vegas.min.js' }"></script>
+    <script src="{% static 'vendors/wnumb/wNumb.min.js' }"></script>
+    <script src="{% static 'vendors/wow/wow.js' }"></script>
+    <script src="{% static 'vendors/language-switcher/jquery.polyglot.language.switcher.js' }"></script>
+    <script src="{% static 'vendors/jarallax/jarallax.min.js' }"></script>
+    <script src="{% static 'vendors/slick-slider/slick.js' }"></script>
+    <script src="{% static 'vendors/jquery-circle-progress/jquery.circle-progress.min.js' }"></script>
+    <script src="{% static 'vendors/progress-bar/knob.js' }"></script>
+
+    <!-- Template js -->
+    <script src="{% static 'js/custom.js' }"></script>
+
+
+</body>
+
+
+<!-- Mirrored from themazine.com/mr/gifall-html/blog-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 16:53:22 GMT -->
+</html>
