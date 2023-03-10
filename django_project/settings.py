@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'categories',
     'tags',
     'comments',
-    'accounts'
     'home.apps.HomeConfig',
 ]
 

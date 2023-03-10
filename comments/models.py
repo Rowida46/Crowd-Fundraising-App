@@ -1,14 +1,14 @@
 from django.db import models
-from projects.models import Project
 from django.contrib.postgres.fields import ArrayField
 from django.shortcuts import reverse, get_object_or_404
+# from projects.models import Project
 
 # Create your models here.
 
 
 class Comments(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE,
-                                 related_name='project_commit')
+    # project = models.ForeignKey(Project, on_delete=models.CASCADE,
+    #                              related_name='project_commit')
     # user =  models.ForeignKey(user, on_delete=models.CASCADE,
     #                             related_name='user_commit')
     
