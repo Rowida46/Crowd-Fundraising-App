@@ -2,6 +2,8 @@ from django.db import models
 from django.shortcuts import reverse, get_object_or_404
 from django.contrib.postgres.fields import ArrayField
 from categories.models import Categories
+from comments.models import Comments
+
 # Create your models here.
 
 from djmoney.models.fields import MoneyField
@@ -18,9 +20,8 @@ class Project(models.Model):
     features = ArrayField(
          models.CharField(max_length=100)
     )
-    
-    rate = models.DecimalField(max_digits=5, decimal_places=2, blank=True)
 
+    rate = models.DecimalField(max_digits=5, decimal_places=2, blank=True)
     target_budget = MoneyField(max_digits=14, decimal_places=2,
                             default_currency='USD', default=0 ,null=False)
     total_donation = MoneyField(max_digits=14, decimal_places=2,
@@ -32,7 +33,7 @@ class Project(models.Model):
     
     category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True,
                                  related_name='project_category')
-    ## tage
+    ## tags
 
 
     def __str__(self):
@@ -41,6 +42,14 @@ class Project(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+    
+    @classmethod
+    def get_project_number_of_comments(self):
+        return Comments.objects.filter(project=self).count()
+
+    @classmethod
+    def get_project_comments(self):
+        return Comments.objects.filter(project=self)
 
     @classmethod
     def get_projects(cls):
