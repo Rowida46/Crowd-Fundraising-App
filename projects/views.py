@@ -1,15 +1,28 @@
-from django.shortcuts import render, redirect, HttpResponse,get_object_or_404
+from projects.models import Project
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 
 # Create your views here.
 
 
 def donation(request):
     return render(request, "projects/index.html")
+
+
 def donationlist(request):
     return render(request, "projects/listDonation.html")
+
 
 def singledonation(request):
     return render(request, "projects/singleDonation.html")
 
+
 def newdonation(request):
     return render(request, "projects/newDonation.html")
+
+
+# ahmed ->
+
+def single_project_view(request, id):
+    project = Project.get_one_project(id)
+
+    return

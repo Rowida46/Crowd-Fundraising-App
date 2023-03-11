@@ -58,10 +58,7 @@ class Project(models.Model):
     #     avg = round(rate_lst.aggregate(Avg("rate"))["rate__avg"], 2)
     #     return avg
 
-    # @classmethod
-    # def get_project_number_of_comments(self):
-    #     return Comments.objects.filter(project=self).count()
-
+    
     # @classmethod
     # def get_project_number_of_reports(self):
     #     return ReportOption.objects.filter(project=self).count()

@@ -26,6 +26,14 @@ class Comments(models.Model):
     def get_project_comments(cls, project_id):
         return cls.objects.filter(Project=project_id)  # not sure yet ->>>
 
+    # @classmethod
+    # def get_project_number_of_comments(self):
+    #     return Comments.objects.filter(project=self).count()
+
+    # @classmethod
+    # def get_project_comments(self):
+    #     return Comments.objects.filter(project=self)
+
 
 class Reply(models.Model):
     reply_content = models.TextField()
