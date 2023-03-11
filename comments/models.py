@@ -4,7 +4,7 @@ from django.shortcuts import reverse, get_object_or_404
 from ckeditor.fields import RichTextField
 from django_enum import EnumField
 
-from ..projects.models import Project
+from projects.models import Project
 
 # Create your models here.
 
@@ -43,6 +43,7 @@ class ReportOption(models.TextChoices):
 
 
 class ReportProject(models.Model):
-    comment = models.ForeignKey(Comments, related_name="report_comment")
+    comment = models.ForeignKey(
+        Comments, on_delete=models.CASCADE, related_name="report_comment")
     # user = models.ForeignKey(User, related_name="user_report")
     option = EnumField(ReportOption, null=True, blank=True)

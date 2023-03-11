@@ -3,15 +3,15 @@ from django.db import models
 from django.shortcuts import reverse, get_object_or_404
 from django.contrib.postgres.fields import ArrayField
 from categories.models import Categories
-from comments.models import Comments
+# from comments.models import Comments
 from django.db.models import Avg
 # Create your models here.
 
 from djmoney.models.fields import MoneyField
 from django.utils.text import slugify
-from ..tags.models import Tags
+from tags.models import Tags
 
-from rate.models import Rating, ReportOption
+#from rate.models import Rating, ReportOption
 # Create your models here.
 
 
@@ -51,24 +51,24 @@ class Project(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-    def get_project_avg_rate(self, id):
-        rate_lst = Rating.objects.filter(
-            project=self)
+    # def get_project_avg_rate(self, id):
+    #     rate_lst = Rating.objects.filter(
+    #         project=self)
 
-        avg = round(rate_lst.aggregate(Avg("rate"))["rate__avg"], 2)
-        return avg
+    #     avg = round(rate_lst.aggregate(Avg("rate"))["rate__avg"], 2)
+    #     return avg
 
-    @classmethod
-    def get_project_number_of_comments(self):
-        return Comments.objects.filter(project=self).count()
+    # @classmethod
+    # def get_project_number_of_comments(self):
+    #     return Comments.objects.filter(project=self).count()
 
-    @classmethod
-    def get_project_number_of_reports(self):
-        return ReportOption.objects.filter(project=self).count()
+    # @classmethod
+    # def get_project_number_of_reports(self):
+    #     return ReportOption.objects.filter(project=self).count()
 
-    @classmethod
-    def get_project_comments(self):
-        return Comments.objects.filter(project=self)
+    # @classmethod
+    # def get_project_comments(self):
+    #     return Comments.objects.filter(project=self)
 
     @classmethod
     def get_projects(cls):
