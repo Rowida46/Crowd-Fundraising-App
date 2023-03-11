@@ -8,6 +8,7 @@ from comments.models import Comments
 
 from djmoney.models.fields import MoneyField
 from django.utils.text import slugify
+from ..tags.models import Tags
 # Create your models here.
 
 class Project(models.Model):
@@ -22,6 +23,7 @@ class Project(models.Model):
     )
 
     rate = models.DecimalField(max_digits=5, decimal_places=2, blank=True)
+
     target_budget = MoneyField(max_digits=14, decimal_places=2,
                             default_currency='USD', default=0 ,null=False)
     total_donation = MoneyField(max_digits=14, decimal_places=2,
@@ -31,9 +33,11 @@ class Project(models.Model):
     start_at= models.DateTimeField(auto_now=True, null=True, blank=True)
     end_at= models.DateTimeField(null=True, blank=True) # required -> to spesify end date
     
-    category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True,
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True,
                                  related_name='project_category')
     ## tags
+    tags = models.ManyToManyField(Tags, blank=True)
+
 
 
     def __str__(self):
@@ -53,7 +57,7 @@ class Project(models.Model):
 
     @classmethod
     def get_projects(cls):
-        return cls.query.all()
+        return cls.objects.all()
     
     @classmethod
     def get_one_project(cls, id):
@@ -95,8 +99,8 @@ class Project(models.Model):
     @classmethod
     def get_recently_created_projects(cls):
        ## dsc order
-       top_rated = cls.objects.order_by("-created_at")
-       return top_rated
+       res = cls.objects.order_by("-created_at")
+       return res
 
 
     ## instead of using urls ->>>

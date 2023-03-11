@@ -4,15 +4,17 @@ from django.db import models
 
 
 class Categories(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=40)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    #supdated_at = models.DateTimeField(auto_now=True, null=True)
 
+    def total_subscribes(self):
+        return self.subscribes.count()
+    
     def __str__(self):
         return self.name
     
     @classmethod
     def get_categories(cls):
-        return cls.query.all()
+        return cls.objects.all()
     
