@@ -1,3 +1,11 @@
 *.pyc
 
 *__pycache__*
+
+/*/__pycache__*
+
+categories/migrations/__pycache__/__init__.cpython-310.pyc
+comments/migrations/__pycache__/__init__.cpython-310.pyc
+home/migrations/__pycache__/__init__.cpython-310.pyc
+projects/migrations/__pycache__/__init__.cpython-310.pyc
+tags/migrations/__pycache__/__init__.cpython-310.pyc
