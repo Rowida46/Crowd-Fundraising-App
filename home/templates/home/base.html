@@ -307,9 +307,9 @@
         <!--Start Footer One -->
         <footer class="footer-one">
             <div class="footer-one__bg" style="background-image: url(images/pattern/footer-v1-bg.jpg);"></div>
-            <div class="shape1"><img src="images/shapes/footer-v1-shape1.png" alt="#"></div>
-            <div class="shape2"><img src="images/shapes/footer-v1-shape2.png" alt="#"></div>
-            <div class="shape3"><img src="images/shapes/footer-v1-shape3.png" alt="#"></div>
+            <div class="shape1"><img src="{% static 'images/shapes/footer-v1-shape1.png' %}" alt="#"></div>
+            <div class="shape2"><img src="{% static 'images/shapes/footer-v1-shape2.png' %}" alt="#"></div>
+            <div class="shape3"><img src="{% static 'images/shapes/footer-v1-shape3.png' %}" alt="#"></div>
             <!--Start Footer-->
             <div class="footer">
                 <div class="container">
@@ -348,8 +348,8 @@
                                 <div class="footer-widget__single">
                                     <div class="footer-widget__single-about">
                                         <div class="logo-box">
-                                            <a href="index.html"><img src="images/resources/logo-2.png"
-                                                    alt="#"></a>
+                                            <a href="index.html"><img src="{% static 'images/resources/logo-2.png' %} "
+                                                   alt="#"></a>
                                         </div>
 
                                         <div class="footer-widget__single-about-text">
@@ -445,7 +445,7 @@
                                     <ul class="footer-one__single-post-box">
                                         <li>
                                             <div class="img-box">
-                                                <img src="images/footer/footer-v1-img1.jpg" alt="#">
+                                                <img src="{% static 'images/footer/footer-v1-img1.jpg' %}" alt="#">
                                             </div>
                                             <div class="content-box">
                                                 <span>12 Feb 2023</span>
@@ -455,7 +455,7 @@
 
                                         <li>
                                             <div class="img-box">
-                                                <img src="images/footer/footer-v1-img2.jpg" alt="#">
+                                                <img src="{% static 'images/footer/footer-v1-img2.jpg' %}" alt="#">
                                             </div>
                                             <div class="content-box">
                                                 <span>14 Feb 2023</span>
@@ -512,7 +512,7 @@
             </span>
             <div class="logo-box">
                 <a href="index.html" aria-label="logo image">
-                    <img src="images/resources/mobile-nav-logo.png" alt="" />
+                    <img src="{% static 'images/resources/mobile-nav-logo.png' %}" alt="" />
                 </a>
             </div>
             <div class="mobile-nav__container"></div>
@@ -554,39 +554,39 @@
         <i class="icon-down-arrow"></i>
     </a>
 
-    <script src="{% static 'vendors/jquery/jquery-3.6.0.min.js ' }"></script>
-   <script src="{% static 'vendors/bootstrap/js/bootstrap.bundle.min.js' }"></script>
-    <script src="{% static 'vendors/bootstrap-select/js/bootstrap-select.min.js' }"></script>
-    <script src="{% static 'vendors/bxslider/jquery.bxslider.min.js' }"></script>
-    <script src="{% static 'vendors/circleType/jquery.circleType.js' }"></script>
-    <script src="{% static 'vendors/circleType/jquery.lettering.min.js' }"></script>
-    <script src="{% static 'vendors/isotope/isotope.js' }"></script>
-    <script src="{% static 'vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js' }"></script>
-    <script src="{% static 'vendors/jquery-appear/jquery.appear.min.js' }"></script>
-    <script src="{% static 'vendors/jquery-magnific-popup/jquery.magnific-popup.min.js' }"></script>
-    <script src="{% static 'vendors/jquery-migrate/jquery-migrate.min.js' }"></script>
-    <script src="{% static 'vendors/jquery-ui/jquery-ui.js' }"></script>
-    <script src="{% static 'vendors/jquery-validate/jquery.validate.min.js' }"></script>
-    <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' }"></script>
-    <script src="{% static 'vendors/nouislider/nouislider.min.js' } "></script>
-   <script src="{% static 'vendors/odometer/odometer.min.js' }"></script>
-    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' }"></script>
-    <script src="{% static 'vendors/parallax/parallax.min.js' }"></script>
-    <script src="{% static 'vendors/swiper/swiper.min.js' }"></script>
-    <script src="{% static 'vendors/timepicker/timePicker.js' }"></script>
-    <script src="{% static 'vendors/tiny-slider/tiny-slider.min.js' }"></script>
-    <script src="{% static 'vendors/typed-2.0.11/typed-2.0.11.js' }"></script>
-    <script src="{% static 'vendors/vegas/vegas.min.js' }"></script>
-    <script src="{% static 'vendors/wnumb/wNumb.min.js' }"></script>
-    <script src="{% static 'vendors/wow/wow.js' }"></script>
-    <script src="{% static 'vendors/language-switcher/jquery.polyglot.language.switcher.js' }"></script>
-    <script src="{% static 'vendors/jarallax/jarallax.min.js' }"></script>
-    <script src="{% static 'vendors/slick-slider/slick.js' }"></script>
-    <script src="{% static 'vendors/jquery-circle-progress/jquery.circle-progress.min.js' }"></script>
-    <script src="{% static 'vendors/progress-bar/knob.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery/jquery-3.6.0.min.js' }"></script>
+   <script type="application/json" src="{% static 'vendors/bootstrap/js/bootstrap.bundle.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/bootstrap-select/js/bootstrap-select.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/bxslider/jquery.bxslider.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/circleType/jquery.circleType.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/circleType/jquery.lettering.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/isotope/isotope.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-appear/jquery.appear.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-magnific-popup/jquery.magnific-popup.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-migrate/jquery-migrate.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-ui/jquery-ui.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-validate/jquery.validate.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/nice-select/jquery.nice-select.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/nouislider/nouislider.min.js' } "></script>
+   <script type="application/json" src="{% static 'vendors/odometer/odometer.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/owl-carousel/owl.carousel.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/parallax/parallax.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/swiper/swiper.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/timepicker/timePicker.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/tiny-slider/tiny-slider.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/typed-2.0.11/typed-2.0.11.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/vegas/vegas.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/wnumb/wNumb.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/wow/wow.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/language-switcher/jquery.polyglot.language.switcher.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jarallax/jarallax.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/slick-slider/slick.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/jquery-circle-progress/jquery.circle-progress.min.js' }"></script>
+    <script type="application/json" src="{% static 'vendors/progress-bar/knob.js' }"></script>
 
     <!-- Template js -->
-    <script src="{% static 'js/custom.js' }"></script>
+    <script type="application/json" src="{% static 'js/custom.js' }"></script>
 
 
 </body>

@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block 'title' %}
 Home
@@ -40,10 +41,10 @@ Home
 
                 <!--Start Main Slider One Single-->
                 <div class="main-slider-one__single">
-                    <div class="image-layer" style="background-image:url(assets/images/slides/slider-v1-img1.jpg)">
+                    <div class="image-layer" style="background-image:url("{% static 'assets/images/slides/slider-v1-img1.jpg' %}")">
                     </div>
-                    <div class="shape1"><img src="assets/images/shapes/main-slider-v1-shape1.png" alt="#"></div>
-                    <div class="shape2"><img src="assets/images/shapes/main-slider-v1-shape2.png" alt="#"></div>
+                    <div class="shape1"><img src="{% static 'images/shapes/main-slider-v1-shape1.png' %}" alt="#"></div>
+                    <div class="shape2"><img src="{% static 'images/shapes/main-slider-v1-shape2.png' %}" alt="#"></div>
 
                     <div class="container">
                         <div class="main-slider-one__content">
@@ -74,10 +75,10 @@ Home
 
                 <!--Start Main Slider One Single-->
                 <div class="main-slider-one__single">
-                    <div class="image-layer" style="background-image:url(assets/images/slides/slider-v1-img2.jpg)">
+                    <div class="image-layer" style="background-image:url("{% static 'assets/images/slides/slider-v1-img2.jpg' %}")">
                     </div>
-                    <div class="shape1"><img src="assets/images/shapes/main-slider-v1-shape1.png" alt="#"></div>
-                    <div class="shape2"><img src="assets/images/shapes/main-slider-v1-shape2.png" alt="#"></div>
+                    <div class="shape1"><img src="{% static 'images/shapes/main-slider-v1-shape1.png' %}" alt="#"></div>
+                    <div class="shape2"><img src="{% static 'images/shapes/main-slider-v1-shape2.png' %}" alt="#"></div>
 
                     <div class="container">
                         <div class="main-slider-one__content">
@@ -106,10 +107,10 @@ Home
 
                 <!--Start Main Slider One Single-->
                 <div class="main-slider-one__single">
-                    <div class="image-layer" style="background-image:url(assets/images/slides/slider-v1-img3.jpg)">
+                    <div class="image-layer" style="background-image:url("{% static 'assets/images/slides/slider-v1-img3.jpg' %}")">
                     </div>
-                    <div class="shape1"><img src="assets/images/shapes/main-slider-v1-shape1.png" alt="#"></div>
-                    <div class="shape2"><img src="assets/images/shapes/main-slider-v1-shape2.png" alt="#"></div>
+                    <div class="shape1"><img src="{% static 'images/shapes/main-slider-v1-shape1.png' %}" alt="#"></div>
+                    <div class="shape2"><img src="{% static 'images/shapes/main-slider-v1-shape2.png' %}" alt="#"></div>
 
                     <div class="container">
                         <div class="main-slider-one__content">
@@ -148,8 +149,8 @@ Home
                 <!--Start Feature One Single-->
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.1s">
                     <div class="feature-one__single text-center">
-                        <div class="shape2"><img src="assets/images/shapes/feature-v1-shape1.png" alt="#"></div>
-                        <div class="shape3"><img src="assets/images/shapes/feature-v1-shape2.png" alt="#"></div>
+                        <div class="shape2"><img src="{% static  'images/shapes/feature-v1-shape1.png' %} " alt="#"></div>
+                        <div class="shape3"><img src="{% static  'images/shapes/feature-v1-shape2.png' %} " alt="#"></div>
                         <div class="feature-one__single-icon">
                             <div class="shape1"></div>
                             <span class="icon-donation-1"></span>
@@ -166,8 +167,8 @@ Home
                 <!--Start Feature One Single-->
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
                     <div class="feature-one__single text-center">
-                        <div class="shape2"><img src="assets/images/shapes/feature-v1-shape1.png" alt="#"></div>
-                        <div class="shape3"><img src="assets/images/shapes/feature-v1-shape2.png" alt="#"></div>
+                        <div class="shape2"><img src="{% static 'images/shapes/feature-v1-shape1.png' %}" alt="#"></div>
+                        <div class="shape3"><img src="{% static 'images/shapes/feature-v1-shape2.png' %}" alt="#"></div>
                         <div class="feature-one__single-icon">
                             <div class="shape1 l12"></div>
                             <span class="icon-donation-3"></span>
@@ -184,8 +185,8 @@ Home
                 <!--Start Feature One Single-->
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.3s">
                     <div class="feature-one__single text-center">
-                        <div class="shape2"><img src="assets/images/shapes/feature-v1-shape1.png" alt="#"></div>
-                        <div class="shape3"><img src="assets/images/shapes/feature-v1-shape2.png" alt="#"></div>
+                        <div class="shape2"><img src="{% static  'images/shapes/feature-v1-shape1.png' %}" alt="#"></div>
+                        <div class="shape3"><img src="{% static  'images/shapes/feature-v1-shape2.png' %}" alt="#"></div>
                         <div class="feature-one__single-icon">
                             <div class="shape1 style3"></div>
                             <span class="icon-charity-food"></span>
@@ -205,7 +206,7 @@ Home
 
     <!--Start About One -->
     <section class="about-one">
-        <div class="shape5 float-bob-y"><img src="assets/images/shapes/about-v1-shape3.png" alt="#"></div>
+        <div class="shape5 float-bob-y"><img src="{% static  'images/shapes/about-v1-shape3.png' %}" alt="#"></div>
         <div class="container">
             <div class="row">
                 <!--Start About One Content-->
@@ -270,14 +271,14 @@ Home
                                         <div class="about-one__helped-fund text-center">
                                             <div class="shape3 float-bob-y"></div>
                                             <div class="about-one__helped-fund-bg"
-                                                style="background-image: url(assets/images/backgrounds/about-v1-bg.png);">
+                                                style="background-image: url("{% static 'assets/images/backgrounds/about-v1-bg.png' %}");">
                                             </div>
                                             <div class="img-box">
                                                 <div class="inner">
-                                                    <img src="assets/images/about/about-v1-img1.jpg" alt="#">
+                                                    <img src="{% static  'images/about/about-v1-img1.jpg' %}" alt="#">
                                                 </div>
                                                 <div class="shape2 rotate-me"><img
-                                                        src="assets/images/shapes/about-v1-shape1.png" alt="#">
+                                                        src="{% static  'images/shapes/about-v1-shape1.png' %}" alt="#">
                                                 </div>
                                             </div>
 
@@ -299,8 +300,8 @@ Home
                 <div class="col-xl-5">
                     <div class="about-one__img">
                         <div class="about-one__img-inner">
-                            <div class="shape4"><img src="assets/images/shapes/about-v1-shape2.png" alt="#"></div>
-                            <img src="assets/images/about/about-v1-img2.jpg" alt="#">
+                            <div class="shape4"><img src="{% static  'images/shapes/about-v1-shape2.png' %}" alt="#"></div>
+                            <img src="{% static  'images/about/about-v1-img2.jpg' %}" alt="#">
                         </div>
                     </div>
                 </div>
@@ -332,7 +333,7 @@ Home
 
     <!--Start Case One -->
     <section class="case-one">
-        <div class="case-one__bg" style="background-image: url(assets/images/backgrounds/case-v1-bg.jpg);"></div>
+        <div class="case-one__bg" style="background-image: url("{% static 'assets/images/backgrounds/case-v1-bg.jpg' %}");"></div>
         <div class="auto-container">
             <div class="sec-title text-center">
                 <div class="sec-title__tagline">
@@ -347,7 +348,7 @@ Home
                     <div class="case-one__single">
                         <div class="case-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/resources/case-v1-img1.jpg" alt="#">
+                                <img src="{% static 'images/resources/case-v1-img1.jpg' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 Food
@@ -357,7 +358,7 @@ Home
                         <div class="case-one__single-content">
                             <div class="inner">
                                 <div class="case-one__single-content-bg"
-                                    style="background-image: url(assets/images/shapes/case-v1-shape1.png);"></div>
+                                    style="background-image: url("{% static 'assets/images/shapes/case-v1-shape1.png' %}");"></div>
                                 <h2><a href="events-single.html">Help us touch their lives <br> of these youths</a>
                                 </h2>
                                 <p>Help us touch there are many variations of
@@ -391,7 +392,7 @@ Home
                     <div class="case-one__single">
                         <div class="case-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/resources/case-v1-img2.jpg" alt="#">
+                                <img src="{% static 'images/resources/case-v1-img2.jpg' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 Charity
@@ -401,7 +402,7 @@ Home
                         <div class="case-one__single-content">
                             <div class="inner">
                                 <div class="case-one__single-content-bg"
-                                    style="background-image: url(assets/images/shapes/case-v1-shape1.png);"></div>
+                                    style="background-image: url("{% static 'assets/images/shapes/case-v1-shape1.png' %}");"></div>
                                 <h2><a href="events-single.html">Be hungry no more & <br> Leave no one behind</a>
                                 </h2>
                                 <p>Help us touch there are many variations of
@@ -435,7 +436,7 @@ Home
                     <div class="case-one__single">
                         <div class="case-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/resources/case-v1-img3.jpg" alt="#">
+                                <img src="{% static  'images/resources/case-v1-img3.jpg' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 Health
@@ -445,7 +446,7 @@ Home
                         <div class="case-one__single-content">
                             <div class="inner">
                                 <div class="case-one__single-content-bg"
-                                    style="background-image: url(assets/images/shapes/case-v1-shape1.png);"></div>
+                                    style="background-image: url("{% static 'assets/images/shapes/case-v1-shape1.png' %}");"></div>
                                 <h2><a href="events-single.html">Share Your Hongbao <br> Blessings with Children</a>
                                 </h2>
                                 <p>Help us touch there are many variations of
@@ -479,7 +480,7 @@ Home
                     <div class="case-one__single">
                         <div class="case-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/resources/case-v1-img4.jpg" alt="#">
+                                <img src="{% static  'images/resources/case-v1-img4.jpg' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 Medical
@@ -489,7 +490,7 @@ Home
                         <div class="case-one__single-content">
                             <div class="inner">
                                 <div class="case-one__single-content-bg"
-                                    style="background-image: url(assets/images/shapes/case-v1-shape1.png);"></div>
+                                    style="background-image: url("{% static 'assets/images/shapes/case-v1-shape1.png' %}");"></div>
                                 <h2><a href="events-single.html">Support Early Intervention <br> for Children
                                         with</a></h2>
                                 <p>Help us touch there are many variations of
@@ -523,15 +524,15 @@ Home
 
     <!--Start Video One -->
     <section class="video-one">
-        <div class="shape3 float-bob-x"><img src="assets/images/shapes/video-v1-shape3.png" alt="#"></div>
+        <div class="shape3 float-bob-x"><img src="{% static  'assets/images/shapes/video-v1-shape3.png' %}" alt="#"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="video-one__inner">
-                        <div class="shape1"><img src="assets/images/shapes/video-v1-shape1.png" alt="#"></div>
-                        <div class="shape2"><img src="assets/images/shapes/video-v1-shape2.png" alt="#"></div>
+                        <div class="shape1"><img src="{% static 'assets/images/shapes/video-v1-shape1.png' %}" alt="#"></div>
+                        <div class="shape2"><img src="{% static  'assets/images/shapes/video-v1-shape2.png' %}" alt="#"></div>
                         <div class="video-one__bg"
-                            style="background-image: url(assets/images/backgrounds/video-v1-bg.jpg);"></div>
+                            style="background-image: url("{% static 'assets/images/backgrounds/video-v1-bg.jpg' %}");"></div>
                         <div class=" video-one__icon">
                             <a href="https://www.youtube.com/watch?v=pVE92TNDwUk"
                                 class="video-one__btn video-popup">
@@ -551,14 +552,14 @@ Home
 
     <!--Start Counter One -->
     <section class="counter-one">
-        <div class="shape1 float-bob-y"><img src="assets/images/shapes/counter-v1-shape4.png" alt="#"></div>
+        <div class="shape1 float-bob-y"><img src="{% static 'assets/images/shapes/counter-v1-shape4.png' %}" alt="#"></div>
         <div class="container">
             <div class="row">
                 <!--Start Counter One Single-->
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.1s">
                     <div class="counter-one__single">
                         <div class="counter-one__single-top">
-                            <div class="img-box"><img src="assets/images/shapes/counter-v1-shape1.png" alt="#">
+                            <div class="img-box"><img src="{% static 'assets/images/shapes/counter-v1-shape1.png' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 <h2><span class="odometer" data-count="648">00</span>
@@ -577,7 +578,7 @@ Home
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
                     <div class="counter-one__single">
                         <div class="counter-one__single-top">
-                            <div class="img-box"><img src="assets/images/shapes/counter-v1-shape2.png" alt="#">
+                            <div class="img-box"><img src="{% static 'assets/images/shapes/counter-v1-shape2.png' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 <h2> <span class="dollar">$</span> <span class="odometer" data-count="464">00</span>
@@ -597,7 +598,7 @@ Home
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.3s">
                     <div class="counter-one__single">
                         <div class="counter-one__single-top">
-                            <div class="img-box"><img src="assets/images/shapes/counter-v1-shape3.png" alt="#">
+                            <div class="img-box"><img src="{% static 'assets/images/shapes/counter-v1-shape3.png' %}" alt="#">
                             </div>
                             <div class="text-box">
                                 <h2><span class="odometer" data-count="587">00</span> <span class="m">k</span>
@@ -623,16 +624,16 @@ Home
                 <!--Start Feature Two Img-->
                 <div class="col-xl-6">
                     <div class="feature-two__img">
-                        <div class="shape2 float-bob-y"><img src="assets/images/shapes/feature-v2-shape2.png"
+                        <div class="shape2 float-bob-y"><img src="{% static 'assets/images/shapes/feature-v2-shape2.png' %}"
                                 alt="#"></div>
                         <div class="feature-two__img1 clearfix">
-                            <div class="shape1"><img src="assets/images/shapes/feature-v2-shape1.png" alt="#"></div>
-                            <img src="assets/images/resources/feature-v2-img1.jpg" alt="#">
+                            <div class="shape1"><img src="{% static 'assets/images/shapes/feature-v2-shape1.png' %}" alt="#"></div>
+                            <img src="{% static 'assets/images/resources/feature-v2-img1.jpg' %}" alt="#">
                         </div>
                         <div class="feature-two__img2 wow fadeInRight" data-wow-delay="100ms"
                             data-wow-duration="2500ms">
                             <div class="inner">
-                                <img src="assets/images/resources/feature-v2-img2.jpg" alt="#">
+                                <img src="{% static 'assets/images/resources/feature-v2-img2.jpg' %}" alt="#">
                             </div>
                         </div>
                     </div>
@@ -685,7 +686,7 @@ Home
 
                             <div class="feature-two__content-bottom-img">
                                 <div class="feature-two__content-bottom-img-inner">
-                                    <img src="assets/images/resources/feature-v2-img3.jpg" alt="#">
+                                    <img src="{% static 'assets/images/resources/feature-v2-img3.jpg' %}" alt="#">
                                     <div class="content-box">
                                         <p>Helped fund </p>
                                         <h2>$24,537 </h2>
@@ -704,10 +705,10 @@ Home
     <!--Start Gallery One -->
     <section class="gallery-one">
         <div class="gallery-one__top">
-            <div class="shape1"><img src="assets/images/shapes/gallery-v1-shape1.png" alt="#"></div>
-            <div class="shape2"><img src="assets/images/shapes/gallery-v1-shape2.png" alt="#"></div>
+            <div class="shape1"><img src="{% static 'assets/images/shapes/gallery-v1-shape1.png' %}" alt="#"></div>
+            <div class="shape2"><img src="{% static 'assets/images/shapes/gallery-v1-shape2.png' %}" alt="#"></div>
             <div class="gallery-one__top__bg"
-                style="background-image: url(assets/images/backgrounds/gallery-v1-bg.jpg);"></div>
+                style="background-image: url("{% static 'assets/images/backgrounds/gallery-v1-bg' %}".jpg);"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -736,7 +737,7 @@ Home
                     <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">
                         <div class="gallery-one__single">
                             <div class="gallery-one__single-img">
-                                <img src="assets/images/gallery/gallery-v1-img1.jpg" alt="#">
+                                <img src="{% static 'assets/images/gallery/gallery-v1-img1.jpg' %} "alt="#">
                                 <div class="text-box">
                                     <h2><a href="#">Fundrising</a></h2>
                                 </div>
@@ -749,7 +750,7 @@ Home
                     <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.2s">
                         <div class="gallery-one__single">
                             <div class="gallery-one__single-img bg2">
-                                <img src="assets/images/gallery/gallery-v1-img2.jpg" alt="#">
+                                <img src="{% static 'assets/images/gallery/gallery-v1-img2.jpg' %}" alt="#">
                                 <div class="text-box">
                                     <h2><a href="#">Fresh Food</a></h2>
                                 </div>
@@ -762,7 +763,7 @@ Home
                     <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
                         <div class="gallery-one__single">
                             <div class="gallery-one__single-img bg3">
-                                <img src="assets/images/gallery/gallery-v1-img3.jpg" alt="#">
+                                <img src="{% static 'assets/images/gallery/gallery-v1-img3.jpg' %}" alt="#">
                                 <div class="text-box">
                                     <h2><a href="#">Education</a></h2>
                                 </div>
@@ -775,7 +776,7 @@ Home
                     <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.4s">
                         <div class="gallery-one__single">
                             <div class="gallery-one__single-img bg4">
-                                <img src="assets/images/gallery/gallery-v1-img4.jpg" alt="#">
+                                <img src="{% static 'assets/images/gallery/gallery-v1-img4.jpg' %}" alt="#">
                                 <div class="text-box">
                                     <h2><a href="#">Medical</a></h2>
                                 </div>
@@ -830,17 +831,17 @@ Home
 
                             <!--Start Testimonial One Single-->
                             <div class="testimonial-one__single text-center">
-                                <div class="shape1"><img src="assets/images/shapes/testimonial-v1-shape1.png"
+                                <div class="shape1"><img src="{% static 'assets/images/shapes/testimonial-v1-shape1.png' %}"
                                         alt="#">
                                 </div>
-                                <div class="shape2"><img src="assets/images/shapes/testimonial-v1-shape2.png"
+                                <div class="shape2"><img src="{% static 'assets/images/shapes/testimonial-v1-shape2.png' %}"
                                         alt="#">
                                 </div>
                                 <div class="icon-box">
                                     <span class="icon-quote-right"></span>
                                 </div>
                                 <div class="testimonial-one__single-img">
-                                    <img src="assets/images/testimonial/testimonial-v1-img1.jpg" alt="#">
+                                    <img src="{% static 'assets/images/testimonial/testimonial-v1-img1.jpg' %}" alt="#">
                                 </div>
                                 <div class="author-info">
                                     <h2>Alex an Orno</h2>
@@ -857,17 +858,17 @@ Home
 
                             <!--Start Testimonial One Single-->
                             <div class="testimonial-one__single text-center">
-                                <div class="shape1"><img src="assets/images/shapes/testimonial-v1-shape1.png"
+                                <div class="shape1"><img src="{% static 'assets/images/shapes/testimonial-v1-shape1.png' %}"
                                         alt="#">
                                 </div>
-                                <div class="shape2"><img src="assets/images/shapes/testimonial-v1-shape2.png"
+                                <div class="shape2"><img src="{% static 'assets/images/shapes/testimonial-v1-shape2.png' %}"
                                         alt="#">
                                 </div>
                                 <div class="icon-box">
                                     <span class="icon-quote-right"></span>
                                 </div>
                                 <div class="testimonial-one__single-img">
-                                    <img src="assets/images/testimonial/testimonial-v1-img2.jpg" alt="#">
+                                    <img src="{% static 'assets/images/testimonial/testimonial-v1-img2.jpg' %}" alt="#">
                                 </div>
                                 <div class="author-info">
                                     <h2>Any Ron Agona</h2>
@@ -884,17 +885,17 @@ Home
 
                             <!--Start Testimonial One Single-->
                             <div class="testimonial-one__single text-center">
-                                <div class="shape1"><img src="assets/images/shapes/testimonial-v1-shape1.png"
+                                <div class="shape1"><img src="{% static 'assets/images/shapes/testimonial-v1-shape1.png' %}"
                                         alt="#">
                                 </div>
-                                <div class="shape2"><img src="assets/images/shapes/testimonial-v1-shape2.png"
+                                <div class="shape2"><img src="{% static 'assets/images/shapes/testimonial-v1-shape2.png' %}"
                                         alt="#">
                                 </div>
                                 <div class="icon-box">
                                     <span class="icon-quote-right"></span>
                                 </div>
                                 <div class="testimonial-one__single-img">
-                                    <img src="assets/images/testimonial/testimonial-v1-img3.jpg" alt="#">
+                                    <img src="{% static 'assets/images/testimonial/testimonial-v1-img3.jpg' %}" alt="#">
                                 </div>
                                 <div class="author-info">
                                     <h2>Mahfuz R</h2>
@@ -911,17 +912,17 @@ Home
 
                             <!--Start Testimonial One Single-->
                             <div class="testimonial-one__single text-center">
-                                <div class="shape1"><img src="assets/images/shapes/testimonial-v1-shape1.png"
+                                <div class="shape1"><img src="{% static 'assets/images/shapes/testimonial-v1-shape1.png' %}"
                                         alt="#">
                                 </div>
-                                <div class="shape2"><img src="assets/images/shapes/testimonial-v1-shape2.png"
+                                <div class="shape2"><img src="{% static 'assets/images/shapes/testimonial-v1-shape2.png' %}"
                                         alt="#">
                                 </div>
                                 <div class="icon-box">
                                     <span class="icon-quote-right"></span>
                                 </div>
                                 <div class="testimonial-one__single-img">
-                                    <img src="assets/images/testimonial/testimonial-v1-img1.jpg" alt="#">
+                                    <img src="{% static 'assets/images/testimonial/testimonial-v1-img1.jpg' %}" alt="#">
                                 </div>
                                 <div class="author-info">
                                     <h2>Alex an Orno</h2>
@@ -938,17 +939,17 @@ Home
 
                             <!--Start Testimonial One Single-->
                             <div class="testimonial-one__single text-center">
-                                <div class="shape1"><img src="assets/images/shapes/testimonial-v1-shape1.png"
+                                <div class="shape1"><img src="{% static 'assets/images/shapes/testimonial-v1-shape1.png' %}"
                                         alt="#">
                                 </div>
-                                <div class="shape2"><img src="assets/images/shapes/testimonial-v1-shape2.png"
+                                <div class="shape2"><img src="{% static 'assets/images/shapes/testimonial-v1-shape2.png' %}"
                                         alt="#">
                                 </div>
                                 <div class="icon-box">
                                     <span class="icon-quote-right"></span>
                                 </div>
                                 <div class="testimonial-one__single-img">
-                                    <img src="assets/images/testimonial/testimonial-v1-img2.jpg" alt="#">
+                                    <img src="{% static 'assets/images/testimonial/testimonial-v1-img2.jpg' %}" alt="#">
                                 </div>
                                 <div class="author-info">
                                     <h2>Any Ron Agona</h2>
@@ -965,17 +966,17 @@ Home
 
                             <!--Start Testimonial One Single-->
                             <div class="testimonial-one__single text-center">
-                                <div class="shape1"><img src="assets/images/shapes/testimonial-v1-shape1.png"
+                                <div class="shape1"><img src="{% static 'assets/images/shapes/testimonial-v1-shape1.png' %}"
                                         alt="#">
                                 </div>
-                                <div class="shape2"><img src="assets/images/shapes/testimonial-v1-shape2.png"
+                                <div class="shape2"><img src="{% static 'assets/images/shapes/testimonial-v1-shape2.png' %}"
                                         alt="#">
                                 </div>
                                 <div class="icon-box">
                                     <span class="icon-quote-right"></span>
                                 </div>
                                 <div class="testimonial-one__single-img">
-                                    <img src="assets/images/testimonial/testimonial-v1-img3.jpg" alt="#">
+                                    <img src="{% static 'assets/images/testimonial/testimonial-v1-img3.jpg' %}" alt="#">
                                 </div>
                                 <div class="author-info">
                                     <h2>Mahfuz R</h2>
@@ -1002,7 +1003,7 @@ Home
     <section class="team-one">
         <div class="auto-container">
             <div class="team-one__inner">
-                <div class="team-one__bg" style="background-image: url(assets/images/pattern/team-v1-bg.jpg);">
+                <div class="team-one__bg" style="background-image: url("{% static 'assets/images/pattern/team-v1-bg.jpg' %}");">
                 </div>
                 <div class="container">
                     <div class="team-one__top">
@@ -1025,10 +1026,10 @@ Home
                             <div class="team-one__single">
                                 <div class="team-one__single-img">
                                     <div class="team-one__single-img-bg"
-                                        style="background-image: url(assets/images/shapes/team-v1-shape1.png);">
+                                        style="background-image: url("{% static 'assets/images/shapes/team-v1-shape1.png' %}");">
                                     </div>
                                     <div class="inner">
-                                        <img src="assets/images/team/team-v1-img1.jpg" alt="#">
+                                        <img src="{% static 'assets/images/team/team-v1-img1.jpg' %}" alt="#">
                                     </div>
                                 </div>
 
@@ -1046,10 +1047,10 @@ Home
                             <div class="team-one__single">
                                 <div class="team-one__single-img">
                                     <div class="team-one__single-img-bg"
-                                        style="background-image: url(assets/images/shapes/team-v1-shape1.png);">
+                                        style="background-image: url("{% static 'assets/images/shapes/team-v1-shape1.png' %}");">
                                     </div>
                                     <div class="inner">
-                                        <img src="assets/images/team/team-v1-img2.jpg" alt="#">
+                                        <img src="{% static 'assets/images/team/team-v1-img2.jpg' %}" alt="#">
                                     </div>
                                 </div>
 
@@ -1067,10 +1068,10 @@ Home
                             <div class="team-one__single">
                                 <div class="team-one__single-img">
                                     <div class="team-one__single-img-bg"
-                                        style="background-image: url(assets/images/shapes/team-v1-shape1.png);">
+                                        style="background-image: url("{% static 'assets/images/shapes/team-v1-shape1.png' %}");">
                                     </div>
                                     <div class="inner">
-                                        <img src="assets/images/team/team-v1-img3.jpg" alt="#">
+                                        <img src="{% static 'assets/images/team/team-v1-img3.jpg' %}" alt="#">
                                     </div>
                                 </div>
 
@@ -1103,7 +1104,7 @@ Home
                     <div class="blog-one__single">
                         <div class="blog-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/blog/blog-v1-img1.jpg" alt="#">
+                                <img src="{% static 'assets/images/blog/blog-v1-img1.jpg' %}" alt="#">
                             </div>
                             <ul class="overlay-text">
                                 <li>
@@ -1160,7 +1161,7 @@ Home
                     <div class="blog-one__single">
                         <div class="blog-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/blog/blog-v1-img2.jpg" alt="#">
+                                <img src="{% static 'assets/images/blog/blog-v1-img2.jpg' %}" alt="#">
                             </div>
                             <ul class="overlay-text">
                                 <li>
@@ -1217,7 +1218,7 @@ Home
                     <div class="blog-one__single">
                         <div class="blog-one__single-img">
                             <div class="inner">
-                                <img src="assets/images/blog/blog-v1-img3.jpg" alt="#">
+                                <img src="{% static 'assets/images/blog/blog-v1-img3.jpg' %}" alt="#">
                             </div>
                             <ul class="overlay-text">
                                 <li>
