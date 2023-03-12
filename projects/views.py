@@ -1,3 +1,4 @@
+from comments.forms import CommentForm
 from projects.models import Project
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .donation_forms import DonationForm
@@ -10,8 +11,8 @@ def donation(request):
 
 
 def submitDonation(request, id):
+    # spesify on which project donation would be send
     project = Project.get_one_project(id)
-    print("-------------------------", project)
 
     if request.method == "POST":
         donationForm = DonationForm(request.POST)
@@ -23,12 +24,8 @@ def submitDonation(request, id):
                 donationForm.cleaned_data["donation"], 'USD')
             print("-----------------", project.total_donation)
             project.save()
-
-        return redirect("singledonation" , id = id)
-
-
-def addComment(request, projectid=""):
-    pass
+        # show donation upgrade
+        return redirect("singledonation", id=id)
 
 
 def donationlist(request):
@@ -36,10 +33,15 @@ def donationlist(request):
 
 
 def singledonation(request, id):
-    donationForm = DonationForm()
     project = Project.get_one_project(id)
+
+    donationForm = DonationForm()
+    commentForm = CommentForm()
+
     return render(request, "projects/singleDonation.html",
-                  context={"donationForm": donationForm, "project": project})
+                  context={"donationForm": donationForm, "project": project,
+                           "commentForm": commentForm
+                           })
 
 
 def newdonation(request):
