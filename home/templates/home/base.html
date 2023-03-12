@@ -52,38 +52,7 @@
 </head>
 
 <body>
-    <!-- Start Preloader -->
-    <!-- <div class="loader-wrap">
-        <div class="preloader">
-            <div class="preloader-close">x</div>
-            <div id="handle-preloader" class="handle-preloader">
-                <div class="animation-preloader">
-                    <div class="spinner"></div>
-                    <div class="txt-loading">
-                        <span data-text-preloader="g" class="letters-loading">
-                            g
-                        </span>
-                        <span data-text-preloader="i" class="letters-loading">
-                            i
-                        </span>
-                        <span data-text-preloader="f" class="letters-loading">
-                            f
-                        </span>
-                        <span data-text-preloader="a" class="letters-loading">
-                            a
-                        </span>
-                        <span data-text-preloader="l" class="letters-loading">
-                            l
-                        </span>
-                        <span data-text-preloader="l" class="letters-loading">
-                            l
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- End Preloader -->
+
 
     <div class="page-wrapper">
 
@@ -91,89 +60,6 @@
         <header class="main-header main-header-one style2">
             <!--Start Main Header One Top-->
             <div class="main-header-one__top">
-            <!-- <div class="main-header-one__top">
-                <div class="auto-container">
-                    <div class="main-header-one__top-inner">
-
-                        <div class="main-header-one__top-left">
-                            <div class="logo-box-one">
-                                <a href="index.html">
-                                    <img src="images/resources/logo-1.png" alt="Awesome Logo" title="">
-                                </a>
-                            </div>
-
-                            <ul class="main-header-menu-box">
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Cause</a></li>
-                                <li><a href="#">Charity</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="main-header-one__top-middle">
-                            <div class="main-header__contact-info">
-                                <ul>
-                                    <li>
-                                        <div class="inner">
-                                            <div class="icon-box">
-                                                <span class="icon-globe-hemisphere"></span>
-                                            </div>
-                                            <div class="text-box">
-                                                <p>The Strand, 14 sector Australia</p>
-                                                <h4>Melbourne, Australia</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="inner">
-                                            <div class="icon-box">
-                                                <span class="icon-chat-circle"></span>
-                                            </div>
-                                            <div class="text-box">
-                                                <p>You may send an email</p>
-                                                <h4><a href="mailto:yourmail@email.com">helpus24@gmail.com</a></h4>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="inner">
-                                            <div class="icon-box">
-                                                <span class="icon-phone-call"></span>
-                                            </div>
-                                            <div class="text-box">
-                                                <p>Helpline and support</p>
-                                                <h4><a href="tel:8857002451">88 57 00 24 51</a></h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="main-header-two__top-right">
-                            <ul class="header-social-links">
-                                <li>
-                                    <a class="style2" href="#"><span class="icon-linkedin"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="icon-twitter"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="icon-facebook-logo"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="icon-skype"></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div> -->
-            <!--End Main Header One Top-->
-
-
             <!--Start Main Header One Bottom-->
             <div class="main-header-one__bottom">
                 <div class="main-header-one__bottom-inner">
@@ -198,73 +84,14 @@
                                             </a>
                                             <ul class="main-menu__list">
                                                 <li class="dropdown">
-                                                    <a href="index.html">Home</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="index.html">Home One</a>
-                                                        </li>
-                                                        <li><a href="index-2.html">Home Two</a></li>
-                                                        <li><a href="index-3.html">Home Three</a></li>
-                                                        <li class="dropdown">
-                                                            <a href="#">Header Styles</a>
-                                                            <ul>
-                                                                <li><a href="index.html">Header One</a></li>
-                                                                <li><a href="index-2.html">Header Two</a></li>
-                                                                <li><a href="index-3.html">Header Three</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                    <a href="{% url 'home' %}">Home</a>
                                                 </li>
 
                                                 <li>
-                                                    <a href="about.html">About</a>
+                                                    <a href="{% url 'home' %}">About</a>
                                                 </li>
-
-                                                <li class="dropdown">
-                                                    <a href="#">Donations</a>
-                                                    <ul>
-                                                        <li><a href="donation.html">Donation</a></li>
-                                                        <li><a href="donation-list.html">Donation List</a>
-                                                        </li>
-                                                        <li><a href="donation-single.html">Donation Details</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-
-                                                <li class="dropdown">
-                                                    <a href="#">Events</a>
-                                                    <ul>
-                                                        <li><a href="events.html">Events</a></li>
-                                                        <li><a href="events-single.html">Events Details</a></li>
-                                                    </ul>
-                                                </li>
-
-                                                <li class="dropdown">
-                                                    <a href="#">Pages</a>
-                                                    <ul>
-                                                        <li><a href="volunteers.html">Volunteers 01</a></li>
-                                                        <li><a href="become-volunteer.html">Volunteer 02</a></li>
-                                                        <li><a href="portfolio.html">Portfolio</a></li>
-                                                        <li><a href="faq.html">Faq</a>
-                                                        <li><a href="shop.html">Shop</a></li>
-                                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="404.html">404</a></li>
-                                                    </ul>
-                                                </li>
-
-                                                <li class="dropdown current">
-                                                    <a href="#">Blog</a>
-                                                    <ul>
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li><a href="blog-list.html">Blog List</a></li>
-                                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                                    </ul>
-                                                </li>
-
                                                 <li>
-                                                    <a href="contact.html">Contact</a>
+                                                    <a href="{% url 'home' %}">Contact</a>
                                                 </li>
                                             </ul>
                                         </div>
