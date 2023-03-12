@@ -21,14 +21,11 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(default="", null=True, blank=True)
     details = models.TextField(null=True, blank=True)
-<<<<<<< HEAD
-    image = ArrayField(models.ImageField(
-        upload_to='projects/images') ,  blank=True)
-=======
+#     image = ArrayField(models.ImageField(
+#         upload_to='projects/images') ,  blank=True)
+# =======
     image = models.ImageField(
         upload_to='projects/images')
->>>>>>> 1cf3a5f (merge)
-
     features = ArrayField(
         models.CharField(max_length=100)
     )

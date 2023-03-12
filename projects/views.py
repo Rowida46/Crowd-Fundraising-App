@@ -41,7 +41,7 @@ def singledonation(request, id):
     donationForm = DonationForm()
     commentForm = CommentForm()
 
-    return render(request, "projects/singleDonation.html",
+    return render(request, "projects/projectdetail.html",
                   context={"donationForm": donationForm, "project": project,
                            "commentForm": commentForm
                            })
@@ -80,14 +80,6 @@ def newproject(request):
             return redirect('/')
             # return redirect('singleproject',id=newprojectform.id)
     return render(request, "projects/newproject.html")
-
-
-def projectdetail(request,id):
-    project=get_object_or_404(Project,id=id)
-    # comments=Comments.get_project_comments(id)
-    return render(request, "projects/projectdetail.html",{'project':project})
-
-
 
 # @login_required
 def editproject(request,id):
