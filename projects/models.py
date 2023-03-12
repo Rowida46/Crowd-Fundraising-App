@@ -5,13 +5,15 @@ from django.contrib.postgres.fields import ArrayField
 from categories.models import Categories
 # from comments.models import Comments
 from django.db.models import Avg
+from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
+
 # Create your models here.
 
 from djmoney.models.fields import MoneyField
 from django.utils.text import slugify
 from tags.models import Tags
 
-#from rate.models import Rating, ReportOption
+# from rate.models import Rating, ReportOption
 # Create your models here.
 
 
@@ -20,7 +22,7 @@ class Project(models.Model):
     slug = models.SlugField(default="", null=True, blank=True)
     details = models.TextField(null=True, blank=True)
     image = ArrayField(models.ImageField(
-        upload_to='projects/images'))
+        upload_to='projects/images') ,  blank=True)
 
     features = ArrayField(
         models.CharField(max_length=100)
@@ -30,7 +32,12 @@ class Project(models.Model):
     #     max_digits=5, decimal_places=2, null=True, blank=True)
 
     target_budget = MoneyField(max_digits=14, decimal_places=2,
-                               default_currency='USD', default=0, null=False)
+                               default_currency='USD', default=0, null=False,
+                               validators=[
+                                   MinMoneyValidator(10),
+                                   MaxMoneyValidator(1500)]
+                               )
+
     total_donation = MoneyField(max_digits=14, decimal_places=2,
                                 default_currency='USD', default=0)
 
@@ -40,7 +47,7 @@ class Project(models.Model):
     end_at = models.DateTimeField(null=True)
 
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True,
-                                 related_name='project_category')
+                                 related_name='project_category', blank=True)
     # tags
     tags = models.ManyToManyField(Tags, blank=True)
 
@@ -58,7 +65,6 @@ class Project(models.Model):
     #     avg = round(rate_lst.aggregate(Avg("rate"))["rate__avg"], 2)
     #     return avg
 
-    
     # @classmethod
     # def get_project_number_of_reports(self):
     #     return ReportOption.objects.filter(project=self).count()

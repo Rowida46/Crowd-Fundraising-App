@@ -274,8 +274,9 @@ Donation
 
                             <div class="comment-form">
                                 <h2 class="comment-form__title">Leave A Reply</h2>
-                                <form id="contact-form" class="default-form2 contact-form-validated comment-one__form"
-                                    action="https://themazine.com/mr/gifall-html/assets/inc/sendemail.php" novalidate="novalidate">
+                                <form action="/commit" 
+                                id="contact-form" class="default-form2 contact-form-validated comment-one__form"
+                                 novalidate="novalidate">
 
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12">
@@ -330,8 +331,11 @@ Donation
                                     <div class="sidebar__donation-bg"
                                         style="background-image: url(assets/images/shapes/sidebar-donation-shape.jpg);">
                                     </div>
+                                    <div class="title">
+                                        <h2>Current total donation 
+                                    </div>
                                     <div class="text-box">
-                                        <h2>$20</h2>
+                                        <h2>{{project.total_donation}}</h2>
                                     </div>
 
                                     <div class="title">
@@ -346,7 +350,10 @@ Donation
                             <!--End Sidebar Single-->
 
 
-                            <!--Start Sidebar Single-->
+                            <!--Start Sidebar Single
+                            
+                            donation
+                            --> 
                             <div class="sidebar__single sidebar__donation-two wow animated fadeInUp"
                                 data-wow-delay="0.2s">
                                 <div class="sidebar__donation-two-box text-center">
@@ -354,13 +361,37 @@ Donation
                                         style="background-image: url(assets/images/blog/sidebar-donation-two-bg.jpg);">
                                     </div>
                                     <div class="text-box">
-                                        <h2>Become A Donation</h2>
-                                        <p>There are many variations of passages <br>
-                                            of Lorem Ipsum available,</p>
+                                        <h2>Make A Donation {{project.id}}</h2>
                                     </div>
-                                    <div class="btn-box">
-                                        <a href="#">Contribute</a>
-                                    </div>
+                                    <div class="comment-form">
+
+                                       <form
+                                       action = {% url 'submit_donation' project.id %}
+
+                                       id="contact-form" class="default-form2 contact-form-validated comment-one__form"
+                                          method="POST">
+                                        {% csrf_token %}
+                                        <div class="input-box">
+                                            <p>{{donationForm.donation.errors}}</p>
+                                            <div class="text-box">
+                                                <h2>{{donationForm.donation.label}}</h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12">
+                                                    <div class="input-box">
+                                                        {{donationForm.donation}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="thm-btn" type="submit"
+                                        data-loading-text="Please wait...">
+                                        <span class="txt">Donate</span>
+                                    </button>
+                                       
+                                       
+                                              
+                                        </form></div>
                                 </div>
                             </div>
                             <!--End Sidebar Single-->
