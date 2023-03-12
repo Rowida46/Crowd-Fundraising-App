@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .donation_forms import DonationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm
+from comments.models import Comments
 # Create your views here.
 from djmoney.money import Money
 
@@ -59,7 +60,7 @@ def single_project_view(request, id):
 
 def projectslist(request):
     projects = Project.get_projects()
-
+    
     return render(request, "projects/listProjects.html", {'projects': projects})
 
 
@@ -83,6 +84,7 @@ def newproject(request):
 
 def projectdetail(request,id):
     project=get_object_or_404(Project,id=id)
+    # comments=Comments.get_project_comments(id)
     return render(request, "projects/projectdetail.html",{'project':project})
 
 
