@@ -1,0 +1,435 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block 'title' %}
+Donation
+{% endblock %}
+
+{% block 'content' %}
+
+
+        <!--Start Page Header-->
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header-bg.jpg" %}')">
+            </div>
+
+            <div class="container">
+                <div class="page-header__inner text-center">
+                    <h2>Project Details</h2>
+                    <ul class="thm-breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><span>-</span></li>
+                        <li>Project Details</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--End Page Header-->
+
+
+        <!--Start Donation Details-->
+        <section class="donation-details">
+            <div class="container">
+                <div class="row">
+                    <!--Start Donation Details Content-->
+                    <div class="col-xl-8">
+                        <div class="donation-details__content">
+                            <div class="donation-details__content-img1"> 
+                                <img src="{{ project.image.url }}" style="height:300px" alt="#">
+                                <div class="text-box">
+                                    {{project.title}}
+                                </div>
+                            </div>
+
+                            <div class="donation-details__content-text-box1">
+                                <h2>{{project.title}}</h2>
+                                <p> {{project.details}} </p>
+
+                                <div class="donation-details__progress">
+                                    <div class="donation-details__progress-bg"
+                                        style="background-image: url('{% static "images/shapes/donation-details-shape1.jpg" %}');">
+                                    </div>
+                                    <div class="donation-details__progress-inner">
+                                        <div class="donation-details__progress-box">
+                                            <div class="bar">
+                                                <div class="bar-inner count-bar" data-percent="45%">
+                                                    <div class="count-text">45%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-text">
+                                            <div class="left-text">
+                                                <p>{{project.total_donation}} <span>Raised </span></p>
+                                            </div>
+                                            <div class="right-text">
+                                                <p>{{project.total_donation}} of {{project.target_budget}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="donation-details__content-text-box2">
+                                <div class="single-text-box">
+                                    <h2>About The Charity</h2>
+                                    <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. There are
+                                        many variations of passages
+                                        of Lorem Ipsum available, but the majority have alteration in some injected or
+                                        words which don't look even
+                                        slightly believable. If you are going to use a passage of Lorem Ipsum, Ipsum
+                                        generators on the Internet tend</p>
+                                </div>
+
+                                <div class="single-text-box">
+                                    <h2>Support </h2>
+                                    <p>Future Hope not only raised funds but also gained friends and goodwill. This is
+                                        very encouraging and
+                                        important for us as we grow and expand further. Kolkata supporting Kolkata’s
+                                        children is what we need most and this will aid us in helping many more children
+                                        and make their dreams come true. </p>
+                                </div>
+
+                                <div class="single-text-box">
+                                    <h2>Challenge</h2>
+                                    <p>Lorem Ipsum available, but the majority have alteration in some injected orwords
+                                        which don't look even slightly believable. If you are going to use a passage of
+                                        Lorem Ipsum,Ipsum generators on the Internet</p>
+                                </div>
+                            </div>
+
+                            <div class="donation-details__content-text-box3">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="donation-details__content-text-box3-img">
+                                            <img src="{% static 'images/resources/donation-details-img2.jpg' %}" alt="#">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="donation-details__content-text-box3-content">
+                                            <ul>
+                                                <li>
+                                                    <p> <span class="icon-check2"></span> From the streets to safety
+                                                    </p>
+                                                </li>
+
+                                                <li>
+                                                    <p> <span class="icon-check2"></span> I wish to feed the orangutans
+                                                    </p>
+                                                </li>
+
+                                                <li>
+                                                    <p> <span class="icon-check2"></span> Lorem ipsum dolor sit amet,
+                                                        adipiscing
+                                                    </p>
+                                                </li>
+
+                                                <li>
+                                                    <p> <span class="icon-check2"></span> Nemo enim ipsam voluptatem
+                                                        quia
+                                                    </p>
+                                                </li>
+                                            </ul>
+
+                                            <div class="text-box">
+                                                <p>Nemo enim ipsam voluptatem quia
+                                                    voluptas on but the majority have alteration in some to injected or
+                                                    words which don't look even toslightly growing up in poverty
+                                                    children face
+                                                    tough hunge and malnutrition</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="comment-one">
+                                <h2 class="comment-one__title">Comments (02)</h2>
+                                <div class="comment-one__single">
+                                    <div class="comment-one__single-inner">
+                                        <div class="comment-one__image">
+                                            <img src="{% static 'images/blog/comment-one-img1.jpg' %}" alt="#">
+                                        </div>
+
+                                        <div class="comment-one__content">
+                                            <div class="top-box">
+                                                <div class="text-box">
+                                                    <h3>Adam Pinakaki</h3>
+                                                </div>
+
+                                                <div class="btn-box">
+                                                    <a href="#" class="comment-one__btn">Reply</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="bottom-box">
+                                                <p>Antum recusandae pretium ultricies, purus! Soluta aliquip, nim tempo
+                                                    class, porttitor purus justo dicta. Eius nec, felis laudantium
+                                                    quaerat
+                                                    placeat u ultrices rg doloremquem</p>
+                                                <span>12 Feb, 2023</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="comment-one__single mb0">
+                                    <div class="comment-one__single-inner">
+                                        <div class="comment-one__image">
+                                            <img src="{% static 'images/blog/comment-one-img2.jpg' %}" alt="#">
+                                        </div>
+
+                                        <div class="comment-one__content">
+                                            <div class="top-box">
+                                                <div class="text-box">
+                                                    <h3>Riad Mahfuz</h3>
+                                                </div>
+
+                                                <!-- <div class="btn-box">
+                                                    <a href="#" class="comment-one__btn">Reply</a>
+                                                </div> -->
+                                            </div>
+
+                                            <div class="bottom-box">
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    accusantium
+                                                    variations of passages of Lorem Ipsum available</p>
+                                                <span>20 Dec, 2023</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment-form">
+                                <h2 class="comment-form__title">Leave A Comment</h2>
+                                <form id="contact-form" class="default-form2 contact-form-validated comment-one__form"
+                                    action="https://themazine.com/mr/gifall-html/assets/inc/sendemail.php" novalidate="novalidate">
+
+                                
+
+                                    <!-- <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12">
+                                            <div class="input-box">
+                                                <input type="email" name="email" value="" placeholder="Email Address*"
+                                                    required="">
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="input-box">
+                                                <textarea name="message" placeholder="Your Comments *"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12">
+                                            <div class="comment-form__btn">
+                                                <button class="thm-btn" type="submit"
+                                                    data-loading-text="Please wait...">
+                                                    <span class="txt">Submit Comment</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                                <!-- related projects  -->
+                            <div class="donation-details__content-text-box4">
+                                <div class="title-box">
+                                    <h2>Related Projects (4)</h2>
+                                    <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. but the
+                                        majority have alteration in some injected or words which don't look even
+                                        slightly believable. </p>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img3.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>ALex Wiliam</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img4.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>Lori Enami</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img5.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>Farhan Ani</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img6.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>Adam Robbs</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Donation Details Content-->
+
+                    <!--Start Sidebar-->
+                    <div class="col-xl-4">
+                        <div class="sidebar">
+                            <!--Start Sidebar Single-->
+                            <div class="sidebar__single sidebar__donation wow animated fadeInUp" data-wow-delay="0.1s">
+                                <div class="sidebar__donation-box text-center">
+                                    <div class="sidebar__donation-bg"
+                                        style="background-image: url('{% static "images/shapes/sidebar-donation-shape.jpg" %}');">
+                                    </div>
+                                    <div class="text-box">
+                                        <h2>$20</h2>
+                                    </div>
+
+                                    <div class="title">
+                                        <h2>How Your Donation Makes <br> a Difference</h2>
+                                    </div>
+
+                                    <div class="btn-box">
+                                        <a href="#">Donation $20</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Sidebar Single-->
+
+
+                            <!--Start Sidebar Single-->
+                            <div class="sidebar__single sidebar__donation-two wow animated fadeInUp"
+                                data-wow-delay="0.2s">
+                                <div class="sidebar__donation-two-box text-center">
+                                    <div class="sidebar__donation-two-bg"
+                                        style="background-image: url('{% static "images/blog/sidebar-donation-two-bg.jpg" %}');">
+                                    </div>
+                                    <div class="text-box">
+                                        <h2>Become A Donation</h2>
+                                        <p>There are many variations of passages <br>
+                                            of Lorem Ipsum available,</p>
+                                    </div>
+                                    <div class="btn-box">
+                                        <a href="#">Contribute</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Sidebar Single-->
+
+                            <div class="sidebar__bottom wow animated fadeInUp" data-wow-delay="0.3s">
+                                <div class="sidebar__bottom-bg"
+                                    style="background-image: url('{% static "images/shapes/sidebar-bottom-shape.jpg" %}');"></div>
+
+                                <!--Start Sidebar Single-->
+                                <div class="sidebar__single sidebar__latest-post">
+                                    <div class="title-box">
+                                        <h2>Latest Post</h2>
+                                    </div>
+
+                                    <ul class="sidebar__latest-post-list">
+                                        <li>
+                                            <div class="img-box">
+                                                <img src="{% static 'images/blog/sidebar-latest-post-img1.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="content-box">
+                                                <p> <span class="icon-calendar"></span> Feb 18, 2023</p>
+                                                <h3><a href="#">A spotlight on our <br> design process</a></h3>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="img-box">
+                                                <img src="{% static 'images/blog/sidebar-latest-post-img2.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="content-box">
+                                                <p> <span class="icon-calendar"></span> Feb 18, 2023</p>
+                                                <h3><a href="#">How to handle your <br> good employee</a></h3>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="img-box">
+                                                <img src="{% static 'images/blog/sidebar-latest-post-img3.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="content-box">
+                                                <p> <span class="icon-calendar"></span> Feb 20, 2023</p>
+                                                <h3><a href="#">How to Make the <br> Most of Holiday...</a></h3>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--End Sidebar Single-->
+
+                                <!--Start Sidebar Single-->
+                                <div class="sidebar__single sidebar__popular-tags">
+                                    <div class="title-box">
+                                        <h2>Popular Tags</h2>
+                                    </div>
+
+                                    <ul class="sidebar__popular-tags-list">
+                                        <li><a href="#">Food</a></li>
+                                        <li><a href="#">Giving</a></li>
+                                        <li><a href="#">Children</a></li>
+                                        <li><a href="#">Fundraising</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Education</a></li>
+                                        <li><a href="#">Healthcare </a></li>
+                                        <li><a href="#">Help people</a></li>
+                                    </ul>
+                                </div>
+                                <!--End Sidebar Single-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Sidebar-->
+                </div>
+            </div>
+        </section>
+        <!--Start Donation Details-->
+
+
+{% endblock %}

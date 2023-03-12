@@ -2,6 +2,8 @@ from comments.forms import CommentForm
 from projects.models import Project
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .donation_forms import DonationForm
+from django.contrib.auth.decorators import login_required
+from .forms import NewProjectForm
 # Create your views here.
 from djmoney.money import Money
 
@@ -54,3 +56,57 @@ def single_project_view(request, id):
     project = Project.get_one_project(id)
 
     return
+def projectslist(request):
+    return render(request, "projects/listDonation.html")
+
+
+
+
+def projectdetail(request):
+    return render(request, "projects/singleDonation.html")
+
+
+
+
+
+# @login_required
+def newproject(request):
+    if request.method == 'GET':
+        newprojectform=NewProjectForm()
+        return render(request, "projects/newDonation.html",{'form':newprojectform,'title':'New Project',})
+    elif request.method == 'POST':
+        newprojectform=NewProjectForm(request.POST , request.FILES)
+        if newprojectform.is_valid():
+            print(request.POST)
+            # newprojectform.save()
+            return redirect('/')
+            # return redirect('singleproject',id=newprojectform.id)
+    return render(request, "projects/newDonation.html")
+
+
+# @login_required
+def editproject(request,id):
+    project=get_object_or_404(project,id=id)
+    # project=get_object_or_404(project,id=id,created_by=request.user)
+   
+    if request.method == 'POST':
+        newproject=NewProjectForm(request.POST , request.FILES, instance=project)
+        if newproject.is_valid():
+            print(request.POST)
+            # newproject.save()
+            return redirect('/')
+            # return redirect('singleproject',id=newproject.id)
+    elif request.method == 'GET':
+        newproject=NewProjectForm(instance=project)
+
+    return render(request, "projects/newDonation.html",{
+        'form':newproject,
+        'title':'New Project',})
+
+
+# @login_required
+def deleteproject(request,id):
+    project=get_object_or_404(project,id=id)
+    # project=get_object_or_404(project,id=id, created_by=request.user)
+    project.delete()
+    return redirect('home')
