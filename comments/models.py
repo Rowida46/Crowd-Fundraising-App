@@ -50,7 +50,7 @@ class ReportOption(models.TextChoices):
     VALUE2 = 'V2', 'Value 2'
 
 
-class ReportProject(models.Model):
+class ReportComment(models.Model):
     comment = models.ForeignKey(
         Comments, on_delete=models.CASCADE, related_name="report_comment")
     # user = models.ForeignKey(User, related_name="user_report")
