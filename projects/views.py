@@ -47,7 +47,7 @@ def singledonation(request, id):
 
 
 def newdonation(request):
-    return render(request, "projects/newDonation.html")
+    return render(request, "projects/newproject.html")
 
 
 # ahmed ->
@@ -56,14 +56,11 @@ def single_project_view(request, id):
     project = Project.get_one_project(id)
 
     return
+
 def projectslist(request):
-    return render(request, "projects/listDonation.html")
+    projects = Project.get_projects()
 
-
-
-
-def projectdetail(request):
-    return render(request, "projects/singleDonation.html")
+    return render(request, "projects/listProjects.html", {'projects': projects})
 
 
 
@@ -73,15 +70,21 @@ def projectdetail(request):
 def newproject(request):
     if request.method == 'GET':
         newprojectform=NewProjectForm()
-        return render(request, "projects/newDonation.html",{'form':newprojectform,'title':'New Project',})
+        return render(request, "projects/newproject.html",{'form':newprojectform,'title':'New Project',})
     elif request.method == 'POST':
         newprojectform=NewProjectForm(request.POST , request.FILES)
         if newprojectform.is_valid():
             print(request.POST)
-            # newprojectform.save()
+            newprojectform.save()
             return redirect('/')
             # return redirect('singleproject',id=newprojectform.id)
-    return render(request, "projects/newDonation.html")
+    return render(request, "projects/newproject.html")
+
+
+def projectdetail(request,id):
+    project=get_object_or_404(Project,id=id)
+    return render(request, "projects/projectdetail.html",{'project':project})
+
 
 
 # @login_required
@@ -99,7 +102,7 @@ def editproject(request,id):
     elif request.method == 'GET':
         newproject=NewProjectForm(instance=project)
 
-    return render(request, "projects/newDonation.html",{
+    return render(request, "projects/newproject.html",{
         'form':newproject,
         'title':'New Project',})
 

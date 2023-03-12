@@ -2,22 +2,22 @@
 Donation {% endblock %} {% block 'content' %}
 
 <!--Start Page Header-->
-<!-- <section class="page-header">
-            <div class="page-header__bg" style="background-image: url("{% static 'assets/images/backgrounds/page-header-bg2.jpg' %}")">
+<section class="page-header">
+            <div class="page-header__bg" style='background-image: url("{% static 'images/backgrounds/page-header-bg2.jpg' %}")'>
             </div>
 
             <div class="container">
                 <div class="page-header__inner text-center">
-                    <h2>Cart Checkout</h2>
+                    <h2>{{title}}</h2>
                     <ul class="thm-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
                         <li><span>-</span></li>
-                        <li>Cart Checkout</li>
+                        <li>{{title}}</li>
                     </ul>
                 </div>
                 </div>
             </div>
-        </section> -->
+        </section> 
 <!--End Page Header-->
 
 <!--Start Checkout Area-->
