@@ -146,66 +146,68 @@ Donation
 
                             <div class="comment-one">
                                 <h2 class="comment-one__title">Comments (02)</h2>
-
-                                <div class="comment-one__single">
+                                {%for comment in project_comments%}
+                                {% comment %} comment {% endcomment %}
+                                <div class="comment-one__single m-2">
                                     <div class="comment-one__single-inner">
                                         <div class="comment-one__image">
-                                            <img src="{% static 'images/blog/comment-one-img1.jpg' %}" alt="#">
+                                            <img src="{% static 'images/blog/comment-one-img1.jpg' %}" alt="#" />
                                         </div>
-
+                                
                                         <div class="comment-one__content">
                                             <div class="top-box">
                                                 <div class="text-box">
                                                     <h3>Adam Pinakaki</h3>
                                                 </div>
-
+                                
                                                 <div class="btn-box">
                                                     <a href="#" class="comment-one__btn">Reply</a>
                                                 </div>
                                             </div>
-
+                                
                                             <div class="bottom-box">
-                                                <p>Antum recusandae pretium ultricies, purus! Soluta aliquip, nim tempo
-                                                    class, porttitor purus justo dicta. Eius nec, felis laudantium
-                                                    quaerat
-                                                    placeat u ultrices rg doloremquem</p>
-                                                <span>12 Feb, 2023</span>
+                                                <p>
+                                                    {{comment.comment_content}}</p>
+                                                <span>{{comment.created_at}}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="comment-one__single mb0">
+                                {% comment %} replay {% endcomment %}
+                                <div class="comment-one__single mb0 mt-2">
                                     <div class="comment-one__single-inner">
                                         <div class="comment-one__image">
-                                            <img src="{% static 'images/blog/comment-one-img2.jpg' %}" alt="#">
+                                            <img src="{% static 'images/blog/comment-one-img2.jpg' %}" alt="#" />
                                         </div>
-
+                                
                                         <div class="comment-one__content">
                                             <div class="top-box">
                                                 <div class="text-box">
                                                     <h3>Riad Mahfuz</h3>
                                                 </div>
-
+                                
                                                 <!-- <div class="btn-box">
-                                                    <a href="#" class="comment-one__btn">Reply</a>
-                                                </div> -->
+                                                                                    <a href="#" class="comment-one__btn">Reply</a>
+                                                                                </div> -->
                                             </div>
-
+                                
                                             <div class="bottom-box">
-                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    variations of passages of Lorem Ipsum available</p>
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium variations of passages of Lorem Ipsum available</p>
                                                 <span>20 Dec, 2023</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                {% endfor %}
+                               
+
+                               
                             </div>
 
                             <div class="comment-form">
                                 <h2 class="comment-form__title">Leave A Comment</h2>
-                                    <form action={% url 'submit_donation' project.id %} id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
+                                    <form action={% url 'addComment' project.id %} id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-xl-12">

@@ -17,11 +17,12 @@ class Comments(models.Model):
     comment_content = RichTextField(blank=True, null=True)
 
     def __str__(self):
+        self.user = "rowida"
         return 'Comment by {} on {}'.format(self.user, self.project)
 
     @classmethod
     def get_project_comments(cls, project_id):
-        return cls.objects.filter(Project=project_id)  # not sure yet ->>>
+        return cls.objects.filter(project=project_id)  # not sure yet ->>>
 
     # @classmethod
     # def get_project_number_of_comments(self):

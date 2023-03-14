@@ -37,13 +37,16 @@ def donationlist(request):
 
 def singledonation(request, id):
     project = Project.get_one_project(id)
+    project_comments = Comments.get_project_comments(project)
+    print("---------comments----------------------", project_comments)
 
+    # get_project_comments
     donationForm = DonationForm()
     commentForm = CommentForm()
 
     return render(request, "projects/projectdetail.html",
                   context={"donationForm": donationForm, "project": project,
-                           "commentForm": commentForm
+                           "commentForm": commentForm, "project_comments": project_comments
                            })
 
 
@@ -58,22 +61,20 @@ def single_project_view(request, id):
 
     return
 
+
 def projectslist(request):
     projects = Project.get_projects()
-    
+
     return render(request, "projects/listProjects.html", {'projects': projects})
-
-
-
 
 
 # @login_required
 def newproject(request):
     if request.method == 'GET':
-        newprojectform=NewProjectForm()
-        return render(request, "projects/newproject.html",{'form':newprojectform,'title':'New Project',})
+        newprojectform = NewProjectForm()
+        return render(request, "projects/newproject.html", {'form': newprojectform, 'title': 'New Project', })
     elif request.method == 'POST':
-        newprojectform=NewProjectForm(request.POST , request.FILES)
+        newprojectform = NewProjectForm(request.POST, request.FILES)
         if newprojectform.is_valid():
             print(request.POST)
             newprojectform.save()
@@ -82,28 +83,31 @@ def newproject(request):
     return render(request, "projects/newproject.html")
 
 # @login_required
-def editproject(request,id):
-    project=get_object_or_404(project,id=id)
+
+
+def editproject(request, id):
+    project = get_object_or_404(project, id=id)
     # project=get_object_or_404(project,id=id,created_by=request.user)
-   
+
     if request.method == 'POST':
-        newproject=NewProjectForm(request.POST , request.FILES, instance=project)
+        newproject = NewProjectForm(
+            request.POST, request.FILES, instance=project)
         if newproject.is_valid():
             print(request.POST)
             # newproject.save()
             return redirect('/')
             # return redirect('singleproject',id=newproject.id)
     elif request.method == 'GET':
-        newproject=NewProjectForm(instance=project)
+        newproject = NewProjectForm(instance=project)
 
-    return render(request, "projects/newproject.html",{
-        'form':newproject,
-        'title':'New Project',})
+    return render(request, "projects/newproject.html", {
+        'form': newproject,
+        'title': 'New Project', })
 
 
 # @login_required
-def deleteproject(request,id):
-    project=get_object_or_404(project,id=id)
+def deleteproject(request, id):
+    project = get_object_or_404(project, id=id)
     # project=get_object_or_404(project,id=id, created_by=request.user)
     project.delete()
     return redirect('home')

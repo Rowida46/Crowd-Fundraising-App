@@ -89,8 +89,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_project',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'postgres',
+        'PASSWORD': 'dana46',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -144,5 +144,5 @@ STATICFILES_DIR = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL='media/'
-MEDIA_ROOF=BASE_DIR/'media/'
+MEDIA_URL = 'media/'
+MEDIA_ROOF = BASE_DIR/'media/'
