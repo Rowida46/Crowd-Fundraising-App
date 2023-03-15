@@ -1,0 +1,42 @@
+
+
+{% block title %} Registration {% endblock title %}
+{% block content %}
+
+
+
+
+<div class="">
+
+    <img class="img-radius profile-image" src="{{user.photo.url}}" alt="Card image cap" style="width:100%; max-width: 300px;height: 100%;max-height: 300px;">
+    <div class="card-body">
+        <h5 class="card-title username" style="font-size: 2em; color: yellow;">{{request.user.username}}</h5>
+        <p class="card-text"><span class="data">First Name: </span><span>{{user.first_name}}</span></p>
+        <p class="card-text"><span class="data">Last Name: </span><span>{{user.last_name}}</span></p>
+        <p class="card-text"><span class="data">Email: </span><span>{{user.email}}</span></p>
+        <p class="card-text"><span class="data">Phone: </span><span>{{user.phone}}</span></p>
+        <p class="card-text"><span class="data">Country: </span><span>{{user.country}}</span></p>
+        <p class="card-text">
+            <br/>
+            <br/>
+            <a href="{% url 'deleteprofile' user.id %}" class="btn btn-outline-danger  active" role="button"
+               aria-pressed="true">Delete Account</a>
+            <a href="{%url 'editprofile' user.id %}" class="btn btn-outline-success  active" role="button"
+               aria-pressed="true">Edit Account</a>
+        </p>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

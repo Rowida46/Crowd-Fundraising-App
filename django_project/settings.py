@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'tags',
     'comments',
     'home.apps.HomeConfig',
-    'ckeditor'
+    'ckeditor',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
