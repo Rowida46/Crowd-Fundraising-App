@@ -4683,6 +4683,7 @@ Blog One
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   z-index: 1;
+  height: 250px;
 }
 
 .blog-one__single-img .inner::before {

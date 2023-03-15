@@ -72,10 +72,6 @@ class Project(models.Model):
     # def get_project_number_of_reports(self):
     #     return ReportOption.objects.filter(project=self).count()
 
-    # @classmethod
-    # def get_project_comments(self):
-    #     return Comments.objects.filter(project=self)
-
     @classmethod
     def get_projects(cls):
         return cls.objects.all()
@@ -120,7 +116,7 @@ class Project(models.Model):
     @classmethod
     def get_recently_created_projects(cls):
         # dsc order
-        res = cls.objects.order_by("-created_at")
+        res = cls.objects.order_by("-created_at")[:6]
         return res
 
     # instead of using urls ->>>
@@ -147,6 +143,9 @@ class Project(models.Model):
             return reverse('', args={self.slug})
         except Exception as e:
             return None
+
+    def get_image_url(self):
+        return f"/media/{self.image}"
 
 
 class Donate(models.Model):

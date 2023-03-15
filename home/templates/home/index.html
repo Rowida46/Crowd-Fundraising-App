@@ -1100,18 +1100,19 @@ Home
             </div>
             <div class="row">
                 <!--Start Blog One Single-->
+                {%for project in recently_creatd_projects%}
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay=".3s">
                     <div class="blog-one__single">
                         <div class="blog-one__single-img">
                             <div class="inner">
-                                <img src="{% static 'images/blog/blog-v1-img1.jpg' %}" alt="#">
+                                <img src={{project.get_image_url}} alt="#">
                             </div>
                             <ul class="overlay-text">
                                 <li>
                                     <p>Charity</p>
                                 </li>
                                 <li class="style2">
-                                    <p>12 Feb</p>
+                                    <p>{{project.created_at|date:'d M'}}</p>
                                 </li>
                             </ul>
                         </div>
@@ -1135,16 +1136,19 @@ Home
                                         <span class="icon-comment-outline"></span>
                                     </div>
                                     <div class="text">
-                                        <p><a href="#">12 Comment</a></p>
+                                        {% load custom_tags %}
+
+                                        <p><a href="#"> {% get_method project %} Comment</a></p>
                                     </div>
+                                   
                                 </li>
                             </ul>
 
-                            <h2><a href="blog-details.html">Charity of the Month Plan <br> International UK</a></h2>
+                            <h2><a href={% url 'singledonation'  project.id%}>{{project.title}}<br> International UK</a></h2>
 
                             <div class="blog-one__single-content-bottom">
                                 <div class="btn-box">
-                                    <a href="blog-details.html">Details More <span
+                                    <a href={% url 'singledonation' project.id %}>Details More <span
                                             class="icon-right-arrow21"></span></a>
                                 </div>
                                 <div class="icon-box">
@@ -1154,121 +1158,11 @@ Home
                         </div>
                     </div>
                 </div>
+
+                {% endfor %}
                 <!--End Blog One Single-->
 
-                <!--Start Blog One Single-->
-                <div class="col-xl-4 col-lg-4 wow fadeInDown" data-wow-delay=".3s">
-                    <div class="blog-one__single">
-                        <div class="blog-one__single-img">
-                            <div class="inner">
-                                <img src="{% static 'images/blog/blog-v1-img2.jpg' %}" alt="#">
-                            </div>
-                            <ul class="overlay-text">
-                                <li>
-                                    <p>Charity</p>
-                                </li>
-                                <li class="style2">
-                                    <p>12 Feb</p>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="blog-one__single-content">
-                            <div class="white-bg"></div>
-                            <div class="left-bg"></div>
-                            <div class="right-bg"></div>
-                            <ul class="meta-box">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-user"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p><a href="#">By Admin</a></p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-comment-outline"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p><a href="#">12 Comment</a></p>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <h2><a href="blog-details.html">Charity of the Month Plan <br> International UK</a></h2>
-
-                            <div class="blog-one__single-content-bottom">
-                                <div class="btn-box">
-                                    <a href="blog-details.html">Details More <span
-                                            class="icon-right-arrow21"></span></a>
-                                </div>
-                                <div class="icon-box">
-                                    <span class="icon-bookmark"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Blog One Single-->
-
-                <!--Start Blog One Single-->
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="blog-one__single">
-                        <div class="blog-one__single-img">
-                            <div class="inner">
-                                <img src="{% static 'images/blog/blog-v1-img3.jpg' %}" alt="#">
-                            </div>
-                            <ul class="overlay-text">
-                                <li>
-                                    <p>Charity</p>
-                                </li>
-                                <li class="style2">
-                                    <p>12 Feb</p>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="blog-one__single-content">
-                            <div class="white-bg"></div>
-                            <div class="left-bg"></div>
-                            <div class="right-bg"></div>
-                            <ul class="meta-box">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-user"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p><a href="#">By Admin</a></p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-comment-outline"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p><a href="#">12 Comment</a></p>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <h2><a href="blog-details.html">Charity of the Month Plan <br> International UK</a></h2>
-
-                            <div class="blog-one__single-content-bottom">
-                                <div class="btn-box">
-                                    <a href="blog-details.html">Details More <span
-                                            class="icon-right-arrow21"></span></a>
-                                </div>
-                                <div class="icon-box">
-                                    <span class="icon-bookmark"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Blog One Single-->
+              
 
             </div>
         </div>

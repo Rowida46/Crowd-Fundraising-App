@@ -19,7 +19,11 @@ class Comments(models.Model):
     def __str__(self):
         self.user = "rowida"
         return 'Comment by {} on {}'.format(self.user, self.project)
-
+    
+    @classmethod
+    def get_comments(cls):
+        return cls.objects.all()
+    
     @classmethod
     def get_project_comments(cls, project_id):
         # not sure yet ->>>
