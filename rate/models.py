@@ -25,3 +25,10 @@ class ReportProject(models.Model):
     project = models.ForeignKey(Project, related_name="report_project")
     # user = models.ForeignKey(User, related_name="user_report")
     option = EnumField(ReportOption, null=True, blank=True)
+
+# register like in admin ->>>>
+
+
+class likes(models.Model):
+    # user = models.ForeignKey(User, related_name="user_report")
+    like = models.BooleanField(default=False)

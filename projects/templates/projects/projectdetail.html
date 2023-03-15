@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load static %}
 {% block 'title' %}
 Donation
 {% endblock %}
@@ -8,16 +9,16 @@ Donation
 
         <!--Start Page Header-->
         <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+            <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header-bg.jpg" %}')">
             </div>
 
             <div class="container">
                 <div class="page-header__inner text-center">
-                    <h2>Donation Single</h2>
+                    <h2>Project Details</h2>
                     <ul class="thm-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
                         <li><span>-</span></li>
-                        <li>Donation Single</li>
+                        <li>Project Details</li>
                     </ul>
                 </div>
             </div>
@@ -32,24 +33,20 @@ Donation
                     <!--Start Donation Details Content-->
                     <div class="col-xl-8">
                         <div class="donation-details__content">
-                            <div class="donation-details__content-img1">
-                                <img src="assets/images/resources/donation-details-img1.jpg" alt="#">
+                            <div class="donation-details__content-img1"> 
+                                <img src="{{ project.image.url }}" style="height:300px" alt="#">
                                 <div class="text-box">
-                                    Health
+                                    {{project.title}}
                                 </div>
                             </div>
 
                             <div class="donation-details__content-text-box1">
-                                <h2>Support Child national giving days such <br> as #givingtuesday</h2>
-                                <p>There are many variations of passages of Lorem Ipsum enim ad minima veniam, quis
-                                    nostrum charity load
-                                    exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea commodi
-                                    consequatur donation Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore</p>
+                                <h2>{{project.title}}</h2>
+                                <p> {{project.details}} </p>
 
                                 <div class="donation-details__progress">
                                     <div class="donation-details__progress-bg"
-                                        style="background-image: url(assets/images/shapes/donation-details-shape1.jpg);">
+                                        style="background-image: url('{% static "images/shapes/donation-details-shape1.jpg" %}');">
                                     </div>
                                     <div class="donation-details__progress-inner">
                                         <div class="donation-details__progress-box">
@@ -61,10 +58,10 @@ Donation
                                         </div>
                                         <div class="bottom-text">
                                             <div class="left-text">
-                                                <p>$10,450 <span>Raised </span></p>
+                                                <p>{{project.total_donation}} <span>Raised </span></p>
                                             </div>
                                             <div class="right-text">
-                                                <p>45% of $20,587</p>
+                                                <p>{{project.total_donation}} of {{project.target_budget}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +100,7 @@ Donation
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-md-6">
                                         <div class="donation-details__content-text-box3-img">
-                                            <img src="assets/images/resources/donation-details-img2.jpg" alt="#">
+                                            <img src="{% static 'images/resources/donation-details-img2.jpg' %}" alt="#">
                                         </div>
                                     </div>
 
@@ -145,81 +142,15 @@ Donation
                                 </div>
                             </div>
 
-                            <div class="donation-details__content-text-box4">
-                                <div class="title-box">
-                                    <h2>Recent Donors (4)</h2>
-                                    <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. but the
-                                        majority have alteration in some injected or words which don't look even
-                                        slightly believable. </p>
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-xl-3 col-lg-3 col-md-3">
-                                        <div class="donation-details__content-text-box4-single">
-                                            <div class="img-box">
-                                                <img src="assets/images/resources/donation-details-img3.jpg" alt="#">
-                                            </div>
-
-                                            <div class="text-box text-center">
-                                                <h3>ALex Wiliam</h3>
-                                                <h4>$140</h4>
-                                                <p>Feb 9, 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-lg-3 col-md-3">
-                                        <div class="donation-details__content-text-box4-single">
-                                            <div class="img-box">
-                                                <img src="assets/images/resources/donation-details-img4.jpg" alt="#">
-                                            </div>
-
-                                            <div class="text-box text-center">
-                                                <h3>Lori Enami</h3>
-                                                <h4>$140</h4>
-                                                <p>Feb 9, 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-lg-3 col-md-3">
-                                        <div class="donation-details__content-text-box4-single">
-                                            <div class="img-box">
-                                                <img src="assets/images/resources/donation-details-img5.jpg" alt="#">
-                                            </div>
-
-                                            <div class="text-box text-center">
-                                                <h3>Farhan Ani</h3>
-                                                <h4>$140</h4>
-                                                <p>Feb 9, 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-lg-3 col-md-3">
-                                        <div class="donation-details__content-text-box4-single">
-                                            <div class="img-box">
-                                                <img src="assets/images/resources/donation-details-img6.jpg" alt="#">
-                                            </div>
-
-                                            <div class="text-box text-center">
-                                                <h3>Adam Robbs</h3>
-                                                <h4>$140</h4>
-                                                <p>Feb 9, 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                           
 
                             <div class="comment-one">
                                 <h2 class="comment-one__title">Comments (02)</h2>
+
                                 <div class="comment-one__single">
                                     <div class="comment-one__single-inner">
                                         <div class="comment-one__image">
-                                            <img src="assets/images/blog/comment-one-img1.jpg" alt="#">
+                                            <img src="{% static 'images/blog/comment-one-img1.jpg' %}" alt="#">
                                         </div>
 
                                         <div class="comment-one__content">
@@ -247,7 +178,7 @@ Donation
                                 <div class="comment-one__single mb0">
                                     <div class="comment-one__single-inner">
                                         <div class="comment-one__image">
-                                            <img src="assets/images/blog/comment-one-img2.jpg" alt="#">
+                                            <img src="{% static 'images/blog/comment-one-img2.jpg' %}" alt="#">
                                         </div>
 
                                         <div class="comment-one__content">
@@ -256,9 +187,9 @@ Donation
                                                     <h3>Riad Mahfuz</h3>
                                                 </div>
 
-                                                <div class="btn-box">
+                                                <!-- <div class="btn-box">
                                                     <a href="#" class="comment-one__btn">Reply</a>
-                                                </div>
+                                                </div> -->
                                             </div>
 
                                             <div class="bottom-box">
@@ -273,50 +204,107 @@ Donation
                             </div>
 
                             <div class="comment-form">
-                                <h2 class="comment-form__title">Leave A Reply</h2>
-                                <form id="contact-form" class="default-form2 contact-form-validated comment-one__form"
-                                    action="https://themazine.com/mr/gifall-html/assets/inc/sendemail.php" novalidate="novalidate">
+                                <h2 class="comment-form__title">Leave A Comment</h2>
+                                    <form action={% url 'submit_donation' project.id %} id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="input-box">
+                                                    {{commentForm.comment_content.errors }}
+                                                    <!-- {{commentForm.comment_content.label }} -->
+                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="input-box">
+                                                    {{commentForm.comment_content |safe}}
+                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                                <div class="comment-form__btn">
+                                                    <button class="thm-btn" type="submit" data-loading-text="Please wait...">
+                                                        <span class="txt">Submit Comment</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
 
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12">
-                                            <div class="input-box">
-                                                <input type="text" name="name" value="" placeholder="Full Name*"
-                                                    required="">
+                                                              </div>
+                                <!-- related projects  -->
+                            <div class="donation-details__content-text-box4">
+                                <div class="title-box">
+                                    <h2>Related Projects (4)</h2>
+                                    <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. but the
+                                        majority have alteration in some injected or words which don't look even
+                                        slightly believable. </p>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img3.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>ALex Wiliam</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12">
-                                            <div class="input-box">
-                                                <input type="email" name="email" value="" placeholder="Email Address*"
-                                                    required="">
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img4.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>Lori Enami</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img5.jpg' %}" alt="#">
+                                            </div>
 
-                                    <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="input-box">
-                                                <textarea name="message" placeholder="Your Comments *"></textarea>
+                                            <div class="text-box text-center">
+                                                <h3>Farhan Ani</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12">
-                                            <div class="comment-form__btn">
-                                                <button class="thm-btn" type="submit"
-                                                    data-loading-text="Please wait...">
-                                                    <span class="txt">Submit Comment</span>
-                                                </button>
+                                    <div class="col-xl-3 col-lg-3 col-md-3">
+                                        <div class="donation-details__content-text-box4-single">
+                                            <div class="img-box">
+                                                <img src="{% static 'images/resources/donation-details-img6.jpg' %}" alt="#">
+                                            </div>
+
+                                            <div class="text-box text-center">
+                                                <h3>Adam Robbs</h3>
+                                                <h4>$140</h4>
+                                                <p>Feb 9, 2023</p>
                                             </div>
                                         </div>
                                     </div>
-
-                                </form>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <!--End Donation Details Content-->
@@ -328,10 +316,10 @@ Donation
                             <div class="sidebar__single sidebar__donation wow animated fadeInUp" data-wow-delay="0.1s">
                                 <div class="sidebar__donation-box text-center">
                                     <div class="sidebar__donation-bg"
-                                        style="background-image: url(assets/images/shapes/sidebar-donation-shape.jpg);">
+                                        style="background-image: url('{% static "images/shapes/sidebar-donation-shape.jpg" %}');">
                                     </div>
                                     <div class="text-box">
-                                        <h2>$20</h2>
+                                        <h2>{{ project.total_donation}}</h2>
                                     </div>
 
                                     <div class="title">
@@ -344,22 +332,49 @@ Donation
                                 </div>
                             </div>
                             <!--End Sidebar Single-->
-
+                            <p>
+                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                  Link with href
+                                </a>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                  Button with data-bs-target
+                                </button>
+                              </p>
+                              <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                </div>
+                              </div>
 
                             <!--Start Sidebar Single-->
                             <div class="sidebar__single sidebar__donation-two wow animated fadeInUp"
                                 data-wow-delay="0.2s">
                                 <div class="sidebar__donation-two-box text-center">
                                     <div class="sidebar__donation-two-bg"
-                                        style="background-image: url(assets/images/blog/sidebar-donation-two-bg.jpg);">
+                                        style="background-image: url('{% static "images/blog/sidebar-donation-two-bg.jpg" %}');">
                                     </div>
                                     <div class="text-box">
-                                        <h2>Become A Donation</h2>
-                                        <p>There are many variations of passages <br>
-                                            of Lorem Ipsum available,</p>
-                                    </div>
-                                    <div class="btn-box">
-                                        <a href="#">Contribute</a>
+                                        <div class="comment-form">
+                                            <form action="{% url 'submit_donation' project.id %}" id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
+                                                {% csrf_token %}
+                                                <div class="input-box">
+                                                    <p>{{donationForm.donation.errors}}</p>
+                                                    <div class="text-box">
+                                                        <h2>{{donationForm.donation.label}}</h2>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xl-12 col-lg-12 col-md-12">
+                                                            <div class="input-box">
+                                                                {{donationForm.donation}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="thm-btn" type="submit" data-loading-text="Please wait...">
+                                                    <span class="txt">Donate</span>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -367,7 +382,7 @@ Donation
 
                             <div class="sidebar__bottom wow animated fadeInUp" data-wow-delay="0.3s">
                                 <div class="sidebar__bottom-bg"
-                                    style="background-image: url(assets/images/shapes/sidebar-bottom-shape.jpg);"></div>
+                                    style="background-image: url('{% static "images/shapes/sidebar-bottom-shape.jpg" %}');"></div>
 
                                 <!--Start Sidebar Single-->
                                 <div class="sidebar__single sidebar__latest-post">
@@ -378,7 +393,7 @@ Donation
                                     <ul class="sidebar__latest-post-list">
                                         <li>
                                             <div class="img-box">
-                                                <img src="assets/images/blog/sidebar-latest-post-img1.jpg" alt="#">
+                                                <img src="{% static 'images/blog/sidebar-latest-post-img1.jpg' %}" alt="#">
                                             </div>
 
                                             <div class="content-box">
@@ -389,7 +404,7 @@ Donation
 
                                         <li>
                                             <div class="img-box">
-                                                <img src="assets/images/blog/sidebar-latest-post-img2.jpg" alt="#">
+                                                <img src="{% static 'images/blog/sidebar-latest-post-img2.jpg' %}" alt="#">
                                             </div>
 
                                             <div class="content-box">
@@ -400,7 +415,7 @@ Donation
 
                                         <li>
                                             <div class="img-box">
-                                                <img src="assets/images/blog/sidebar-latest-post-img3.jpg" alt="#">
+                                                <img src="{% static 'images/blog/sidebar-latest-post-img3.jpg' %}" alt="#">
                                             </div>
 
                                             <div class="content-box">

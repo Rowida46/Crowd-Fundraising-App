@@ -13,9 +13,6 @@ class Comments(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE,
                                 related_name='project_commit')
 
-    # user =  models.ForeignKey(user, on_delete=models.CASCADE,
-    #                             related_name='user_commit')
-
     created_at = models.DateTimeField(auto_now_add=True)
     comment_content = RichTextField(blank=True, null=True)
 
@@ -25,6 +22,14 @@ class Comments(models.Model):
     @classmethod
     def get_project_comments(cls, project_id):
         return cls.objects.filter(Project=project_id)  # not sure yet ->>>
+
+    # @classmethod
+    # def get_project_number_of_comments(self):
+    #     return Comments.objects.filter(project=self).count()
+
+    # @classmethod
+    # def get_project_comments(self):
+    #     return Comments.objects.filter(project=self)
 
 
 class Reply(models.Model):
@@ -42,7 +47,7 @@ class ReportOption(models.TextChoices):
     VALUE2 = 'V2', 'Value 2'
 
 
-class ReportProject(models.Model):
+class ReportComment(models.Model):
     comment = models.ForeignKey(
         Comments, on_delete=models.CASCADE, related_name="report_comment")
     # user = models.ForeignKey(User, related_name="user_report")

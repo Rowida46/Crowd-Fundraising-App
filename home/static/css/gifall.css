@@ -61,6 +61,11 @@ a {
   color: var(--gifall-black);
 }
 
+.donate {
+  color: var(--gifall-black);
+
+}
+
 a,
 a:hover,
 a:focus,
