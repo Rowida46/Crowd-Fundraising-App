@@ -161,6 +161,11 @@ Donation
                                                     href="#collapseExample{{comment.id}}" role="button" aria-expanded="false"
                                                      aria-controls="collapseExample"
                                                     class="comment-one__btn">Reply</a>
+
+                                                    {% comment %} report comment {% endcomment %}
+                                                    
+                                                    <a class=" btn btn-danger "href={% url 'reportComment'  project.id comment.id %} >
+                                                        Reprot Comment</a>
             
                                                 </div>
                                                
@@ -364,7 +369,8 @@ Donation
                                     <div class="text-box">
                                         <h2>{{project_total_donation}}</h2>
                                     </div>
-
+                                    <a class=" btn btn-danger "href={% url 'reportProject'  project.id %} >
+                                        Reprot Proejct</a>
                                     <div class="title">
                                         <h2>How Your Donation Makes <br> a Difference</h2>
                                     </div>

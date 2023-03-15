@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'categories',
     'tags',
     'comments',
+    'rate',
     'home.apps.HomeConfig',
     'ckeditor'
 ]

@@ -22,7 +22,8 @@ class ReportOption(models.TextChoices):
 
 
 class ReportProject(models.Model):
-    project = models.ForeignKey(Project, related_name="report_project")
+    project = models.ForeignKey(
+        Project, related_name="report_project", on_delete=models.CASCADE)
     # user = models.ForeignKey(User, related_name="user_report")
     option = EnumField(ReportOption, null=True, blank=True)
 

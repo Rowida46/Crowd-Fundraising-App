@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 # Create your views here.
 from projects.models import Project
 from comments.forms import CommentForm
-from comments.models import Comments, Reply
+from comments.models import Comments, Reply, ReportComment
 
 from django.shortcuts import reverse, get_object_or_404
 
@@ -52,4 +52,12 @@ def addReply(request, project_id, comment_id):
             commentForm = CommentForm()
 
         # return redirect(reverse("singledonation"), id=id,  kwargs={"id": id, 'form': form})
-        return redirect("singledonation", id=id)
+        return redirect("singledonation", id=project_id)
+
+
+def reportComment(request,  project_id, comment_id):
+    comment = Comments.get_spesific_comment(comment_id)
+    print("----------replay comment ----------", comment)
+    newReport = ReportComment(comment=comment)
+    newReport.save()
+    return redirect("singledonation", id=project_id)
