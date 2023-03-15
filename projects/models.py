@@ -8,13 +8,18 @@ from django.db.models import Avg
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
 
 # Create your models here.
-
+from user.models import User
 from djmoney.models.fields import MoneyField
 from django.utils.text import slugify
 from tags.models import Tags
 
 # from rate.models import Rating, ReportOption
 # Create your models here.
+from user.models import User
+
+
+
+
 
 
 class Project(models.Model):
@@ -52,7 +57,13 @@ class Project(models.Model):
                                  related_name='project_category', blank=True)
     # tags
     tags = models.ManyToManyField(Tags, blank=True)
-
+     
+    #  forginey of userprofile
+    
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+     
+     
+     
     def __str__(self):
         return self.title
 
