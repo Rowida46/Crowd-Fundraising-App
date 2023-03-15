@@ -10,7 +10,6 @@ Donation
         <!--Start Page Header-->
         <section class="page-header">
             <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header-bg.jpg" %}')">
-            </div>
 
             <div class="container">
                 <div class="page-header__inner text-center">
@@ -142,10 +141,9 @@ Donation
                                 </div>
                             </div>
 
-                           
-
+        
                             <div class="comment-one">
-                                <h2 class="comment-one__title">Comments (02)</h2>
+                                <h2 class="comment-one__title">Comments ({{project_comments_number}})</h2>
                                 {%for comment in project_comments%}
                                 {% comment %} comment {% endcomment %}
                                 <div class="comment-one__single m-2">
@@ -161,8 +159,13 @@ Donation
                                                 </div>
                                 
                                                 <div class="btn-box">
-                                                    <a href="#" class="comment-one__btn">Reply</a>
+                                                    <a data-bs-toggle="collapse" 
+                                                    href="#collapseExample{{comment.id}}" role="button" aria-expanded="false"
+                                                     aria-controls="collapseExample"
+                                                    class="comment-one__btn">Reply</a>
+            
                                                 </div>
+                                               
                                             </div>
                                 
                                             <div class="bottom-box">
@@ -170,6 +173,11 @@ Donation
                                                     {{comment.comment_content}}</p>
                                                 <span>{{comment.created_at}}</span>
                                             </div>
+                                            <div class="collapse" id="collapseExample{{comment.id}}">
+                                                <div class="card card-body">
+                                                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                                </div>
+                                              </div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,9 +208,6 @@ Donation
                                     </div>
                                 </div>
                                 {% endfor %}
-                               
-
-                               
                             </div>
 
                             <div class="comment-form">
@@ -212,7 +217,7 @@ Donation
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="input-box">
-                                                    {{commentForm.comment_content.errors }}
+                                                   <p class="text-danger"> {{commentForm.comment_content.errors }}</p>
                                                     <!-- {{commentForm.comment_content.label }} -->
                                     
                                                 </div>
@@ -221,7 +226,7 @@ Donation
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="input-box">
-                                                    {{commentForm.comment_content |safe}}
+                                                    {{commentForm.comment_content | safe}}
                                     
                                                 </div>
                                             </div>
@@ -237,7 +242,7 @@ Donation
                                         </div>
                                     </form>
 
-                                                              </div>
+</div>
                                 <!-- related projects  -->
                             <div class="donation-details__content-text-box4">
                                 <div class="title-box">
@@ -321,7 +326,7 @@ Donation
                                         style="background-image: url('{% static "images/shapes/sidebar-donation-shape.jpg" %}');">
                                     </div>
                                     <div class="text-box">
-                                        <h2>{{ project.total_donation}}</h2>
+                                        <h2>{{project_total_donation}}</h2>
                                     </div>
 
                                     <div class="title">
@@ -334,19 +339,8 @@ Donation
                                 </div>
                             </div>
                             <!--End Sidebar Single-->
-                            <p>
-                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                  Link with href
-                                </a>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                  Button with data-bs-target
-                                </button>
-                              </p>
-                              <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                </div>
-                              </div>
+                           
+                              
 
                             <!--Start Sidebar Single-->
                             <div class="sidebar__single sidebar__donation-two wow animated fadeInUp"

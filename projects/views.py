@@ -1,5 +1,5 @@
 from comments.forms import CommentForm
-from projects.models import Project
+from projects.models import Project, Donate
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .donation_forms import DonationForm
 from django.contrib.auth.decorators import login_required
@@ -8,12 +8,15 @@ from comments.models import Comments
 # Create your views here.
 from djmoney.money import Money
 
+# get_project_comments
+
+
 
 def donation(request):
     return render(request, "projects/index.html")
 
 
-def submitDonation(request, id):
+def submitDonation_dup(request, id):
     # spesify on which project donation would be send
     project = Project.get_one_project(id)
 
@@ -28,7 +31,40 @@ def submitDonation(request, id):
             print("-----------------", project.total_donation)
             project.save()
         # show donation upgrade
-        return redirect("singledonation", id=id)
+    else:
+        donationForm = donationForm()
+
+    return redirect("singledonation", id=id)
+
+
+def submitDonation(request, id):
+    # spesify on which project donation would be send
+    project = Project.get_one_project(id)
+
+    if request.method == "POST":
+        donationForm = DonationForm(request.POST)
+        if donationForm.is_valid():
+            amount = Money(
+                donationForm.cleaned_data["donation"], 'USD')
+
+            # print(donationForm.cleaned_data["donation"])
+            print("-----------------", amount)
+
+            # project.total_donation += Money(
+            #     donationForm.cleaned_data["donation"], 'USD')
+            # print("-----------------", project.total_donation)
+
+            newdonation = Donate(project=project, amount_of_donation=amount)
+            print("--------------newdonation---", newdonation)
+            # newdonation.amount_of_donation = Money(
+            #     donationForm.cleaned_data["donation"], 'USD')
+
+            newdonation.save()
+        # show donation upgrade
+    else:
+        donationForm = donationForm()
+
+    return redirect("singledonation", id=id)
 
 
 def donationlist(request):
@@ -38,14 +74,20 @@ def donationlist(request):
 def singledonation(request, id):
     project = Project.get_one_project(id)
     project_comments = Comments.get_project_comments(project)
-    print("---------comments----------------------", project_comments)
+    project_comments_number = Comments.get_project_number_of_comments(project)
+    project_total_donation = Donate.get_total_donation_for_project(project)
 
-    # get_project_comments
     donationForm = DonationForm()
     commentForm = CommentForm()
+    replyForm = CommentForm()
+
+    print("---------donation total----------------------", project_total_donation)
 
     return render(request, "projects/projectdetail.html",
                   context={"donationForm": donationForm, "project": project,
+                           "replyForm" : replyForm,
+                           "project_comments_number": project_comments_number,
+                           "project_total_donation": project_total_donation if project_total_donation else 0,
                            "commentForm": commentForm, "project_comments": project_comments
                            })
 
@@ -108,6 +150,13 @@ def editproject(request, id):
 # @login_required
 def deleteproject(request, id):
     project = get_object_or_404(project, id=id)
-    # project=get_object_or_404(project,id=id, created_by=request.user)
-    project.delete()
-    return redirect('home')
+    project_total_donation = Donate.get_total_donation_for_project(project)
+    total_target = project.target_budget
+
+    print("------------------- target", total_target)
+    print("------project_total_donation", project_total_donation)
+    if project_total_donation > total_target:
+        project.delete()
+        return redirect('home')
+    else:
+        redirect("singledonation", id=id)

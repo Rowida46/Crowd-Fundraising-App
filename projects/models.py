@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django_enum import EnumField
 from django.db import models
 from django.shortcuts import reverse, get_object_or_404
@@ -21,7 +22,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(default="", null=True, blank=True)
     details = models.TextField(null=True, blank=True)
-  
+
     image = models.ImageField(
         upload_to='projects/images')
     features = ArrayField(
@@ -38,16 +39,18 @@ class Project(models.Model):
                                    MaxMoneyValidator(1500)]
                                )
 
-    total_donation = MoneyField(max_digits=14, decimal_places=2,
-                                default_currency='USD', default=0)
-
+    # total_donation = MoneyField(max_digits=14, decimal_places=2,
+    #                             default_currency='USD', default=0)
+    # donation = models.ForeignKey(Do, on_delete=models.CASCADE, null=True,
+    #                              related_name='project_category', blank=True)
+    # # tags
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     start_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # required -> to spesify end date
     end_at = models.DateTimeField(null=True)
 
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True,
-                                 related_name='project_category', blank=True)
+                                 related_name='project_donation', blank=True)
     # tags
     tags = models.ManyToManyField(Tags, blank=True)
 
@@ -144,3 +147,29 @@ class Project(models.Model):
             return reverse('', args={self.slug})
         except Exception as e:
             return None
+
+
+class Donate(models.Model):
+    # user
+    project = models.ForeignKey(Project, on_delete=models.CASCADE,
+                                related_name='project_Donation')
+
+    amount_of_donation = MoneyField(max_digits=14, decimal_places=2,
+                                    default_currency='USD', default=0, null=False,
+                                    validators=[
+                                        MinMoneyValidator(10),
+                                        MaxMoneyValidator(1500)]
+                                    )
+
+    @classmethod
+    def get_total_donation_for_project(cls, project):
+        # City.objects.values('name', 'country__name').annotate(Sum('population'))
+        # print("pppppppppppppp", cls.objects.filter(project=project))
+        total_donation = cls.objects.filter(project=project).aggregate(
+            Sum("amount_of_donation"))['amount_of_donation__sum']
+
+        return total_donation if total_donation else 0
+
+    @classmethod
+    def donate_by_20(cls, project):
+        pass

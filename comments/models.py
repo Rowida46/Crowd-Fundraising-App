@@ -22,11 +22,12 @@ class Comments(models.Model):
 
     @classmethod
     def get_project_comments(cls, project_id):
-        return cls.objects.filter(project=project_id)  # not sure yet ->>>
+        # not sure yet ->>>
+        return cls.objects.filter(project=project_id)
 
-    # @classmethod
-    # def get_project_number_of_comments(self):
-    #     return Comments.objects.filter(project=self).count()
+    @classmethod
+    def get_project_number_of_comments(self, project):
+        return Comments.objects.filter(project=project).count()
 
     # @classmethod
     # def get_project_comments(self):
@@ -35,10 +36,10 @@ class Comments(models.Model):
 
 class Reply(models.Model):
     reply_content = models.TextField()
-
+   
     # user =  models.ForeignKey(user, on_delete=models.CASCADE,
-    #                             related_name='user_commit')
-    comment_id = models.ForeignKey(Comments, on_delete=models.CASCADE)
+    #                             related_name='user_reply')
+    comment_id = models.ForeignKey(Comments, on_delete=models.CASCADE, related_name="comment_reply")
     created_at = models.DateTimeField(auto_now_add=True)
 
 
