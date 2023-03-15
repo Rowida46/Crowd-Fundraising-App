@@ -4,12 +4,11 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .donation_forms import DonationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm
-from comments.models import Comments
+from comments.models import Comments, Reply
 # Create your views here.
 from djmoney.money import Money
 
 # get_project_comments
-
 
 
 def donation(request):
@@ -74,9 +73,13 @@ def donationlist(request):
 def singledonation(request, id):
     project = Project.get_one_project(id)
     project_comments = Comments.get_project_comments(project)
+    # project_replys = Reply.get_comment_replys(project_comments)
+    replys = Reply.get_project_replys(project)
+    # calcualations
     project_comments_number = Comments.get_project_number_of_comments(project)
     project_total_donation = Donate.get_total_donation_for_project(project)
 
+    # forms
     donationForm = DonationForm()
     commentForm = CommentForm()
     replyForm = CommentForm()
@@ -85,7 +88,9 @@ def singledonation(request, id):
 
     return render(request, "projects/projectdetail.html",
                   context={"donationForm": donationForm, "project": project,
-                           "replyForm" : replyForm,
+                           "replyForm": replyForm,
+                           # "comments_replys": comments_replys,
+                           "replys": replys,
                            "project_comments_number": project_comments_number,
                            "project_total_donation": project_total_donation if project_total_donation else 0,
                            "commentForm": commentForm, "project_comments": project_comments

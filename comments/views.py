@@ -32,7 +32,10 @@ def addComment(request, id):
 
 def addReply(request, project_id, comment_id):
     project = Project.get_one_project(project_id)
-    comment = Project.get_one_project(comment_id)
+    comment = Comments.get_spesific_comment(comment_id)
+
+    print("reply proj ---------", project)
+    print("reply comment ---------", comment)
 
     if request.method == "POST":
         newReplyContent = CommentForm(request.POST)
@@ -41,10 +44,10 @@ def addReply(request, project_id, comment_id):
             # print("-------------------------------",
             #       newCommentContent.cleaned_data['comment_content'])
 
-            newReply = Reply(project=project, comment_id=comment,
+            newReply = Reply(comment_id=comment, project=project,
                              reply_content=newReplyContent.cleaned_data['comment_content'])
             newReply.save()
-            return redirect("singledonation", id=id)
+            return redirect("singledonation", id=project_id)
         else:
             commentForm = CommentForm()
 
