@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "accounts.UserProfile" 
+# AUTH_USER_MODEL = 'accounts'
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
 
 # Application definition
 
@@ -37,13 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
+    'widget_tweaks',
     'projects',
     'categories',
     'tags',
     'comments',
     'home.apps.HomeConfig',
-    'ckeditor'
+    'ckeditor',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+# AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,7 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 STATICFILES_DIR = [
     BASE_DIR / "static"
@@ -146,3 +155,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL='media/'
 MEDIA_ROOF=BASE_DIR/'media/'
+
+LOGOUT_REDIRECT_URL = "/"
+
+# Email Sittings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'eng.youssef2023@gmail.com'
+EMAIL_HOST_USER = 'eng.youssef2023@gmail.com'
+EMAIL_HOST_PASSWORD = 'kgmjcsnyqyqciuta'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+PASSWORD_RESET_TIMEOUT = 86400
