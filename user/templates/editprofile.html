@@ -1,0 +1,39 @@
+
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block 'title' %} Registration {% endblock %}
+{% block 'content' %}
+
+  <!--Start Page Header-->
+  <section class="page-header">
+    <div class="container">
+        <div class="page-header__inner text-center">
+            <h2>Donation List</h2>
+            <ul class="thm-breadcrumb">
+                <li><a href="index.html">Home</a></li>
+    
+
+
+                <li><span>-</span></li>
+                <li>Donation List</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<form method="post">
+    <br/>
+    <br/>
+    {%csrf_token%}
+    {{form}}
+
+    <button type="submit" class="btn btn-dark">
+        Update
+    </button>
+
+</form>
+    </div>
+    <a href="{% url 'profile' user.id %}"  class='btn btn-danger' > cancel</a>
+    <script src="{% static './js/script.js' %}"> </script>
+
+{% endblock %}

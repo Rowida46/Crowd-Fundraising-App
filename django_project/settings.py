@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cleanup.apps.CleanupConfig',
 
+    'user.apps.UserConfig',
 ]
 
 # AUTH_USER_MODEL = 'accounts.CustomUser'

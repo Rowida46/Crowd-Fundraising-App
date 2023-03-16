@@ -9,7 +9,7 @@ from django.db.models import Avg
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
 
 # Create your models here.
-
+from user.models import User
 from djmoney.models.fields import MoneyField
 from django.utils.text import slugify
 from tags.models import Tags
@@ -18,6 +18,11 @@ from django_jsonform.models.fields import ArrayField
 
 # from rate.models import Rating, ReportOption
 # Create your models here.
+from user.models import User
+
+
+
+
 
 LABEL_CHOICES = (
     ('streeet', ' From the streets to safety'),
