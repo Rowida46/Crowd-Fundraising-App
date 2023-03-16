@@ -343,15 +343,16 @@ Home
             </div>
             <div class="row">
                 <!--Start Case One Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6  wow fadeInLeft" data-wow-delay="0ms"
+                {%for proj in projs_by_cat%}
+                <div class="col-xl-4 col-lg-6 col-md-6  wow fadeInLeft" data-wow-delay="0ms"
                     data-wow-duration="1000ms">
                     <div class="case-one__single">
                         <div class="case-one__single-img">
                             <div class="inner">
-                                <img src="{% static 'images/resources/case-v1-img1.jpg' %}" alt="#">
+                                <img src={{proj.get_image_url}} alt="#">
                             </div>
                             <div class="text-box">
-                                Food
+                                {{proj.category}} 
                             </div>
                         </div>
 
@@ -359,10 +360,10 @@ Home
                             <div class="inner">
                                 <div class="case-one__single-content-bg"
                                     style="background-image: url("{% static 'images/shapes/case-v1-shape1.png' %}");"></div>
-                                <h2><a href="events-single.html">Help us touch their lives <br> of these youths</a>
+                                <h2><a href="events-single.html">{{proj.slug}}
+                                   </a>
                                 </h2>
-                                <p>Help us touch there are many variations of
-                                    passages of Ipsum not simply random </p>
+                                <p> {{proj.details}}Help us touch there are many variations  </p>
                             </div>
                             <div class="case-one__progress">
                                 <div class="case-one__progress-box">
@@ -384,139 +385,10 @@ Home
                         </div>
                     </div>
                 </div>
+                {%endfor%}
                 <!--End Case One Single-->
 
-                <!--Start Case One Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms"
-                    data-wow-duration="1000ms">
-                    <div class="case-one__single">
-                        <div class="case-one__single-img">
-                            <div class="inner">
-                                <img src="{% static 'images/resources/case-v1-img2.jpg' %}" alt="#">
-                            </div>
-                            <div class="text-box">
-                                Charity
-                            </div>
-                        </div>
-
-                        <div class="case-one__single-content">
-                            <div class="inner">
-                                <div class="case-one__single-content-bg"
-                                    style="background-image: url("{% static 'images/shapes/case-v1-shape1.png' %}");"></div>
-                                <h2><a href="events-single.html">Be hungry no more & <br> Leave no one behind</a>
-                                </h2>
-                                <p>Help us touch there are many variations of
-                                    passages of Ipsum not simply random </p>
-                            </div>
-                            <div class="case-one__progress">
-                                <div class="case-one__progress-box">
-                                    <div class="bar">
-                                        <div class="bar-inner count-bar" data-percent="90%">
-                                            <div class="count-text">90%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bottom-text">
-                                    <div class="left-text">
-                                        <p>$18,140 <span>Raised </span></p>
-                                    </div>
-                                    <div class="right-text">
-                                        <p>90% of $22,587</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Case One Single-->
-
-                <!--Start Case One Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="0ms"
-                    data-wow-duration="1000ms">
-                    <div class="case-one__single">
-                        <div class="case-one__single-img">
-                            <div class="inner">
-                                <img src="{% static  'images/resources/case-v1-img3.jpg' %}" alt="#">
-                            </div>
-                            <div class="text-box">
-                                Health
-                            </div>
-                        </div>
-
-                        <div class="case-one__single-content">
-                            <div class="inner">
-                                <div class="case-one__single-content-bg"
-                                    style="background-image: url("{% static 'images/shapes/case-v1-shape1.png' %}");"></div>
-                                <h2><a href="events-single.html">Share Your Hongbao <br> Blessings with Children</a>
-                                </h2>
-                                <p>Help us touch there are many variations of
-                                    passages of Ipsum not simply random </p>
-                            </div>
-                            <div class="case-one__progress">
-                                <div class="case-one__progress-box">
-                                    <div class="bar">
-                                        <div class="bar-inner count-bar" data-percent="60%">
-                                            <div class="count-text">60%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bottom-text">
-                                    <div class="left-text">
-                                        <p>$15,450 <span>Raised </span></p>
-                                    </div>
-                                    <div class="right-text">
-                                        <p>60% of $21,587</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Case One Single-->
-
-                <!--Start Case One Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="100ms"
-                    data-wow-duration="1000ms">
-                    <div class="case-one__single">
-                        <div class="case-one__single-img">
-                            <div class="inner">
-                                <img src="{% static  'images/resources/case-v1-img4.jpg' %}" alt="#">
-                            </div>
-                            <div class="text-box">
-                                Medical
-                            </div>
-                        </div>
-
-                        <div class="case-one__single-content">
-                            <div class="inner">
-                                <div class="case-one__single-content-bg"
-                                    style="background-image: url("{% static 'images/shapes/case-v1-shape1.png' %}");"></div>
-                                <h2><a href="events-single.html">Support Early Intervention <br> for Children
-                                        with</a></h2>
-                                <p>Help us touch there are many variations of
-                                    passages of Ipsum not simply random </p>
-                            </div>
-                            <div class="case-one__progress">
-                                <div class="case-one__progress-box">
-                                    <div class="bar">
-                                        <div class="bar-inner count-bar" data-percent="70%">
-                                            <div class="count-text">70%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bottom-text">
-                                    <div class="left-text">
-                                        <p>$15,450 <span>Raised </span></p>
-                                    </div>
-                                    <div class="right-text">
-                                        <p>70% of $21,587</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Case One Single-->
+               
             </div>
         </div>
     </section>
@@ -734,16 +606,18 @@ Home
             <div class="auto-container">
                 <div class="row">
                     <!--Start Gallery One Single-->
+                   {%for cat in categories%}
                     <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">
                         <div class="gallery-one__single">
                             <div class="gallery-one__single-img">
-                                <img src="{% static 'images/gallery/gallery-v1-img1.jpg' %} "alt="#">
+                                <img src={{cat.get_image_url}} "alt="#">
                                 <div class="text-box">
-                                    <h2><a href="#">Fundrising</a></h2>
+                                    <h2><a href={% url 'list_Projects_byCategory' cat.id %}>{{cat.name}}</a></h2>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {%endfor%}
                     <!--End Gallery One Single-->
 
                     <!--Start Gallery One Single-->
@@ -759,7 +633,7 @@ Home
                     </div>
                     <!--End Gallery One Single-->
 
-                    <!--Start Gallery One Single-->
+                    <!--Start Gallery One Singsle-->
                     <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
                         <div class="gallery-one__single">
                             <div class="gallery-one__single-img bg3">

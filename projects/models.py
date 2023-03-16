@@ -14,8 +14,19 @@ from djmoney.models.fields import MoneyField
 from django.utils.text import slugify
 from tags.models import Tags
 
+from django_jsonform.models.fields import ArrayField
+
 # from rate.models import Rating, ReportOption
 # Create your models here.
+
+LABEL_CHOICES = (
+    ('streeet', ' From the streets to safety'),
+    ('wish', ' I wish to feed the orangutans'),
+    ('volunteer', 'Nemo enim ipsam voluptatem quia'),
+    ('entity', 'single entity'),
+    ('principle', 'Successive principle:'),
+    ('order', 'Made to order:')
+)
 
 
 class Project(models.Model):
@@ -26,7 +37,9 @@ class Project(models.Model):
     image = models.ImageField(
         upload_to='projects/images')
     features = ArrayField(
-        models.CharField(max_length=100)
+        models.CharField(max_length=100, blank=True),
+        default=list,
+        blank=True
     )
 
     # avg_rate = models.DecimalField(
@@ -50,9 +63,10 @@ class Project(models.Model):
     end_at = models.DateTimeField(null=True)
 
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True,
-                                 related_name='project_donation', blank=True)
+                                 related_name='project_category', blank=True)
     # tags
-    tags = models.ManyToManyField(Tags, blank=True)
+    tags = models.ManyToManyField(
+        Tags, blank=True, related_name="project_tags")
 
     def __str__(self):
         return self.title
@@ -93,13 +107,14 @@ class Project(models.Model):
 
     @classmethod
     def filter_projects_by_category(cls, category):
-        try:
-            print("c000000000000t", category)
-            res = cls.objects.filter(category=category)
-            print("-----------", res)
-            return res
-        except Exception as e:
-            return None
+        return cls.objects.filter(category=category)
+        # try:
+        #     print("c000000000000t", category)
+        #     res = cls.objects.filter(category=category)
+        #     print("-----------", res)
+        #     return res
+        # except Exception as e:
+        #     return None
 
     @classmethod
     def filter_projects_by_slug(cls, slug):

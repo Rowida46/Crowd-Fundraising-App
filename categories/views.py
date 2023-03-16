@@ -25,5 +25,8 @@ def list_Projects_byCategory(request, category_id):
         category=category_id).first()
     # order_by("-created_at")
     print("---------jkj---cats", lst_projects)
-    return redirect(reverse('home', kwargs={'project_by_cats': lst_projects if lst_projects else []})
-                    )
+
+    return redirect(reverse('home') + f"?category_id={category_id}")
+
+# return redirect(reverse('home', kwargs={'project_by_cats': lst_projects if lst_projects else []})
+#                     )

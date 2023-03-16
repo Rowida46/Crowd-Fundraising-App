@@ -11,16 +11,23 @@ from categories.models import Categories
 
 def home(request):
     print("inside home")
-    recently_creatd_projects = Project.get_recently_created_projects()
-    lst_nombers = []
-    for proj in recently_creatd_projects:
-        number_of_comments = Comments.objects.filter(project=proj).count()
-        lst_nombers.append(number_of_comments)
-        print(f"---------{proj.id}---------------", number_of_comments)
+    recently_creatd_projects, projs_by_cat = Project.get_recently_created_projects(), []
+    categories = Categories.get_categories()
+
+    if "category_id" in request.GET:
+        category_id = request.GET['category_id']
+
+        category = Categories.get_spesific_category(category_id)
+        print("----------------inside query params ---------", category_id,
+              '\n', category)
+
+        projs_by_cat = Project.filter_projects_by_category(category)
+        print("------projc by cat -----", projs_by_cat)
 
     return render(request, "home/index.html",
                   context={"recently_creatd_projects": recently_creatd_projects,
-
+                           "categories": categories,
+                           "projs_by_cat": projs_by_cat
                            })
 
 

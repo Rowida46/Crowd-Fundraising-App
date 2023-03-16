@@ -110,25 +110,16 @@ Donation
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6">
                      <div class="donation-details__content-text-box3-content">
+                        <h2 class="m-3">Project Features</h2>
                         <ul>
+                           {%for feature in project.features%}
                            <li>
-                              <p> <span class="icon-check2"></span> From the streets to safety
+                              <p> <span class="icon-check2"></span>
+                                 {{feature}}
                               </p>
                            </li>
-                           <li>
-                              <p> <span class="icon-check2"></span> I wish to feed the orangutans
-                              </p>
-                           </li>
-                           <li>
-                              <p> <span class="icon-check2"></span> Lorem ipsum dolor sit amet,
-                                 adipiscing
-                              </p>
-                           </li>
-                           <li>
-                              <p> <span class="icon-check2"></span> Nemo enim ipsam voluptatem
-                                 quia
-                              </p>
-                           </li>
+                           {%endfor%}
+                         
                         </ul>
                         <div class="text-box">
                            <p>Nemo enim ipsam voluptatem quia
@@ -424,21 +415,46 @@ Donation
       </div>
       <!--End Sidebar Single-->
       <!--Start Sidebar Single-->
+     <div>
       <div class="sidebar__single sidebar__popular-tags">
          <div class="title-box">
-            <h2>Popular Tags</h2>
+            <h2>Project Tags</h2>
          </div>
          <ul class="sidebar__popular-tags-list">
-            <li><a href="#">Food</a></li>
+            {%for tag in project.tags.all %}
+
+            <li><a href="#">{{tag}}</a></li>
+            {%endfor%}
+            {% comment %} <li><a href="#">Food</a></li>
             <li><a href="#">Giving</a></li>
             <li><a href="#">Children</a></li>
             <li><a href="#">Fundraising</a></li>
             <li><a href="#">Seo</a></li>
             <li><a href="#">Education</a></li>
             <li><a href="#">Healthcare </a></li>
-            <li><a href="#">Help people</a></li>
+            <li><a href="#">Help people</a></li> {% endcomment %}
          </ul>
       </div>
+     </div>
+      <div></div>
+      <div class='d-block p-2'>
+      {% comment %} <div class="sidebar__single sidebar__popular-tags"> {% endcomment %}
+         <div class="title-box d-block m-2 sidebar__single sidebar__popular-tags">
+            <h2>Popular Tags</h2>
+         </div>
+         <ul class="sidebar__popular-tags-list">
+           
+             <li><a href="#">Food</a></li>
+            <li><a href="#">Giving</a></li>
+            <li><a href="#">Children</a></li>
+            <li><a href="#">Fundraising</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare </a></li>
+            <li><a href="#">Help people</a></li> 
+         </ul>
+      </div> </div>
+     
       <!--End Sidebar Single-->
    </div>
    </div>
