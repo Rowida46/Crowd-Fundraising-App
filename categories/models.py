@@ -10,11 +10,11 @@ class Categories(models.Model):
 
     def total_subscribes(self):
         return self.subscribes.count()
-    
-    def __str__(self):
-        return self.name
-    
+
     @classmethod
     def get_categories(cls):
         return cls.objects.all()
-    
+
+    @classmethod
+    def get_spesific_category(cls, cat_id):
+        return cls.objects.filter(id=cat_id)

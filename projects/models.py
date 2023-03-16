@@ -94,7 +94,9 @@ class Project(models.Model):
     @classmethod
     def filter_projects_by_category(cls, category):
         try:
-            res = cls.objects.filter(project_category__contains=category)
+            print("c000000000000t", category)
+            res = cls.objects.filter(category=category)
+            print("-----------", res)
             return res
         except Exception as e:
             return None

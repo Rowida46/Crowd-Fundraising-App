@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('', include('projects.urls')),
     path('', include('comments.urls')),
-    path('', include('rate.urls'))
+    path('', include('rate.urls')),
+    path('', include('categories.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

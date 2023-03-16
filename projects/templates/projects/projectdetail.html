@@ -170,7 +170,7 @@ Donation
                            <p>
                               {{comment.comment_content}}
                            </p>
-                           <span>{{comment.created_at}}</span>
+                           <span>{{comment.created_at|date:'d M'}}</span>
                         </div>
                         <div class="collapse" id="collapseExample{{comment.id}}">
                            <div class="card card-body">
@@ -225,7 +225,7 @@ Donation
                         </div>
                         <div class="bottom-box">
                            <p>{{reply.reply_content}} </p>
-                           <span>{{reply.created_at}}</span>
+                           <span>{{reply.created_at |date:'d M'}}</span>
                         </div>
                      </div>
                   </div>
