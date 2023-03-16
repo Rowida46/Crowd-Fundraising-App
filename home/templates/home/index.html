@@ -979,7 +979,11 @@ Home
                     <div class="blog-one__single">
                         <div class="blog-one__single-img">
                             <div class="inner">
-                                <img src={{project.get_image_url}} alt="#">
+                                {% for img in images %}
+                                {% if img.project == project %}
+                                    <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                                {%  endif %}
+                                {% endfor %}
                             </div>
                             <ul class="overlay-text">
                                 <li>
@@ -1012,17 +1016,17 @@ Home
                                     <div class="text">
                                         {% load custom_tags %}
                                         
-                                        <p><a href="#"> {% get_method project %} Comment</a></p>
+                                        <p><a href="{% url 'singleproject' project.id %}"> {% get_method project %} Comment</a></p>
                                     </div>
                                    
                                 </li>
                             </ul>
 
-                            <h2><a href={% url 'singledonation'  project.id%}>{{project.title}}<br> International UK</a></h2>
+                            <h2><a href={% url 'singleproject'  project.id%}>{{project.title}}<br> International UK</a></h2>
 
                             <div class="blog-one__single-content-bottom">
                                 <div class="btn-box">
-                                    <a href={% url 'singledonation' project.id %}>Details More <span
+                                    <a href={% url 'singleproject' project.id %}>Details More <span
                                             class="icon-right-arrow21"></span></a>
                                 </div>
                                 <div class="icon-box">

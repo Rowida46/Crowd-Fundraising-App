@@ -39,7 +39,7 @@ def submitDonation_dup(request, id):
     else:
         donationForm = donationForm()
 
-    return redirect("singledonation", id=id)
+    return redirect("singleproject", id=id)
 
 
 def submitDonation(request, id):
@@ -69,7 +69,7 @@ def submitDonation(request, id):
     else:
         donationForm = donationForm()
 
-    return redirect("singledonation", id=id)
+    return redirect("singleproject", id=id)
 
 
 def donationlist(request):
@@ -163,21 +163,26 @@ def newproject(request):
 
     return render(request, 'projects/newproject.html', context)
 
+from re import sub
+from decimal import Decimal
+
 
 # @login_required
 def deleteproject(request, id):
-    project = get_object_or_404(project, id=id)
+    project = get_object_or_404(Project, id=id)
     project_total_donation = Donate.get_total_donation_for_project(project)
     total_target = project.target_budget
 
-    print("------------------- target", total_target)
+    print("------------------- target", total_target.amount)
     print("------project_total_donation", project_total_donation)
-    if project_total_donation > total_target:
+
+
+    if project_total_donation > total_target.amount:
         project.delete()
         return redirect('home')
     else:
         # error ms required here
-        redirect("singledonation", id=id)
+        redirect("singleproject", id=id)
 
 
 # @login_required

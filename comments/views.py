@@ -22,12 +22,12 @@ def addComment(request, id):
             newCommit = Comments(project=project,
                                  comment_content=newCommentContent.cleaned_data['comment_content'])
             newCommit.save()
-            return redirect("singledonation", id=id)
+            return redirect("singleproject", id=id)
         else:
             commentForm = CommentForm()
 
-        # return redirect(reverse("singledonation"), id=id,  kwargs={"id": id, 'form': form})
-        return redirect("singledonation", id=id)
+        # return redirect(reverse("singleproject"), id=id,  kwargs={"id": id, 'form': form})
+        return redirect("singleproject", id=id)
 
 
 def addReply(request, project_id, comment_id):
@@ -47,12 +47,12 @@ def addReply(request, project_id, comment_id):
             newReply = Reply(comment_id=comment, project=project,
                              reply_content=newReplyContent.cleaned_data['comment_content'])
             newReply.save()
-            return redirect("singledonation", id=project_id)
+            return redirect("singleproject", id=project_id)
         else:
             commentForm = CommentForm()
 
-        # return redirect(reverse("singledonation"), id=id,  kwargs={"id": id, 'form': form})
-        return redirect("singledonation", id=project_id)
+        # return redirect(reverse("singleproject"), id=id,  kwargs={"id": id, 'form': form})
+        return redirect("singleproject", id=project_id)
 
 
 def reportComment(request,  project_id, comment_id):
@@ -60,4 +60,4 @@ def reportComment(request,  project_id, comment_id):
     print("----------replay comment ----------", comment)
     newReport = ReportComment(comment=comment)
     newReport.save()
-    return redirect("singledonation", id=project_id)
+    return redirect("singleproject", id=project_id)

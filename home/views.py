@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 
 # Create your views here.
 
-from projects.models import Project
+from projects.models import Project,Image
 from comments.models import Comments
 
 from categories.models import Categories
@@ -13,7 +13,7 @@ def home(request):
     print("inside home")
     recently_creatd_projects, projs_by_cat = Project.get_recently_created_projects(), []
     categories = Categories.get_categories()
-
+    images=Image.objects.all()
     if "category_id" in request.GET:
         category_id = request.GET['category_id']
 
@@ -27,7 +27,8 @@ def home(request):
     return render(request, "home/index.html",
                   context={"recently_creatd_projects": recently_creatd_projects,
                            "categories": categories,
-                           "projs_by_cat": projs_by_cat
+                           "projs_by_cat": projs_by_cat,
+                           "images":images,
                            })
 
 

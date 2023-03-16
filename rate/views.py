@@ -11,7 +11,7 @@ def reportProject(request,  project_id):
     print("----------replay comment ----------", project)
     newReport = ReportProject(project=project)
     newReport.save()
-    return redirect("singledonation", id=project_id)
+    return redirect("singleproject", id=project_id)
 
 
 def toggle_like(request, project_id):
@@ -49,4 +49,4 @@ def toggle_like_project(request, project_id):
         user_reaction = likes(project=project, like=True)
         user_reaction.save()
     print("------------islike ---------------", user_reaction)
-    return redirect("singledonation", id=project_id)
+    return redirect("singleproject", id=project_id)
