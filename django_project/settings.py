@@ -97,8 +97,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_project',
-        'USER': 'michael',
-        'PASSWORD': 'root',
+        'USER': 'postgres',
+        'PASSWORD': 'dana46',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -163,4 +163,4 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-MEDIA_ROOT=BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR / "media"

@@ -1,3 +1,5 @@
+from re import sub
+from decimal import Decimal
 from comments.forms import CommentForm
 from projects.models import Project, Donate, Image
 from .donation_forms import DonationForm
@@ -163,9 +165,6 @@ def newproject(request):
 
     return render(request, 'projects/newproject.html', context)
 
-from re import sub
-from decimal import Decimal
-
 
 # @login_required
 def deleteproject(request, id):
@@ -176,13 +175,12 @@ def deleteproject(request, id):
     print("------------------- target", total_target.amount)
     print("------project_total_donation", project_total_donation)
 
-
     if project_total_donation > total_target.amount:
         project.delete()
         return redirect('home')
-    else:
-        # error ms required here
-        redirect("singleproject", id=id)
+
+    print("--------not valid -----------")
+    return redirect("singleproject", id=id)
 
 
 # @login_required
