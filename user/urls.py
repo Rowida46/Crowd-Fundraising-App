@@ -10,7 +10,8 @@ urlpatterns = [
         path('profile/<int:id>', views.showprofile , name='profile'),
         path('viewproject/<int:id>',views.user_project, name='viewproject'),
         path('deleteprofile/<int:id>',views.delete_profile,name='deleteprofile'),
-        path('editprofile/<int:id>',views.editprofile,name='editprofile')
+        path('editprofile/<int:id>',views.update,name='editprofile'),
+        path('optional/<int:id>',views.optional,name='optional'),
         
     
 ]

@@ -17,7 +17,9 @@ class User(models.Model):
     phone = models.CharField(verbose_name="phone",null=True,validators=[phone_regex],max_length=14)
     photo = models.ImageField(verbose_name="photo",upload_to='images')
     is_active = models.BooleanField(default=False)
-    
+    facebook_link=models.CharField(max_length=100,null=True,blank=True)
+    country=models.CharField(max_length=20,null=True,blank=True)
+    date_birth=models.CharField(max_length=10,null=True,blank=True)
     
     
     def __int__(self):

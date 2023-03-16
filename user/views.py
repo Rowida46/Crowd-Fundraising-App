@@ -4,20 +4,33 @@ from django.contrib.auth.models import User
 from user.models import User
 from django.shortcuts import HttpResponse
 from django.contrib.sites.shortcuts import get_current_site
+from django.views.generic.edit import UpdateView
+
 from user.forms import RegistraionForm
 from projects.models import Project
 
-from user.forms import UpdateUserForm
+
+from user.forms import UpdaeData,OptionalData
 
     
     
-def showprofile(request,id):
-        user=get_object_or_404(User,id=id)
-        if user:
-            if request.method=='GET':
-                # user=RegistraionForm(instance=request.user)
-                return render(request,"profile.html",context={'user':user})
-            
+# def showprofile(request,id):
+#         user=get_object_or_404(User,id=id)
+#         if user:
+#             if request.method=='GET':
+#                 # user=RegistraionForm(instance=request.user)
+#                 return render(request,"profile.html",context={'user':user})
+        
+def showprofile(request, id):
+    user = get_object_or_404(User,id=id)
+
+    return render(request, "profile.html", context={'user': user})
+             
+ 
+ 
+
+ 
+ 
         
         
         
@@ -64,34 +77,50 @@ def delete_profile(request,id):
         
                 
 
+
+
+
+# class Optional(UpdateView):
+#     model=User
+#     template_name="optional.html"
+#     form_class=OptionalData
+#     success_url="/profile"
     
-def editprofile(request,id):
-    user=get_object_or_404(User,id=id)
-    print(user)
-    form = UpdateUserForm(request.POST, request.FILES, instance=user)
-    if request.method == 'POST':
-        if form.is_valid():
-            # print("photo from form is :", form.cleaned_data["photo"])
-            # request.user.photo = form.cleaned_data["photo"]
-            form.save()
-            return redirect("viewprofile")
-        else:
-            form = UpdateUserForm(
-                initial={
-                    "first_name": request.user.first_name,
-                    "last_name": request.user.last_name,
-                    "phone": request.user.phone,
-                    "date_birth": request.user.date_birth,
-                    "facebook_link": request.user.facebook_link,
-                    "country": request.user.country,
 
-                }
-            )
-        # context={"form": form}
-        form.save()
-    return render(request, "editprofile.html", {"form": form})
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+def update(request, id ):
+    post = User.objects.get(id=id)
+    if request.method=='GET':
+        postform = UpdaeData(instance=post)
+        return render(request, 'editprofile.html', context={'form': postform})
+    if request.method=='POST':
+        postform = UpdaeData( request.POST, request.FILES, instance=post)
+        if postform.is_valid():
+            postform.save()
+            return render(request,'profile.html',context={'user':post})
+        return render(request,'profile.html',context={'user':post})
+    
+    
+    
+    
 
-
-
-
+def optional(request, id ):
+    post = User.objects.get(id=id)
+    if request.method=='GET':
+        postform = OptionalData(instance=post)
+        return render(request, 'optional.html', context={'form': postform})
+    if request.method=='POST':
+        postform = OptionalData( request.POST, request.FILES, instance=post)
+        if postform.is_valid():
+            postform.save()
+            return render(request,'profile.html',context={'user':post})
+        return render(request,'profile.html',context={'user':post})

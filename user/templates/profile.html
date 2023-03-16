@@ -1,21 +1,27 @@
 
+{% extends 'home/base.html' %}
+{% load static %}
 
-{% block title %} Registration {% endblock title %}
-{% block content %}
+{% block 'title' %} Registration {% endblock %}
+{% block 'content' %}
 
 
 
 
-<div class="">
+<div clas="  ">
 
     <img class="img-radius profile-image" src="{{user.photo.url}}" alt="Card image cap" style="width:100%; max-width: 300px;height: 100%;max-height: 300px;">
     <div class="card-body">
-        <h5 class="card-title username" style="font-size: 2em; color: yellow;">{{request.user.username}}</h5>
+        <h5 class="card-title username" style="font-size: 2em; color: yellow;">{{user.username}}</h5>
         <p class="card-text"><span class="data">First Name: </span><span>{{user.first_name}}</span></p>
         <p class="card-text"><span class="data">Last Name: </span><span>{{user.last_name}}</span></p>
         <p class="card-text"><span class="data">Email: </span><span>{{user.email}}</span></p>
         <p class="card-text"><span class="data">Phone: </span><span>{{user.phone}}</span></p>
         <p class="card-text"><span class="data">Country: </span><span>{{user.country}}</span></p>
+        <p class="card-text"><span class="data">facebook_link: </span><span>{{user.facebook_link}}</span></p>
+        <p class="card-text"><span class="data">date_birth: </span><span>{{user.date_birth}}</span></p>
+
+
         <p class="card-text">
             <br/>
             <br/>
@@ -30,7 +36,11 @@
 
 
 
-    </div>
+
+
+</div>
+
+
 
 
 
