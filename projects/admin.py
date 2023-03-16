@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from projects.models import Project
+from projects.models import Project, Image
 admin.site.register(Project)
 
 
@@ -16,4 +16,6 @@ class MyModel(models.Model):
 class MyModelAdmin(admin.ModelAdmin, DynamicArrayMixin):
     pass
 
+
 # admin.py
+admin.site.register(Image)

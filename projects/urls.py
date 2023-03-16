@@ -5,7 +5,7 @@ from .views import donation,projectslist,newproject,editproject,deleteproject
 urlpatterns = [
     path('donation', donation, name="donation"),
     path('donationlist', donationlist, name="donationlist"),
-    path('singledonation/<int:id>', singledonation, name="singledonation"),
+    path('singleproject/<int:id>', singledonation, name="singleproject"),
     path('newdonation', newdonation, name="newdonation"),
    
    

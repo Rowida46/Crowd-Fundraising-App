@@ -28,12 +28,51 @@ Donation
          <div class="col-xl-8">
             <div class="donation-details__content">
                <div class="donation-details__content-img1">
-                  <img src="{{ project.image.url }}" style="height:300px" alt="#">
-                  <div class="text-box">
+
+                  <div id="carouselExampleIndicators" class="carousel slide">
+                     <div class="carousel-indicators">
+                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                     </div>
+                     <div class="carousel-inner">
+                         {% for img in images %}
+                         {% if img.project == project %}
+                         <div class="carousel-item active">
+                             <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                         </div>
+                           
+                         {%  endif %}
+                         {% endfor %}
+                      
+                     </div>
+                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                       <span class="visually-hidden">Previous</span>
+                     </button>
+                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                       <span class="visually-hidden">Next</span>
+                     </button>
+                   </div>
+                   <div class="d-flex justify-content-between">
+                     <a class="text-white btn btn-warning" href="{% url 'editproject' project.id %}"> Edit</a>
+                     <a href="{% url 'deleteproject' project.id %}" class="text-white btn btn-danger"
+                       >Delete</a
+                     >
+
+                   </div>
+                   
+                   <!-- {% if request.user.created_by %} -->
+                   <!-- {% else %} -->
+                   <!-- <a href="{% url 'home' %}" class="text-white btn btn-info">Contact Seller</a> -->
+                   <!-- {% endif %} -->
+
+                
+                 <div class="text-box">
                      {{project.title}}
-                     {{project.id}}
-                    
-                  </div>
+                 </div>
+                  
                </div>
                <div class="donation-details__content-text-box1">
                   <h2 class="d-inline">{{project.title}} </h2>

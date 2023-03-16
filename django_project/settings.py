@@ -46,7 +46,11 @@ INSTALLED_APPS = [
     'comments',
     'rate',
     'home.apps.HomeConfig',
-    'ckeditor'
+    'ckeditor',
+    'crispy_bootstrap5',
+    'crispy_forms',
+    'django_cleanup.apps.CleanupConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -151,9 +155,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_URL = 'media/'
 # MEDIA_ROOF = BASE_DIR/'media/'
 
-MEDIA_URL = '/media/'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = (
+    'bootstrap', 'uni_form', 'bootstrap3', 'bootstrap5', 'semantic-ui')
 
+
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT=BASE_DIR / "media"

@@ -1,14 +1,20 @@
 from comments.forms import CommentForm
-from projects.models import Project, Donate
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from projects.models import Project, Donate, Image
 from .donation_forms import DonationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm
 from comments.models import Comments, Reply
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from .donation_forms import DonationForm
+from .forms import NewProjectForm, Project_Image_Form
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 from djmoney.money import Money
 
 # get_project_comments
+
+
+from django.contrib import messages
 
 
 def donation(request):
@@ -84,13 +90,15 @@ def singledonation(request, id):
     commentForm = CommentForm()
     replyForm = CommentForm()
 
+    images = Image.objects.all()
+
     print("---------donation total----------------------", project_total_donation)
 
     return render(request, "projects/projectdetail.html",
                   context={"donationForm": donationForm, "project": project,
                            "replyForm": replyForm,
                            # "comments_replys": comments_replys,
-                           "replys": replys,
+                           "replys": replys, 'images': images,
                            "project_comments_number": project_comments_number,
                            "project_total_donation": project_total_donation if project_total_donation else 0,
                            "commentForm": commentForm, "project_comments": project_comments
@@ -111,45 +119,49 @@ def single_project_view(request, id):
 
 def projectslist(request):
     projects = Project.get_projects()
-
-    return render(request, "projects/listProjects.html", {'projects': projects})
+    images = Image.objects.all()
+    return render(request, "projects/listProjects.html", {'projects': projects, 'images': images})
 
 
 # @login_required
+
 def newproject(request):
-    if request.method == 'GET':
-        newprojectform = NewProjectForm()
-        return render(request, "projects/newproject.html", {'form': newprojectform, 'title': 'New Project', })
-    elif request.method == 'POST':
-        newprojectform = NewProjectForm(request.POST, request.FILES)
-        if newprojectform.is_valid():
-            print(request.POST)
-            newprojectform.save()
-            return redirect('/')
-            # return redirect('singleproject',id=newprojectform.id)
-    return render(request, "projects/newproject.html")
-
-# @login_required
-
-
-def editproject(request, id):
-    project = get_object_or_404(project, id=id)
-    # project=get_object_or_404(project,id=id,created_by=request.user)
-
     if request.method == 'POST':
-        newproject = NewProjectForm(
-            request.POST, request.FILES, instance=project)
-        if newproject.is_valid():
-            print(request.POST)
-            # newproject.save()
-            return redirect('/')
-            # return redirect('singleproject',id=newproject.id)
-    elif request.method == 'GET':
-        newproject = NewProjectForm(instance=project)
+        # Get the form data from the POST request
+        project_form = NewProjectForm(request.POST)
+        image_form = Project_Image_Form(request.POST, request.FILES)
+        print(request.FILES)
+        # if project_form.is_valid() and image_form.is_valid():
+        # Create a new Project object with the form data
+        project = project_form.save(commit=False)
+        # project.created_by=request.user
 
-    return render(request, "projects/newproject.html", {
-        'form': newproject,
-        'title': 'New Project', })
+        project.save()
+
+        # Get the uploaded images and create an Image object for each one
+        for image in request.FILES.keys():
+            image_file = request.FILES.getlist(image)
+            for i in image_file:
+                fs = FileSystemStorage()
+                filename = fs.save('images/projects/' + i.name, i)
+                img = Image()
+                img.image = filename
+                img.project = project
+                img.save()
+
+        # Redirect to the detail view of the new project
+        return redirect('singleproject', id=project.id)
+    else:
+        project_form = NewProjectForm()
+        image_form = Project_Image_Form()
+
+    context = {
+        'project_form': project_form,
+        'image_form': image_form,
+        'title': 'New Project'
+    }
+
+    return render(request, 'projects/newproject.html', context)
 
 
 # @login_required
@@ -164,4 +176,41 @@ def deleteproject(request, id):
         project.delete()
         return redirect('home')
     else:
+        # error ms required here
         redirect("singledonation", id=id)
+
+
+# @login_required
+def editproject(request, id):
+    project = get_object_or_404(Project, id=id)
+    images = Image.objects.all().filter(project=project)
+    print(images)
+    # project=get_object_or_404(project,id=id,created_by=request.user)
+    if request.method == 'POST':
+        newproject = NewProjectForm(
+            request.POST, request.FILES, instance=project)
+        image_form = Project_Image_Form(
+            request.POST, request.FILES, instance=project)
+        if newproject.is_valid():
+            print(request.POST)
+            newproject.save()
+            # Get the uploaded images and create an Image object for each one
+        for image in request.FILES.keys():
+            image_file = request.FILES.getlist(image)
+            for i in image_file:
+                fs = FileSystemStorage()
+                filename = fs.save('images/projects/' + i.name, i)
+                img = Image()
+                img.image = filename
+                img.project = project
+                img.save()
+            return redirect('singleproject', id=project.id)
+    elif request.method == 'GET':
+        project_form = NewProjectForm(instance=project)
+        images = Image.objects.all().filter(project=project)
+        images.delete()
+        context = {
+            'project_form': project_form,
+            'title': 'Edit Project'
+        }
+    return render(request, "projects/newproject.html", context)

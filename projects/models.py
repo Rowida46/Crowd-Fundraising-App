@@ -34,16 +34,11 @@ class Project(models.Model):
     slug = models.SlugField(default="", null=True, blank=True)
     details = models.TextField(null=True, blank=True)
 
-    image = models.ImageField(
-        upload_to='projects/images')
     features = ArrayField(
         models.CharField(max_length=100, blank=True),
         default=list,
         blank=True
     )
-
-    # avg_rate = models.DecimalField(
-    #     max_digits=5, decimal_places=2, null=True, blank=True)
 
     target_budget = MoneyField(max_digits=14, decimal_places=2,
                                default_currency='USD', default=0, null=False,
@@ -59,7 +54,7 @@ class Project(models.Model):
     # # tags
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     start_at = models.DateTimeField(auto_now=True, null=True, blank=True)
-    # required -> to spesify end date
+
     end_at = models.DateTimeField(null=True)
 
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True,
@@ -136,9 +131,6 @@ class Project(models.Model):
         res = cls.objects.order_by("-created_at")[:6]
         return res
 
-    # instead of using urls ->>>
-    # note -> fill in ur reverse usedurl
-
     def get_spefic_project(self):
         try:
             return reverse('', args={self.id})
@@ -154,6 +146,9 @@ class Project(models.Model):
     def get_edit_url(self):
         return reverse('', args={self.id})
 
+    def get_image_url(self):
+        return f"/media/{self.image}"
+
     def get_spefic_project_by_slug(self):
 
         try:
@@ -163,6 +158,12 @@ class Project(models.Model):
 
     def get_image_url(self):
         return f"/media/{self.image}"
+
+
+class Image(models.Model):
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='projects/images')
 
 
 class Donate(models.Model):
