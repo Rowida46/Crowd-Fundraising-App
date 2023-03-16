@@ -1137,7 +1137,7 @@ Home
                                     </div>
                                     <div class="text">
                                         {% load custom_tags %}
-
+                                        
                                         <p><a href="#"> {% get_method project %} Comment</a></p>
                                     </div>
                                    
@@ -1152,7 +1152,19 @@ Home
                                             class="icon-right-arrow21"></span></a>
                                 </div>
                                 <div class="icon-box">
-                                    <span class="icon-bookmark"></span>
+                         {% get_user_react_on_project project as user_reaction %}
+
+                                 {% if user_reaction %}
+
+                                   <a href={% url 'like_project' project.id %}> 
+                                    <i class="fa-solid fa-heart fa-2x like"></i>
+                                   </a>
+                                   {% else %}
+                                   <a href={% url 'like_project' project.id %}> 
+
+                                    <i class="fa-regular fa-heart"></i>
+                                   </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

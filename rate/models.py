@@ -31,5 +31,22 @@ class ReportProject(models.Model):
 
 
 class likes(models.Model):
-    # user = models.ForeignKey(User, related_name="user_report")
+    # user = models.ForeignKey(User, related_name="user_reaction")
     like = models.BooleanField(default=False)
+    project = models.ForeignKey(
+        Project, related_name="like_project", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "liked" if self.like else "not like"
+
+    @classmethod
+    def get_project_likes_number(cls, project):
+        return cls.objects.filter(project=project, like=True).count()
+
+    @classmethod
+    def get_project_likes(cls, project):
+        return cls.objects.filter(project=project, like=False).count()
+
+    @classmethod
+    def get_user_reaction_on_proj(cls, project, user='user'):
+        return cls.objects.filter(project=project).first()  # , user=user)

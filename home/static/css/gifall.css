@@ -4675,6 +4675,12 @@ Blog One
   background: var(--gifall-base);
 }
 
+.like{
+  color: red;
+}
+.icon-cog{
+  color: red;
+}
 .blog-one__single-img .inner {
   position: relative;
   display: block;
