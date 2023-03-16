@@ -30,11 +30,52 @@ Donation
         <section class="donation-details">
             <div class="container">
                 <div class="row">
+                  
                     <!--Start Donation Details Content-->
                     <div class="col-xl-8">
                         <div class="donation-details__content">
                             <div class="donation-details__content-img1"> 
-                                <img src="{{ project.image.url }}" style="height:300px" alt="#">
+                                    {{project.features}}
+                                <div id="carouselExampleIndicators" class="carousel slide">
+                                    <div class="carousel-indicators">
+                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% for img in images %}
+                                        {% if img.project == project %}
+                                        <div class="carousel-item active">
+                                            <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                                        </div>
+                                          
+                                        {%  endif %}
+                                        {% endfor %}
+                                     
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Next</span>
+                                    </button>
+                                  </div>
+                                  <div class="d-flex justify-content-between">
+                                    <a class="text-white btn btn-warning" href="{% url 'editproject' project.id %}"> Edit</a>
+                                    <a href="{% url 'deleteproject' project.id %}" class="text-white btn btn-danger"
+                                      >Delete</a
+                                    >
+
+                                  </div>
+                                  
+                                  <!-- {% if request.user.created_by %} -->
+                                  <!-- {% else %} -->
+                                  <!-- <a href="{% url 'home' %}" class="text-white btn btn-info">Contact Seller</a> -->
+                                  <!-- {% endif %} -->
+
+                               
                                 <div class="text-box">
                                     {{project.title}}
                                 </div>
@@ -160,10 +201,9 @@ Donation
                                                 </div>
 
                                                 <div class="btn-box">
-                                                    <a href="#" class="comment-one__btn">Reply</a>
+                                                    <a href="#" class="comment-one__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">Reply</a>
                                                 </div>
                                             </div>
-
                                             <div class="bottom-box">
                                                 <p>Antum recusandae pretium ultricies, purus! Soluta aliquip, nim tempo
                                                     class, porttitor purus justo dicta. Eius nec, felis laudantium
@@ -171,6 +211,16 @@ Donation
                                                     placeat u ultrices rg doloremquem</p>
                                                 <span>12 Feb, 2023</span>
                                             </div>
+                                                  
+                                         <p>
+                                   
+                                  </p>
+                                  <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                      Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                    </div>
+                                  </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +255,7 @@ Donation
 
                             <div class="comment-form">
                                 <h2 class="comment-form__title">Leave A Comment</h2>
-                                    <form action={% url 'submit_donation' project.id %} id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
+                                    <form action="{% url 'submit_donation' project.id %}" id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-xl-12">
@@ -218,7 +268,7 @@ Donation
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-12">
-                                                <div class="input-box">
+                                                <div class="input-box ">
                                                     {{commentForm.comment_content |safe}}
                                     
                                                 </div>
@@ -234,8 +284,7 @@ Donation
                                             </div>
                                         </div>
                                     </form>
-
-                                                              </div>
+                                </div>
                                 <!-- related projects  -->
                             <div class="donation-details__content-text-box4">
                                 <div class="title-box">
@@ -329,22 +378,11 @@ Donation
                                     <div class="btn-box">
                                         <a href="#">Donation $20</a>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <!--End Sidebar Single-->
-                            <p>
-                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                  Link with href
-                                </a>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                  Button with data-bs-target
-                                </button>
-                              </p>
-                              <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                </div>
-                              </div>
+                            
 
                             <!--Start Sidebar Single-->
                             <div class="sidebar__single sidebar__donation-two wow animated fadeInUp"
@@ -401,23 +439,19 @@ Donation
                                                 <h3><a href="#">A spotlight on our <br> design process</a></h3>
                                             </div>
                                         </li>
-
                                         <li>
                                             <div class="img-box">
                                                 <img src="{% static 'images/blog/sidebar-latest-post-img2.jpg' %}" alt="#">
                                             </div>
-
                                             <div class="content-box">
                                                 <p> <span class="icon-calendar"></span> Feb 18, 2023</p>
                                                 <h3><a href="#">How to handle your <br> good employee</a></h3>
                                             </div>
                                         </li>
-
                                         <li>
                                             <div class="img-box">
                                                 <img src="{% static 'images/blog/sidebar-latest-post-img3.jpg' %}" alt="#">
                                             </div>
-
                                             <div class="content-box">
                                                 <p> <span class="icon-calendar"></span> Feb 20, 2023</p>
                                                 <h3><a href="#">How to Make the <br> Most of Holiday...</a></h3>
@@ -425,14 +459,17 @@ Donation
                                         </li>
                                     </ul>
                                 </div>
-                                <!--End Sidebar Single-->
+                                
+                          
 
+
+
+                                <!--End Sidebar Single-->
                                 <!--Start Sidebar Single-->
                                 <div class="sidebar__single sidebar__popular-tags">
                                     <div class="title-box">
                                         <h2>Popular Tags</h2>
                                     </div>
-
                                     <ul class="sidebar__popular-tags-list">
                                         <li><a href="#">Food</a></li>
                                         <li><a href="#">Giving</a></li>

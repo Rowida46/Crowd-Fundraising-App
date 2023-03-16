@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<!-- Mirrored from themazine.com/mr/gifall-html/blog-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 16:53:15 GMT -->
+<!-- Mirrored from themazine.com/mr{% url 'home' %}/bl{% url 'home' %} by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 16:53:15 GMT -->
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,12 +16,13 @@
         href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&amp;family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <!-- Favicons Icons -->
+   
+        <!-- Favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}" />
     <link rel="manifest" href="{% static 'images/favicons/site.html ' %}" />
-   <meta name="description" content="Gifall HTML 5 Template " />
+    <meta name="description" content="Gifall HTML 5 Template " />
     <link rel="stylesheet" href="{% static 'vendors/animate/animate.min.css' %}" />
     <link rel="stylesheet" href="{% static 'vendors/animate/custom-animate.css' %}" />
     <link rel="stylesheet" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}" />
@@ -75,7 +76,7 @@
                                             </div>
 
                                             <div class="btn-box">
-                                                <a href="donation.html">Donation</a>
+                                                <a href="{% url 'home' %}">Donation</a>
                                             </div>
                                         </div>
                                         <div class="main-menu-box">
@@ -86,7 +87,12 @@
                                                 <li class="dropdown">
                                                     <a href="{% url 'home' %}">Home</a>
                                                 </li>
-
+                                                <li>
+                                                    <a href="{% url 'projectslist' %}">Funds</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{% url 'newproject' %}">New Fund</a>
+                                                </li>
                                                 <li>
                                                     <a href="{% url 'home' %}">About</a>
                                                 </li>
@@ -99,11 +105,11 @@
 
                                     <div class="main-header-one__bottom-right">
                                         <div class="btn-box1">
-                                            <a href="contact.html">Join us now </a>
+                                            <a href="{% url 'home' %}">Join us now </a>
                                         </div>
 
                                         <div class="btn-box2">
-                                            <a href="volunteers.html">Become a Volunteer</a>
+                                            <a href="{% url 'home' %}">Become a Volunteer</a>
                                         </div>
 
                                         <div class="header-search-box">
@@ -175,7 +181,7 @@
                                 <div class="footer-widget__single">
                                     <div class="footer-widget__single-about">
                                         <div class="logo-box">
-                                            <a href="index.html"><img src="{% static 'images/resources/logo-2.png' %} "
+                                            <a href="{% url 'home' %}"><img src="{% static 'images/resources/logo-2.png' %} "
                                                    alt="#"></a>
                                         </div>
 
@@ -186,7 +192,7 @@
                                         </div>
 
                                         <div class="footer-widget__single-about-btn">
-                                            <a class="thm-btn" href="content.html">
+                                            <a class="thm-btn" href="{% url 'home' %}">
                                                 <span class="txt">Join Now</span>
                                             </a>
                                         </div>
@@ -246,15 +252,15 @@
                                     </div>
 
                                     <ul class="footer-one__single-explore-list">
-                                        <li><a href="about.html">Charity</a></li>
-                                        <li><a href="donation.html">Donation</a></li>
-                                        <li><a href="about.html">Fundrising
+                                        <li><a href="{% url 'home' %}">Charity</a></li>
+                                        <li><a href="{% url 'home' %}">Donation</a></li>
+                                        <li><a href="{% url 'home' %}">Fundrising
                                             </a></li>
-                                        <li><a href="about.html">Our Campaign
+                                        <li><a href="{% url 'home' %}">Our Campaign
                                             </a></li>
-                                        <li><a href="volunteers.html">Volunteer</a></li>
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="contact.html">Contact Us
+                                        <li><a href="vol{% url 'home' %}">Volunteer</a></li>
+                                        <li><a href="{% url 'home' %}">About us</a></li>
+                                        <li><a href="{% url 'home' %}">Contact Us
                                             </a></li>
                                     </ul>
 
@@ -276,7 +282,7 @@
                                             </div>
                                             <div class="content-box">
                                                 <span>12 Feb 2023</span>
-                                                <p><a href="blog.html">18 Best Charity Marketing <br> Campaigns</a></p>
+                                                <p><a hre="{% url 'home' %}">18 Best Charity Marketing <br> Campaigns</a></p>
                                             </div>
                                         </li>
 
@@ -286,7 +292,7 @@
                                             </div>
                                             <div class="content-box">
                                                 <span>14 Feb 2023</span>
-                                                <p><a href="blog.html">Charity Of The Month <br> Golden Futures</a></p>
+                                                <p><a href="{% url 'home' %}">Charity Of The Month <br> Golden Futures</a></p>
                                             </div>
                                         </li>
 
@@ -319,7 +325,7 @@
                         </div>
 
                         <div class="copyright">
-                            <p>©2023 <a href="index.html">Template_Mr</a> All Rights Reserved</p>
+                            <p>©2023 <a href="{% url 'home' %}">Template_Mr</a> All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
@@ -338,7 +344,7 @@
                 <i class="icon-plus"></i>
             </span>
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image">
+                <a href="{% url 'home' %}" aria-label="logo image">
                     <img src="{% static 'images/resources/mobile-nav-logo.png' %}" alt="" />
                 </a>
             </div>
@@ -419,5 +425,4 @@
 </body>
 
 
-<!-- Mirrored from themazine.com/mr/gifall-html/blog-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 16:53:22 GMT -->
-</html>
+<!-- Mirrored from themazine.com/mr{% url 'home' %}/bl{% url 'home' %} by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 16:53:22 GM{% url 'home' %}>

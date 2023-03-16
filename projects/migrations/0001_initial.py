@@ -15,7 +15,6 @@ class Migration(migrations.Migration):
         ('tags', '0001_initial'),
         ('categories', '0001_initial'),
     ]
-
     operations = [
         migrations.CreateModel(
             name='Project',
