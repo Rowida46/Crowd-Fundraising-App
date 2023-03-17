@@ -48,13 +48,17 @@ def submitDonation_dup(request, id):
 
 def submitDonation(request, id):
     # spesify on which project donation would be send
-    project = Project.get_one_project(id)
+    project, amount = Project.get_one_project(id), 0
+
+    if "amount" in request.GET:
+        amount = request.GET['amount']
 
     if request.method == "POST":
         donationForm = DonationForm(request.POST)
+
         if donationForm.is_valid():
             amount = Money(
-                donationForm.cleaned_data["donation"], 'USD')
+                donationForm.cleaned_data["donation"], 'USD') if not amount else Money(amount)
 
             # print(donationForm.cleaned_data["donation"])
             print("-----------------", amount)
@@ -62,18 +66,18 @@ def submitDonation(request, id):
             # project.total_donation += Money(
             #     donationForm.cleaned_data["donation"], 'USD')
             # print("-----------------", project.total_donation)
+        # show donation upgrade
+        else:
+            donationForm = donationForm()
 
-            newdonation = Donate(project=project, amount_of_donation=amount)
-            newdonation.user = request.user
-            print("--------------newdonation---", newdonation)
+    newdonation = Donate(project=project, amount_of_donation=amount)
+    newdonation.user = request.user
+    print("--------------newdonation---", newdonation)
             # newdonation.amount_of_donation = Money(
             #     donationForm.cleaned_data["donation"], 'USD')
 
-            newdonation.save()
-        # show donation upgrade
-    else:
-        donationForm = donationForm()
-
+    newdonation.save()
+    
     return redirect("singleproject", id=id)
 
 
