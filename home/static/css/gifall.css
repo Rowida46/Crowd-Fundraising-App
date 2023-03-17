@@ -6698,7 +6698,12 @@ Feature Four
   background: transparent;
   z-index: 2;
 }
-
+.report {
+  width: 20px;
+  height: 10px;
+  background-color: red;
+  color: white;
+}
 .feature-one--four .auto-container {
   max-width: 1600px;
   width: 100%;

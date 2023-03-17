@@ -163,8 +163,8 @@ Donation
                                  aria-controls="collapseExample"
                                  class="comment-one__btn">Reply</a>
                               {% comment %} report comment {% endcomment %}
-                              <a class=" btn btn-danger "href={% url 'reportComment'  project.id comment.id %} >
-                              Reprot Comment</a>
+                              <a class="btn btn-danger" href={% url 'reportComment'  project.id comment.id %} >
+                              Reprot</a>
                            </div>
                         </div>
                         <div class="bottom-box">
@@ -272,7 +272,7 @@ Donation
             <!-- related projects  -->
             <div class="donation-details__content-text-box4">
                <div class="title-box">
-                  <h2>Related Projects (4)</h2>
+                  <h2>Related Projects ({{project.category.project_category.all.count|add:"-1" }})</h2>
                   <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. but the
                      majority have alteration in some injected or words which don't look even
                      slightly believable. 
@@ -373,33 +373,20 @@ Donation
             <h2>Latest Post</h2>
          </div>
          <ul class="sidebar__latest-post-list">
+            {% recently_created_projects as project_recent %}
+            {%for proj in project_recent%}
             <li>
                <div class="img-box">
                   <img src="{% static 'images/blog/sidebar-latest-post-img1.jpg' %}" alt="#">
                </div>
                <div class="content-box">
-                  <p> <span class="icon-calendar"></span> Feb 18, 2023</p>
-                  <h3><a href="#">A spotlight on our <br> design process</a></h3>
+                  <p> <span class="icon-calendar"></span>{{proj.created_at|date:'d M'}}
+                  </p>
+                  <h3><a href={% url 'singleproject' proj.id %}>{{proj.slug}}</a></h3>
                </div>
             </li>
-            <li>
-               <div class="img-box">
-                  <img src="{% static 'images/blog/sidebar-latest-post-img2.jpg' %}" alt="#">
-               </div>
-               <div class="content-box">
-                  <p> <span class="icon-calendar"></span> Feb 18, 2023</p>
-                  <h3><a href="#">How to handle your <br> good employee</a></h3>
-               </div>
-            </li>
-            <li>
-               <div class="img-box">
-                  <img src="{% static 'images/blog/sidebar-latest-post-img3.jpg' %}" alt="#">
-               </div>
-               <div class="content-box">
-                  <p> <span class="icon-calendar"></span> Feb 20, 2023</p>
-                  <h3><a href="#">How to Make the <br> Most of Holiday...</a></h3>
-               </div>
-            </li>
+            {%endfor%}
+           
          </ul>
       </div>
       <!--End Sidebar Single-->

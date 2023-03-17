@@ -1,5 +1,6 @@
 
 
+from projects.models import Project
 from accounts.models import UserProfile
 from comments.models import Comments
 
@@ -13,6 +14,11 @@ register = template.Library()
 @register.simple_tag
 def get_method(project):
     return Comments.get_project_number_of_comments(project)
+
+
+@register.simple_tag
+def recently_created_projects():
+    return Project.get_recently_created_projects()
 
 
 @register.simple_tag
