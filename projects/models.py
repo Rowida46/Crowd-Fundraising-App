@@ -118,6 +118,10 @@ class Project(models.Model):
         #     return None
 
     @classmethod
+    def filter_projects_by_tag(cls, tag):
+        return cls.objects.filter(tags__in=tag)
+
+    @classmethod
     def filter_projects_by_slug(cls, slug):
         try:
             res = cls.objects.filter(slug__contains=slug)

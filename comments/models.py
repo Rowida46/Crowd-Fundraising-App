@@ -20,6 +20,9 @@ class Comments(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     comment_content = RichTextField(blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.user} comment on {self.project} project"
+
     @classmethod
     def get_comments(cls):
         return cls.objects.all()
@@ -47,7 +50,7 @@ class Comments(models.Model):
 
 class Reply(models.Model):
     reply_content = models.TextField()
-    
+
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="project_reply")
     user = models.ForeignKey(
@@ -59,6 +62,9 @@ class Reply(models.Model):
         Comments, on_delete=models.CASCADE, related_name="comment_reply")
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} reply on {self.project} project"
 
     @classmethod
     def get_comment_replys(cls, comment):

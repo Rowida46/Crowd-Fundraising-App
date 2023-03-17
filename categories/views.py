@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, reverse, redirect, HttpResponse, get_object_or_404
 
 
@@ -26,7 +25,7 @@ def list_Projects_byCategory(request, category_id):
     # order_by("-created_at")
     print("---------jkj---cats", lst_projects)
 
-    return redirect(reverse('home') + f"?category_id={category_id}")
+    return redirect(reverse('home') + f"?category_id={category_id}" + '#projs_by_cat')
 
 # return redirect(reverse('home', kwargs={'project_by_cats': lst_projects if lst_projects else []})
 #                     )
