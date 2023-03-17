@@ -352,7 +352,11 @@ Home
                     <div class="case-one__single">
                         <div class="case-one__single-img">
                             <div class="inner">
-                                <img src={{proj.get_image_url}} alt="#">
+                                {% for img in images %}
+                                {% if img.project == proj %}
+                                    <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                                {%  endif %}
+                                {% endfor %}
                             </div>
                             <div class="text-box">
                                 {{proj.category}} 

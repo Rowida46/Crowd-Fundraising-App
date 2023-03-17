@@ -47,6 +47,7 @@ class Comments(models.Model):
 
 class Reply(models.Model):
     reply_content = models.TextField()
+    
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="project_reply")
     user = models.ForeignKey(
