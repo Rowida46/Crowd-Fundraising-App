@@ -263,6 +263,7 @@ Donation
                </div>
                {% endfor %}
             </div>
+            {% if request.user.is_authenticated %}    
             <div class="comment-form">
                <h2 class="comment-form__title">Leave A Comment</h2>
                <form action={% url 'addComment' project.id %} id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
@@ -275,6 +276,7 @@ Donation
                      </div>
                   </div>
                </div>
+
                <div class="row">
                   <div class="col-xl-12">
                      <div class="input-box">
@@ -291,6 +293,9 @@ Donation
                      </div>
                   </div>
                </div>
+               {% else %}
+               <h5>You are not logged in, to add comment shuld be to <a class="text-info m-2" href="{% url 'login' %}">login now!!</a> </h5>
+               {% endif %}
                </form>
             </div>
             <!-- related projects  -->
