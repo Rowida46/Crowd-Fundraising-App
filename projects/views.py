@@ -84,6 +84,7 @@ def donationlist(request):
 def singledonation(request, id):
     project = Project.get_one_project(id)
     project_comments = Comments.get_project_comments(project)
+    images = Image.objects.all()
     # project_replys = Reply.get_comment_replys(project_comments)
     replys = Reply.get_project_replys(project)
     # calcualations

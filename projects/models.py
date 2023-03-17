@@ -40,6 +40,7 @@ class Project(models.Model):
     slug = models.SlugField(default="", null=True, blank=True)
     details = models.TextField(null=True, blank=True)
 
+    is_approved = models.BooleanField(default=False)
     features = ArrayField(
         models.CharField(max_length=100, blank=True),
         default=list,

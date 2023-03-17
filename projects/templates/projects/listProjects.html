@@ -36,11 +36,10 @@ Donation List
                         <div class="col-xl-6">
                             <div class="case-one__single-img">
                                 <div class="inner">
-                                    {{images}}
                                     {% for img in images %}
-                                    {{img}}
                                     {% if img.project == pro %}
-                                        <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                                        <img src="{{ img.image.url }}"
+                                         style="height:300px" alt="#">
                                     {%  endif %}
                                     {% endfor %}
                                 </div>

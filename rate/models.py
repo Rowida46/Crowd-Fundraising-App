@@ -5,12 +5,16 @@ from django_enum import EnumField
 
 # Create your models here.
 
+# if -> request.user._is_superuser
+"""
+{% if not request.user.is_superuser %}
+
+"""
+
 
 class Rating(models.Model):
-    # user_id =  models.ForeignKey(user, on_delete=models.CASCADE,
-    #                        related_name='user_rate_on_project'  )
-    # user = models.ForeignKey(
-    #     UserProfile, on_delete=models.CASCADE, related_name="user_reaction")
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_rating")
 
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="project_rate")

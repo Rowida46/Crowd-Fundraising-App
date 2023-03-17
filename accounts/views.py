@@ -157,24 +157,22 @@ def loginUser(request):
             )
 
 
+def password_change(request):
+    # if request.user.is_authenticated:
+    #     return redirect('/')
+    user = request.user
+    if request.method == 'POST':
+        form = SetPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your password has been changed")
+            return redirect('login')
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
 
-
-# def signup(request):
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return render(request, 'metroshop/home.html')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'metroshop/signup.html', {'form': form})
-
-
-
+    form = SetPasswordForm(user)
+    return render(request, 'password_reset_confirm.html', {'form': form})
 
 def password_reset_request(request):
     if request.method == 'POST':

@@ -28,67 +28,58 @@ Donation
          <div class="col-xl-8">
             <div class="donation-details__content">
                <div class="donation-details__content-img1">
-
                   <div id="carouselExampleIndicators" class="carousel slide">
                      <div class="carousel-indicators">
-                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                      </div>
                      <div class="carousel-inner">
-                         {% for img in images %}
-                         {% if img.project == project %}
-                         <div class="carousel-item active">
-                             <img src="{{ img.image.url }}" style="height:300px" alt="#">
-                         </div>
-                           
-                         {%  endif %}
-                         {% endfor %}
-                      
+                        {% for img in images %}
+                        {% if img.project == project %}
+                        <div class="carousel-item active">
+                           <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                        </div>
+                        {%  endif %}
+                        {% endfor %}
                      </div>
                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                       <span class="visually-hidden">Previous</span>
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="visually-hidden">Previous</span>
                      </button>
                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                       <span class="visually-hidden">Next</span>
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="visually-hidden">Next</span>
                      </button>
-                   </div>
-                   <div class="d-flex justify-content-between">
+                  </div>
+                  <div class="d-flex justify-content-between">
                      <a class="text-white btn btn-warning" href="{% url 'editproject' project.id %}"> Edit</a>
                      <a href="{% url 'deleteproject' project.id %}" class="text-white btn btn-danger"
-                       >Delete</a
-                     >
-
-                   </div>
-                   
-                   <!-- {% if request.user.created_by %} -->
-                   <!-- {% else %} -->
-                   <!-- <a href="{% url 'home' %}" class="text-white btn btn-info">Contact Seller</a> -->
-                   <!-- {% endif %} -->
-
-                
-                 <div class="text-box">
+                        >Delete</a
+                        >
+                  </div>
+                  <!-- {% if request.user.created_by %} -->
+                  <!-- {% else %} -->
+                  <!-- <a href="{% url 'home' %}" class="text-white btn btn-info">Contact Seller</a> -->
+                  <!-- {% endif %} -->
+                  <div class="text-box">
                      {{project.title}}
-                 </div>
-                  
+                  </div>
                </div>
                <div class="donation-details__content-text-box1">
                   <h2 class="d-inline">{{project.title}} </h2>
                   <div class="icon-box d-inline ms-2">
-                    {% get_user_react_on_project project as user_reaction %}
-                    {% if user_reaction %}
-                    <a href={% url 'toggle_like_project' project.id %}> 
-                    <i class="fa-solid fa-heart fa-2x like"></i>
-                    </a>
-                    {% else %}
-                    <a href={% url 'toggle_like_project' project.id %}> 
-                    <i class="fa-regular fa-heart"></i>
-                    </a>
-                    {% endif %}
-                 </div>
-                  <p> {{project.details}} </p>
+                     {% get_user_react_on_project project as user_reaction %}
+                     {% if user_reaction %}
+                     <a href={% url 'toggle_like_project' project.id %}> 
+                     <i class="fa-solid fa-heart fa-2x like"></i>
+                     </a>
+                     {% else %}
+                     <a href={% url 'toggle_like_project' project.id %}> 
+                     <i class="fa-regular fa-heart"></i>
+                     </a>
+                     {% endif %}
+                  </div>
                   <div class="donation-details__progress">
                      <div class="donation-details__progress-bg"
                      style="background-image: url('{% static "images/shapes/donation-details-shape1.jpg" %}');">
@@ -113,30 +104,10 @@ Donation
                </div>
             </div>
             <div class="donation-details__content-text-box2">
+              
                <div class="single-text-box">
-                  <h2>About The Charity</h2>
-                  <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. There are
-                     many variations of passages
-                     of Lorem Ipsum available, but the majority have alteration in some injected or
-                     words which don't look even
-                     slightly believable. If you are going to use a passage of Lorem Ipsum, Ipsum
-                     generators on the Internet tend
-                  </p>
-               </div>
-               <div class="single-text-box">
-                  <h2>Support </h2>
-                  <p>Future Hope not only raised funds but also gained friends and goodwill. This is
-                     very encouraging and
-                     important for us as we grow and expand further. Kolkata supporting Kolkata’s
-                     children is what we need most and this will aid us in helping many more children
-                     and make their dreams come true. 
-                  </p>
-               </div>
-               <div class="single-text-box">
-                  <h2>Challenge</h2>
-                  <p>Lorem Ipsum available, but the majority have alteration in some injected orwords
-                     which don't look even slightly believable. If you are going to use a passage of
-                     Lorem Ipsum,Ipsum generators on the Internet
+                  <h2>Project Target & description</h2>
+                  <p>{{project.details}}
                   </p>
                </div>
             </div>
@@ -158,7 +129,6 @@ Donation
                               </p>
                            </li>
                            {%endfor%}
-                         
                         </ul>
                         <div class="text-box">
                            <p>Nemo enim ipsam voluptatem quia
@@ -180,14 +150,12 @@ Donation
                   <div class="comment-one__single-inner">
                      <div class="comment-one__image">
                         {% get_user_info comment.user as user_info %}
-
                         <img src="{{user_info.photo.url}}" alt="user imgae">
                      </div>
                      <div class="comment-one__content">
                         <div class="top-box">
                            <div class="text-box">
-
-                              <h3>{{user_info.last_name}}_{{user_info.first_name}}</h3>
+                              <h3>{{user_info.username}} {{user_info.last_name}}</h3>
                            </div>
                            <div class="btn-box">
                               <a data-bs-toggle="collapse" 
@@ -244,14 +212,13 @@ Donation
                   {%if reply.comment_id == comment%}
                   <div class="comment-one__single-inner mt-4">
                      {% get_user_info reply.user as user_reply_info %}
-
                      <div class="comment-one__image">
                         <img src={{user_reply_info.photo.url}} />
                      </div>
                      <div class="comment-one__content">
                         <div class="top-box">
                            <div class="text-box">
-                              <h3>{{user_reply_info.username}}_{{user_reply_info.last_name}}</h3>
+                              <h3>{{user_reply_info.username}} {{user_reply_info.last_name}}</h3>
                            </div>
                            <!-- <div class="btn-box">
                               <a href="#" class="comment-one__btn">Reply</a>
@@ -268,6 +235,7 @@ Donation
                </div>
                {% endfor %}
             </div>
+            {% if request.user.is_authenticated %}
             <div class="comment-form">
                <h2 class="comment-form__title">Leave A Comment</h2>
                <form action={% url 'addComment' project.id %} id="contact-form" class="default-form2 contact-form-validated comment-one__form" method="POST">
@@ -296,6 +264,9 @@ Donation
                      </div>
                   </div>
                </div>
+               {% else %}
+               <h5>You are not logged in, to add comment shuld be to <a class="text-info m-2" href="{% url 'login' %}">login now!!</a> </h5>
+               {% endif %}
                </form>
             </div>
             <!-- related projects  -->
@@ -308,56 +279,29 @@ Donation
                   </p>
                </div>
                <div class="row">
+                  {% for p in project.category.project_category.all %}
+                  {% if p.id != project.id %}
+      
                   <div class="col-xl-3 col-lg-3 col-md-3">
                      <div class="donation-details__content-text-box4-single">
                         <div class="img-box">
-                           <img src="{{user_info.photo.url}}" alt="user imgae">
+                           {% for img in images %}
+                           {% if img.project == p %}
+                               <img src="{{ img.image.url }}"  alt="#">
+                           {%  endif %}
+                           {% endfor %}
+                        </div>
+                        <div class="text-box text-center">
+                           <h3>{{p.title}}</h3>
+                           <h4>{{p.target_budget}}</h4>
+                           <p>{{p.created_at|date:'d M'}}</p>
+                        </div>
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
 
-                           <img src="{% static 'images/resources/donation-details-img3.jpg' %}" alt="#">
-                        </div>
-                        <div class="text-box text-center">
-                           <h3>ALex Wiliam</h3>
-                           <h4>$140</h4>
-                           <p>Feb 9, 2023</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-3">
-                     <div class="donation-details__content-text-box4-single">
-                        <div class="img-box">
-                           <img src="{% static 'images/resources/donation-details-img4.jpg' %}" alt="#">
-                        </div>
-                        <div class="text-box text-center">
-                           <h3>Lori Enami</h3>
-                           <h4>$140</h4>
-                           <p>Feb 9, 2023</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-3">
-                     <div class="donation-details__content-text-box4-single">
-                        <div class="img-box">
-                           <img src="{% static 'images/resources/donation-details-img5.jpg' %}" alt="#">
-                        </div>
-                        <div class="text-box text-center">
-                           <h3>Farhan Ani</h3>
-                           <h4>$140</h4>
-                           <p>Feb 9, 2023</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-3">
-                     <div class="donation-details__content-text-box4-single">
-                        <div class="img-box">
-                           <img src="{% static 'images/resources/donation-details-img6.jpg' %}" alt="#">
-                        </div>
-                        <div class="text-box text-center">
-                           <h3>Adam Robbs</h3>
-                           <h4>$140</h4>
-                           <p>Feb 9, 2023</p>
-                        </div>
-                     </div>
-                  </div>
+            
                </div>
             </div>
          </div>
@@ -460,46 +404,32 @@ Donation
       </div>
       <!--End Sidebar Single-->
       <!--Start Sidebar Single-->
-     <div>
-      <div class="sidebar__single sidebar__popular-tags">
-         <div class="title-box">
-            <h2>Project Tags</h2>
-         </div>
-         <ul class="sidebar__popular-tags-list">
-            {%for tag in project.tags.all %}
-
-            <li><a href="#">{{tag}}</a></li>
-            {%endfor%}
-            {% comment %} <li><a href="#">Food</a></li>
-            <li><a href="#">Giving</a></li>
-            <li><a href="#">Children</a></li>
-            <li><a href="#">Fundraising</a></li>
-            <li><a href="#">Seo</a></li>
-            <li><a href="#">Education</a></li>
-            <li><a href="#">Healthcare </a></li>
-            <li><a href="#">Help people</a></li> {% endcomment %}
-         </ul>
-      </div>
-     </div>
+   
       <div></div>
-      <div class='d-block p-2'>
-      {% comment %} <div class="sidebar__single sidebar__popular-tags"> {% endcomment %}
-         <div class="title-box d-block m-2 sidebar__single sidebar__popular-tags">
-            <h2>Popular Tags</h2>
+
+
+      <div>
+         <div class="sidebar__single sidebar__popular-tags">
+            <div class="title-box">
+               <h2>Project Tags</h2>
+            </div>
+            <ul class="sidebar__popular-tags-list">
+               {%for tag in project.tags.all %}
+               <li><a href="#">{{tag}}</a></li>
+               {%endfor%}
+               {% comment %} 
+               <li><a href="#">Food</a></li>
+               <li><a href="#">Giving</a></li>
+               <li><a href="#">Children</a></li>
+               <li><a href="#">Fundraising</a></li>
+               <li><a href="#">Seo</a></li>
+               <li><a href="#">Education</a></li>
+               <li><a href="#">Healthcare </a></li>
+               <li><a href="#">Help people</a></li>
+               {% endcomment %}
+            </ul>
          </div>
-         <ul class="sidebar__popular-tags-list">
-           
-             <li><a href="#">Food</a></li>
-            <li><a href="#">Giving</a></li>
-            <li><a href="#">Children</a></li>
-            <li><a href="#">Fundraising</a></li>
-            <li><a href="#">Seo</a></li>
-            <li><a href="#">Education</a></li>
-            <li><a href="#">Healthcare </a></li>
-            <li><a href="#">Help people</a></li> 
-         </ul>
-      </div> </div>
-     
+      </div>
       <!--End Sidebar Single-->
    </div>
    </div>
