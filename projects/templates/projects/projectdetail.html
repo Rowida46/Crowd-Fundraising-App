@@ -179,12 +179,15 @@ Donation
                <div class="comment-one__single m-2">
                   <div class="comment-one__single-inner">
                      <div class="comment-one__image">
-                        <img src="{% static 'images/blog/comment-one-img1.jpg' %}" alt="#" />
+                        {% get_user_info comment.user as user_info %}
+
+                        <img src="{{user_info.photo.url}}" alt="user imgae">
                      </div>
                      <div class="comment-one__content">
                         <div class="top-box">
                            <div class="text-box">
-                              <h3>Adam Pinakaki</h3>
+
+                              <h3>{{user_info.last_name}}_{{user_info.first_name}}</h3>
                            </div>
                            <div class="btn-box">
                               <a data-bs-toggle="collapse" 
@@ -240,13 +243,15 @@ Donation
                   {% for reply in replys%}
                   {%if reply.comment_id == comment%}
                   <div class="comment-one__single-inner mt-4">
+                     {% get_user_info reply.user as user_reply_info %}
+
                      <div class="comment-one__image">
-                        <img src="{% static 'images/blog/comment-one-img2.jpg' %}" alt="#" />
+                        <img src={{user_reply_info.photo.url}} />
                      </div>
                      <div class="comment-one__content">
                         <div class="top-box">
                            <div class="text-box">
-                              <h3>Riad Mahfuz</h3>
+                              <h3>{{user_reply_info.username}}_{{user_reply_info.last_name}}</h3>
                            </div>
                            <!-- <div class="btn-box">
                               <a href="#" class="comment-one__btn">Reply</a>
@@ -306,6 +311,8 @@ Donation
                   <div class="col-xl-3 col-lg-3 col-md-3">
                      <div class="donation-details__content-text-box4-single">
                         <div class="img-box">
+                           <img src="{{user_info.photo.url}}" alt="user imgae">
+
                            <img src="{% static 'images/resources/donation-details-img3.jpg' %}" alt="#">
                         </div>
                         <div class="text-box text-center">
