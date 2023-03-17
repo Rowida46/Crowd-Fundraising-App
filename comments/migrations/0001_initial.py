@@ -12,7 +12,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('projects', '0001_initial'),
     ]
 
@@ -24,7 +23,6 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('comment_content', ckeditor.fields.RichTextField(blank=True, null=True)),
                 ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='project_commit', to='projects.project')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_comment', to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
@@ -33,7 +31,6 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('option', django_enum.fields.EnumCharField(blank=True, choices=[('V0', 'in'), ('V1', 'Value 1'), ('V2', 'Value 2')], max_length=2, null=True)),
                 ('comment', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='report_comment', to='comments.comments')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_report_comment', to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
@@ -44,7 +41,6 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('comment_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comment_reply', to='comments.comments')),
                 ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='project_reply', to='projects.project')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_reply', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

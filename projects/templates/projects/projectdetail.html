@@ -365,6 +365,13 @@ Donation
                   <div class="sidebar__donation-bg"
                   style="background-image: url('{% static "images/shapes/sidebar-donation-shape.jpg" %}');">
                </div>
+               <div>
+                  <form method="post">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+                     <button type="submit" class="btn btn-primary">Submit Rating</button>
+                   </form>
+               </div>
                <div class="text-box">
                   <h2>{{project_total_donation}}</h2>
                </div>

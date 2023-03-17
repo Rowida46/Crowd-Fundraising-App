@@ -4,6 +4,12 @@
   ],
   "hints": {
     "apple-touch-icons": "off",
-    "manifest-file-extension": "off"
+    "manifest-file-extension": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "button-name": "off"
+      }
+    ]
   }
 }
