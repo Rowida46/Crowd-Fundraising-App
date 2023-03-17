@@ -15,6 +15,6 @@ def get_method(project):
 
 
 @register.simple_tag
-def get_user_react_on_project(project, user=''):
+def get_user_react_on_project(project):
     queries = likes.get_user_reaction_on_proj(project)
     return queries.like if queries else False

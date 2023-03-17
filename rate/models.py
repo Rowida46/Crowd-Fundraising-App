@@ -1,3 +1,4 @@
+from accounts.models import UserProfile
 from django.db import models
 from projects.models import Project
 from django_enum import EnumField
@@ -8,6 +9,8 @@ from django_enum import EnumField
 class Rating(models.Model):
     # user_id =  models.ForeignKey(user, on_delete=models.CASCADE,
     #                        related_name='user_rate_on_project'  )
+    # user = models.ForeignKey(
+    #     UserProfile, on_delete=models.CASCADE, related_name="user_reaction")
 
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="project_rate")
@@ -22,6 +25,10 @@ class ReportOption(models.TextChoices):
 
 
 class ReportProject(models.Model):
+
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_reaction")
+
     project = models.ForeignKey(
         Project, related_name="report_project", on_delete=models.CASCADE)
     # user = models.ForeignKey(User, related_name="user_report")
@@ -31,7 +38,9 @@ class ReportProject(models.Model):
 
 
 class likes(models.Model):
-    # user = models.ForeignKey(User, related_name="user_reaction")
+    # user = models.ForeignKey(
+    #     UserProfile, on_delete=models.CASCADE, related_name="user_reaction")
+
     like = models.BooleanField(default=False)
     project = models.ForeignKey(
         Project, related_name="like_project", on_delete=models.CASCADE)

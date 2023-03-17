@@ -6,24 +6,24 @@ from django_enum import EnumField
 
 from projects.models import Project
 
+from accounts.models import UserProfile
 # Create your models here.
 
 
 class Comments(models.Model):
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_comment")
+
     project = models.ForeignKey(Project, on_delete=models.CASCADE,
                                 related_name='project_commit')
 
     created_at = models.DateTimeField(auto_now_add=True)
     comment_content = RichTextField(blank=True, null=True)
 
-    def __str__(self):
-        self.user = "rowida"
-        return 'Comment by {} on {}'.format(self.user, self.project)
-    
     @classmethod
     def get_comments(cls):
         return cls.objects.all()
-    
+
     @classmethod
     def get_project_comments(cls, project_id):
         # not sure yet ->>>
@@ -36,6 +36,7 @@ class Comments(models.Model):
     @classmethod
     def get_spesific_comment(cls, comment_id):
         try:
+            print("--hhhhhh-------", comment_id)
             return get_object_or_404(cls, pk=comment_id)
         except Exception as e:
             return None
@@ -48,6 +49,8 @@ class Reply(models.Model):
     reply_content = models.TextField()
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="project_reply")
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_reply")
 
     # user =  models.ForeignKey(user, on_delete=models.CASCADE,
     #                             related_name='user_reply')
@@ -72,6 +75,9 @@ class ReportOption(models.TextChoices):
 
 
 class ReportComment(models.Model):
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_report_comment")
+
     comment = models.ForeignKey(
         Comments, on_delete=models.CASCADE, related_name="report_comment")
     # user = models.ForeignKey(User, related_name="user_report")

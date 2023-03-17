@@ -10,6 +10,7 @@ def reportProject(request,  project_id):
     project = Project.get_one_project(project_id)
     print("----------replay comment ----------", project)
     newReport = ReportProject(project=project)
+    newReport.user = request.user
     newReport.save()
     return redirect("singleproject", id=project_id)
 
@@ -28,6 +29,7 @@ def toggle_like(request, project_id):
     else:
         print("pp[p[]]")
         user_reaction = likes(project=project, like=True)
+        # user_reaction.user = request.user
         user_reaction.save()
     print("------------islike ---------------", user_reaction)
     return redirect("/")
@@ -47,6 +49,7 @@ def toggle_like_project(request, project_id):
     else:
         print("pp[p[]]")
         user_reaction = likes(project=project, like=True)
+       # user_reaction.user = request.user
         user_reaction.save()
     print("------------islike ---------------", user_reaction)
     return redirect("singleproject", id=project_id)

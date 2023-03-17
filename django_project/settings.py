@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = "accounts.UserProfile" 
+AUTH_USER_MODEL = "accounts.UserProfile"
 # AUTH_USER_MODEL = 'accounts'
 AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
 
@@ -173,7 +173,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # MEDIA_ROOT = BASE_DIR / "media"
 # MEDIA_URL='media/'
-
 
 
 LOGOUT_REDIRECT_URL = "/"

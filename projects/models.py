@@ -8,6 +8,7 @@ from categories.models import Categories
 from django.db.models import Avg
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
 
+from accounts.models import UserProfile
 # Create your models here.
 from user.models import User
 from djmoney.models.fields import MoneyField
@@ -21,9 +22,6 @@ from django_jsonform.models.fields import ArrayField
 from user.models import User
 
 
-
-
-
 LABEL_CHOICES = (
     ('streeet', ' From the streets to safety'),
     ('wish', ' I wish to feed the orangutans'),
@@ -35,6 +33,9 @@ LABEL_CHOICES = (
 
 
 class Project(models.Model):
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_project")
+
     title = models.CharField(max_length=100)
     slug = models.SlugField(default="", null=True, blank=True)
     details = models.TextField(null=True, blank=True)
@@ -173,6 +174,9 @@ class Image(models.Model):
 
 class Donate(models.Model):
     # user
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="user_donation")
+
     project = models.ForeignKey(Project, on_delete=models.CASCADE,
                                 related_name='project_Donation')
 
