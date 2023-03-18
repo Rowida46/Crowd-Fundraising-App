@@ -9,6 +9,8 @@ from comments.models import Comments
 from categories.models import Categories
 from tags.models import Tags
 
+from accounts.models import UserProfile
+
 
 def home(request):
     print("inside home")
@@ -16,6 +18,10 @@ def home(request):
     projs_by_cat,  projs_by_tag = [], []
     categories = Categories.get_categories()
     images = Image.objects.all()
+    number_of_registered_ppl = UserProfile.objects.all().count() - 1
+    print("------------nums---------------------", number_of_registered_ppl)
+
+    supported_users = UserProfile.objects.all()[:3]
 
     if "category_id" in request.GET:
         category_id = request.GET['category_id']
@@ -41,7 +47,8 @@ def home(request):
                   context={"recently_creatd_projects": recently_creatd_projects,
                            "categories": categories,
                            "projs_by_cat": projs_by_cat,
-                           "images": images,
+                           "images": images, "supported_users": supported_users,
+                           "number_of_registered_ppl": number_of_registered_ppl,
                            "projs_by_tag": projs_by_tag
                            })
 
@@ -54,5 +61,7 @@ def becomevolunteer(request):
     return render(request, "becomeVoluenteer.html")
 
 
-def approve_project(request, project_id):
-    pass
+def toggle_approve_project(request, project_id):
+    project = Project.get_one_project(project_id)
+    project.is_approved = not project.is_approved
+    project.save()
