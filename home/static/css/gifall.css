@@ -3065,6 +3065,7 @@ Feature One
   display: inline-block;
   margin-bottom: 28px;
   z-index: 1;
+  height: 50px;
 }
 
 .feature-one__single-icon .shape1 {

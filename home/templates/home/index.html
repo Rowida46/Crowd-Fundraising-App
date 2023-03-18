@@ -152,61 +152,41 @@ Home
     <section class="feature-one">
         <div class="container">
             <div class="row">
-                <!--Start Feature One Single-->
-                <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.1s">
-                    <div class="feature-one__single text-center">
-                        <div class="shape2"><img src="{% static  'images/shapes/feature-v1-shape1.png' %} " alt="#"></div>
-                        <div class="shape3"><img src="{% static  'images/shapes/feature-v1-shape2.png' %} " alt="#"></div>
-                        <div class="feature-one__single-icon">
-                            <div class="shape1"></div>
-                            <span class="icon-donation-1"></span>
-                        </div>
-
-                        <div class="feature-one__single-content">
-                            <h2><a href="about.html">Donor Friendly</a></h2>
-                            <p>Donec scelerisque egestas purus eget <br> Lorem ipsum dolor</p>
-                        </div>
+                <div class="sec-title text-center">
+                    <div class="sec-title__tagline">
+                        <h6>Our top rated projects so far</h6>
                     </div>
+                    <h2 class="sec-title__title">top rated projects</h2>
                 </div>
-                <!--End Feature One Single-->
 
+                {%for rated_proj in all_rates %}
+                {%if rated_proj.avg_rate %}
                 <!--Start Feature One Single-->
                 <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
                     <div class="feature-one__single text-center">
-                        <div class="shape2"><img src="{% static 'images/shapes/feature-v1-shape1.png' %}" alt="#"></div>
-                        <div class="shape3"><img src="{% static 'images/shapes/feature-v1-shape2.png' %}" alt="#"></div>
+                       
                         <div class="feature-one__single-icon">
-                            <div class="shape1 l12"></div>
-                            <span class="icon-donation-3"></span>
+                            {% for img in images %}
+                                {% if img.project == rated_proj %}
+                                    <img src="{{ img.image.url }}" style="height:130px" alt="#">
+                                {%  endif %}
+                                {% endfor %}
                         </div>
 
-                        <div class="feature-one__single-content">
-                            <h2><a href="about.html">Medical Care</a></h2>
-                            <p>Donec scelerisque egestas purus eget <br> Lorem ipsum dolor</p>
+                        <div class="feature-one__single-content mt-5">
+                            {% get_user_info rated_proj.user as user_info %}
+
+                            <h2><a href={% url 'singleproject' rated_proj.id %}>{{rated_proj.title}}</a></h2>
+                            <p>{{rated_proj.slug}} with   {{rated_proj.avg_rate}} 
+                                <br> by {{user_info.username|capfirst}} {{user_info.last_name|capfirst}}</p>
+
+                            </p>
                         </div>
                     </div>
                 </div>
-                <!--End Feature One Single-->
-
-                <!--Start Feature One Single-->
-                <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.3s">
-                    <div class="feature-one__single text-center">
-                        <div class="shape2"><img src="{% static  'images/shapes/feature-v1-shape1.png' %}" alt="#"></div>
-                        <div class="shape3"><img src="{% static  'images/shapes/feature-v1-shape2.png' %}" alt="#"></div>
-                        <div class="feature-one__single-icon">
-                            <div class="shape1 style3"></div>
-                            <span class="icon-charity-food"></span>
-                        </div>
-
-                        <div class="feature-one__single-content">
-                            <h2><a href="about.html">Healthy Food</a></h2>
-                            <p>Donec scelerisque egestas purus eget <br> Lorem ipsum dolor</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End Feature One Single-->
-
-                
+                {%endif%}
+                {%endfor%}
+                <!--End Feature One Single-->                
             </div>
         </div>
     </section>

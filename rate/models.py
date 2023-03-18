@@ -10,6 +10,7 @@ from django_enum import EnumField
 {% if not request.user.is_superuser %}
 
 """
+from django.db.models import Avg
 
 
 class Rating(models.Model):
@@ -20,6 +21,15 @@ class Rating(models.Model):
         Project, on_delete=models.CASCADE, related_name="project_rate")
 
     rate = models.DecimalField(max_digits=5, decimal_places=2)
+
+    @classmethod
+    def get_project_avg_rate(cls, project):
+        rate_lst = cls.objects.filter(
+            project=project)
+
+        avg = round(rate_lst.aggregate(Avg("rate"))[
+                    "rate__avg"], 2) if rate_lst else 0
+        return avg
 
 
 class ReportOption(models.TextChoices):

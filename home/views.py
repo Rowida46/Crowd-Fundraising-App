@@ -11,6 +11,7 @@ from categories.models import Categories
 from tags.models import Tags
 
 from accounts.models import UserProfile
+from django.db.models import Avg
 
 
 def home(request):
@@ -24,6 +25,9 @@ def home(request):
     print("------------nums---------------------", number_of_registered_ppl)
 
     supported_users = UserProfile.objects.all()[:3]
+
+    all_rates = Project.objects.annotate(avg_rate=Avg(
+        'project_rate')).order_by("-avg_rate")
 
     if "category_id" in request.GET:
         category_id = request.GET['category_id']
@@ -48,7 +52,7 @@ def home(request):
     return render(request, "home/index.html",
                   context={"recently_creatd_projects": recently_creatd_projects,
                            "categories": categories, "approved_projects": approved_projects,
-                           "projs_by_cat": projs_by_cat,
+                           "projs_by_cat": projs_by_cat, "all_rates": all_rates,
                            "images": images, "supported_users": supported_users,
                            "number_of_registered_ppl": number_of_registered_ppl,
                            "projs_by_tag": projs_by_tag

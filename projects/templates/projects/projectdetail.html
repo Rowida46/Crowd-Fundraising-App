@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %} 
 {% load custom_tags %}
 {% block 'title' %}
 Donation
@@ -155,13 +156,13 @@ Donation
                {% comment %} comment {% endcomment %}
                <div class="comment-one__single m-2">
                   <div class="comment-one__single-inner">
+                     {% get_user_info comment.user as user_info %}
+
                      <div class="comment-one__image">
-                        <img src="{{user_info.photo.url}}" alt="user imgae">
-                     </div>
+                        <img src={{user_info.photo.url}} />                     </div>
                      <div class="comment-one__content">
                         <div class="top-box">
                            <div class="text-box">
-                              {% get_user_info comment.user as user_info %}
 
                               <h3>{{user_info.username}} {{user_info.last_name}}</h3>
                            </div>
@@ -373,6 +374,39 @@ Donation
          </div>
       </div>
       <!--End Sidebar Single-->
+      <!-- ------------------rate ---------------------- -->
+        <!--Start Sidebar Single-->
+       
+       <div class="sidebar__single sidebar__donation wow animated fadeInUp" data-wow-delay="0.1s">
+         <div class="sidebar__donation-box text-center">
+            <div class="sidebar__donation-bg"
+            style="background-image: url('{% static "images/shapes/sidebar-donation-shape.jpg" %}');">
+         </div>
+         <div class="title">
+            <h2>How Your Rate Makes <br> a Difference</h2>
+         </div>
+         <div class="btn-box">
+            {% if rateForm %}
+            <form method="post" enctype="multipart/form-data" action="{% url 'rateProject' project.id  %}">
+               {% csrf_token %}
+               {% crispy rateForm %}
+            </form>
+            {% else %}
+            <div class="btn-box">
+               <a >{{user_rate_to_show}}</a>
+            </div>
+            {% endif %}
+         </div>
+         <div class="title m-2">
+            <h2>Project avrage Rate</h2>
+         </div>
+         <div class="btn-box">
+            <a >{{avg_rate}}</a>
+         </div>
+      </div>
+   </div>
+   
+   <!--End Sidebar Single-->
       <div class="sidebar__bottom wow animated fadeInUp" data-wow-delay="0.3s">
          <div class="sidebar__bottom-bg"
          style="background-image: url('{% static "images/shapes/sidebar-bottom-shape.jpg" %}');">

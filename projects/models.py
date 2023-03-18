@@ -126,8 +126,7 @@ class Project(models.Model):
 
     @classmethod
     def filter_projects_by_tag(cls, tag):
-        print("(((((((((((((((())))))))))))))))", cls.objects.filter(tags__in=tag)
-              )
+        
         return cls.objects.filter(tags__in=tag)
 
     @classmethod
