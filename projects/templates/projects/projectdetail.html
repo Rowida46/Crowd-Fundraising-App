@@ -5,6 +5,11 @@
 Donation
 {% endblock %}
 {% block 'content' %}
+{% if messages %}
+<div class="container m-5 p-2">
+    {% include 'includes/messages.html' %}
+</div>
+{%endif%}
 <!--Start Page Header-->
 <section class="page-header">
    <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header-bg.jpg" %}')">
@@ -273,10 +278,10 @@ Donation
             <div class="donation-details__content-text-box4">
                <div class="title-box">
                   <h2>Related Projects ({{project.category.project_category.all.count|add:"-1" }})</h2>
-                  <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. but the
+                  {% comment %} <p>Lorem ipsum dolor sit amet, cibo mundi ea duo, vim exerci phaedrum. but the
                      majority have alteration in some injected or words which don't look even
                      slightly believable. 
-                  </p>
+                  </p> {% endcomment %}
                </div>
                <div class="row">
                   {% for p in project.category.project_category.all %}
@@ -292,7 +297,9 @@ Donation
                            {% endfor %}
                         </div>
                         <div class="text-box text-center">
-                           <h3>{{p.title}}</h3>
+                           <h3>
+                              <a  href={% url 'singleproject' p.id %} >
+                              {{p.title}} </a></h3>
                            <h4>{{p.target_budget}}</h4>
                            <p>{{p.created_at|date:'d M'}}</p>
                         </div>
@@ -370,7 +377,7 @@ Donation
       <!--Start Sidebar Single-->
       <div class="sidebar__single sidebar__latest-post">
          <div class="title-box">
-            <h2>Latest Post</h2>
+            <h2>Latest Projects</h2>
          </div>
          <ul class="sidebar__latest-post-list">
             {% recently_created_projects as project_recent %}
@@ -380,7 +387,7 @@ Donation
                   <img src="{% static 'images/blog/sidebar-latest-post-img1.jpg' %}" alt="#">
                </div>
                <div class="content-box">
-                  <p> <span class="icon-calendar"></span>{{proj.created_at|date:'d M'}}
+                  <p> <span class="icon-calendar"></span> {{proj.created_at|date:'d M'}}
                   </p>
                   <h3><a href={% url 'singleproject' proj.id %}>{{proj.slug}}</a></h3>
                </div>

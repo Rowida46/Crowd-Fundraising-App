@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.models import UserProfile
 
+from django.contrib import messages
+
+
 # @login_required
 
 
@@ -32,6 +35,8 @@ def addComment(request, id):
                                  comment_content=newCommentContent.cleaned_data['comment_content'])
             newCommit.user = user
             newCommit.save()
+            messages.info(request, "Comment added")
+
             return redirect("singleproject", id=id)
         else:
             commentForm = CommentForm()
@@ -68,6 +73,8 @@ def addReply(request, project_id, comment_id):
                              user=user,
                              reply_content=newReplyContent.cleaned_data['comment_content'])
             newReply.save()
+            messages.info(request, 'Reply added !')
+
             return redirect("singleproject", id=project_id)
         else:
             commentForm = CommentForm()
