@@ -4,6 +4,7 @@ from projects.models import Project
 # Create your views here.
 
 from rate.models import ReportProject, likes
+from django.contrib import messages
 
 
 def reportProject(request,  project_id):
@@ -12,6 +13,8 @@ def reportProject(request,  project_id):
     newReport = ReportProject(project=project)
     newReport.user = request.user
     newReport.save()
+    messages.warning(request, "you've reproted this Project")
+
     return redirect("singleproject", id=project_id)
 
 
@@ -27,11 +30,16 @@ def toggle_like(request, project_id):
         user_reaction.like = not isLike
         user_reaction.save()
     else:
-        print("pp[p[]]")
         user_reaction = likes(project=project, like=True)
+        isLike = True
         # user_reaction.user = request.user
         user_reaction.save()
     print("------------islike ---------------", user_reaction)
+    msg_state = "you've {status} this project  {project_title}".format(
+        status="disliked" if isLike else "liked", project_title=project.title
+    )
+    messages.info(request, msg_state)
+
     return redirect("/")
 
 
@@ -49,7 +57,13 @@ def toggle_like_project(request, project_id):
     else:
         print("pp[p[]]")
         user_reaction = likes(project=project, like=True)
+        isLike = False
        # user_reaction.user = request.user
         user_reaction.save()
     print("------------islike ---------------", user_reaction)
+    msg_state = "you've {status} this project  {project_title}".format(
+        status="disliked" if isLike else "liked", project_title=project.title
+    )
+    messages.info(request, msg_state)
+
     return redirect("singleproject", id=project_id)

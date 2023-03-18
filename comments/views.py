@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 
+from django.contrib import messages
 # Create your views here.
 from projects.models import Project
 from comments.forms import CommentForm
@@ -88,5 +89,8 @@ def reportComment(request,  project_id, comment_id):
     comment = Comments.get_spesific_comment(comment_id)
     print("----------replay comment ----------", comment)
     newReport = ReportComment(comment=comment, user=request.user)
+
+    messages.warning(request, "you've reproted this comment")
+
     newReport.save()
     return redirect("singleproject", id=project_id)
