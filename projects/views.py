@@ -14,6 +14,8 @@ from .forms import NewProjectForm, Project_Image_Form
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
 from djmoney.money import Money
+from django.db.models import Q
+
 
 # get_project_comments
 
@@ -139,9 +141,12 @@ def single_project_view(request, id):
 
 
 def projectslist(request):
+    query = request.GET.get('query','')
     projects = Project.get_projects()
+    if query:
+        projects = projects.filter(Q(title__icontains=query)| Q(details__icontains=query))
     images = Image.objects.all()
-    return render(request, "projects/listProjects.html", {'projects': projects, 'images': images})
+    return render(request, "projects/listProjects.html", {'projects': projects, 'images': images,'query':query})
 
 
 # @login_required

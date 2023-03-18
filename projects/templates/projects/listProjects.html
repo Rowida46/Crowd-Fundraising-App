@@ -29,6 +29,21 @@ Donation List
 {% endif %}
 <section class="case-one case-one--donation-list">
    <div class="container">
+      
+            <form method="get" action="{% url 'projectslist' %}">
+               <div class="row">
+                  <div class='col-6'>
+               <div class="mb-3">
+                 <input type="text" class="form-control" name="query" value="{{query}}" placeholder="find project to donate">
+               </div>
+            </div>
+            <div class='col-3'>
+               <button type="submit" class="btn btn-success">Search</button>
+            </div>
+         </div>
+
+             </form>
+     
       <!--Start Case One Single-->
       {%  for pro in projects %}
       <div class="case-one__single wow animated fadeInUp" data-wow-delay="0.1s">
