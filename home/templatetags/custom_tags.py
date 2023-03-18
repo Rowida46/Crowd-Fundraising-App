@@ -17,6 +17,12 @@ def get_method(project):
 
 
 @register.simple_tag
+def get_project_total_reactions(project):
+    total_reactions = likes.get_project_likes_number(project)
+    return total_reactions if total_reactions else 0
+
+
+@register.simple_tag
 def recently_created_projects():
     return Project.get_recently_created_projects()
 

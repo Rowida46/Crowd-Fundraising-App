@@ -141,25 +141,69 @@ Home
             </div>
             <h2 class="sec-title__title">top rated projects</h2>
          </div>
-         {%for rated_proj in all_rates %}
-         {%if rated_proj.avg_rate %}
-         <!--Start Feature One Single-->
-         <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
-            <div class="feature-one__single text-center">
-               <div class="feature-one__single-icon">
-                  {% for img in images %}
-                  {% if img.project == rated_proj %}
-                  <img src="{{ img.image.url }}" style="height:130px" alt="#">
-                  {%  endif %}
-                  {% endfor %}
+         {%for project in all_rates %}
+         {%if project.avg_rate %}
+         <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay=".3s">
+            <div class="blog-one__single">
+               <div class="blog-one__single-img">
+                  <div class="inner">
+                     {% for img in images %}
+                     {% if img.project == project %}
+                     <img src="{{ img.image.url }}" style="height:300px" alt="#">
+                     {%  endif %}
+                     {% endfor %}
+                  </div>
+                  <ul class="overlay-text">
+                     <li>
+                        <p>{{project.avg_rate}}</p>
+                     </li>
+                     <li class="style2">
+                        <p>{{project.created_at|date:'d M'}}</p>
+                     </li>
+                  </ul>
                </div>
-               <div class="feature-one__single-content mt-5">
-                  {% get_user_info rated_proj.user as user_info %}
-                  <h2><a href={% url 'singleproject' rated_proj.id %}>{{rated_proj.title}}</a></h2>
-                  <p>{{rated_proj.slug}} with   {{rated_proj.avg_rate}} 
-                     <br> by {{user_info.username|capfirst}} {{user_info.last_name|capfirst}}
-                  </p>
-                  </p>
+               <div class="blog-one__single-content">
+                  <div class="white-bg"></div>
+                  <div class="left-bg"></div>
+                  <div class="right-bg"></div>
+                  <ul class="meta-box">
+                     <li>
+                        <div class="icon">
+                           <span class="icon-user"></span>
+                        </div>
+                        <div class="text">
+                           <p><a href="#">By {{project.user|capfirst}}</a></p>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="icon">
+                           <span class="icon-comment-outline"></span>
+                        </div>
+                        <div class="text">
+                           {% load custom_tags %}
+                           <p><a href="{% url 'singleproject' project.id %}"> {% get_method project %} Comment</a></p>
+                        </div>
+                     </li>
+                  </ul>
+                  <h2><a href={% url 'singleproject'  project.id%}>{{project.title}}<br> International UK</a></h2>
+                  <div class="blog-one__single-content-bottom">
+                     <div class="btn-box">
+                        <a href={% url 'singleproject' project.id %}>Details More <span
+                           class="icon-right-arrow21"></span></a>
+                     </div>
+                     <div class="icon-box">
+                        {% get_user_react_on_project project as user_reaction %}
+                        {% if user_reaction %}
+                        <a href={% url 'like_project' project.id %}> 
+                        <i class="fa-solid fa-heart fa-2x like"></i>
+                        </a>
+                        {% else %}
+                        <a href={% url 'like_project' project.id %}> 
+                        <i class="fa-regular fa-heart"></i>
+                        </a>
+                        {% endif %}
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -627,7 +671,7 @@ Home
                   </div>
                   <ul class="overlay-text">
                      <li>
-                        <p>Charity</p>
+                        <p>{{project.category}}</p>
                      </li>
                      <li class="style2">
                         <p>{{project.created_at|date:'d M'}}</p>
@@ -644,7 +688,7 @@ Home
                            <span class="icon-user"></span>
                         </div>
                         <div class="text">
-                           <p><a href="#">By Admin</a></p>
+                           <p><a href="#">By {{project.user|capfirst}}</a></p>
                         </div>
                      </li>
                      <li>
@@ -654,6 +698,15 @@ Home
                         <div class="text">
                            {% load custom_tags %}
                            <p><a href="{% url 'singleproject' project.id %}"> {% get_method project %} Comment</a></p>
+                        </div>
+                     </li>
+                     <li class="mt-1">
+                        <div class="icon">
+                           <span ><i class="fa-regular fa-thumbs-up"></i></span>
+                        </div>
+                        <div class="text">
+                           {% load custom_tags %}
+                           <p><a href="{% url 'singleproject' project.id %}"> {% get_project_total_reactions project %} reactions</a></p>
                         </div>
                      </li>
                   </ul>
