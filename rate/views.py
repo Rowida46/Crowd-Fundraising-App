@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from projects.models import Project
+from .forms import RateForm
 # Create your views here.
 
 from rate.models import ReportProject, likes
@@ -67,3 +68,18 @@ def toggle_like_project(request, project_id):
     messages.info(request, msg_state)
 
     return redirect("singleproject", id=project_id)
+
+def rateproject(request,project_id):
+    project = Project.get_one_project(project_id)
+    print("----------project  ----------", project)
+    if request.method == 'POST':
+        rate_form=RateForm(request.POST)
+        if rate_form.is_valid():
+            print("----------the rate data is valid  ----------", request.POST)
+            rate=rate_form.save(commit=False)
+            rate.user=request.user
+            rate.project=project
+            rate.save()
+            return redirect("singleproject", id=project_id)
+        else:
+            print("----------the rate data is invalid  ----------", request.POST)

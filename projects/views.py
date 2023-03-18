@@ -1,7 +1,9 @@
 from re import sub
 from decimal import Decimal
 from comments.forms import CommentForm
+from rate.forms import RateForm
 from projects.models import Project, Donate, Image
+from rate.models import Rating
 from .donation_forms import DonationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm
@@ -100,7 +102,15 @@ def singledonation(request, id):
     donationForm = DonationForm()
     commentForm = CommentForm()
     replyForm = CommentForm()
-
+    rated_before = Rating.objects.filter(user=request.user, project=project).exists()
+    if rated_before:
+        rateForm = None
+        user_rate_to_show=Rating.objects.filter(user=request.user, project=project).first().rate
+        print("7878788888888888888888888888888888888888888888888888 rated before",user_rate_to_show)
+    else:
+        user_rate_to_show=None
+        rateForm = RateForm()
+        print("7878788888888888888888888888888888888888888888888888 didn't rated before",request.user)
     images = Image.objects.all()
 
     print("---------donation total----------------------", project_total_donation)
@@ -112,7 +122,7 @@ def singledonation(request, id):
                            "replys": replys, 'images': images,
                            "project_comments_number": project_comments_number,
                            "project_total_donation": project_total_donation if project_total_donation else 0,
-                           "commentForm": commentForm, "project_comments": project_comments
+                           "commentForm": commentForm, "project_comments": project_comments, "rateForm":rateForm,'user_rate_to_show':user_rate_to_show
                            })
 
 
@@ -147,26 +157,25 @@ def newproject(request):
             print(request.FILES)
             print("------------type--------------", type(request.user))
 
-            # if project_form.is_valid() and image_form.is_valid():
-            # Create a new Project object with the form data
-            project = project_form.save(commit=False)
-            project.user = request.user
-            project.save()
+            if project_form.is_valid():
+                # Create a new Project object with the form data
+                project = project_form.save(commit=False)
+                project.user = request.user
+                project.save()
+                # Get the uploaded images and create an Image object for each one
+                for image in request.FILES.keys():
+                    image_file = request.FILES.getlist(image)
+                    for i in image_file:
+                        fs = FileSystemStorage()
+                        filename = fs.save('images/projects/' + i.name, i)
+                        img = Image()
+                        img.image = filename
+                        img.project = project
+                        img.save()
 
-            # Get the uploaded images and create an Image object for each one
-            for image in request.FILES.keys():
-                image_file = request.FILES.getlist(image)
-                for i in image_file:
-                    fs = FileSystemStorage()
-                    filename = fs.save('images/projects/' + i.name, i)
-                    img = Image()
-                    img.image = filename
-                    img.project = project
-                    img.save()
+                # Redirect to the detail view of the new project
 
-            # Redirect to the detail view of the new project
-
-            return redirect('singleproject', id=project.id)
+                return redirect('singleproject', id=project.id)
         else:
             project_form = NewProjectForm()
             image_form = Project_Image_Form()

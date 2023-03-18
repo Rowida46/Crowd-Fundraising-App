@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %} 
 {% load custom_tags %}
 {% block 'title' %}
 Donation
@@ -373,6 +374,33 @@ Donation
          </div>
       </div>
       <!--End Sidebar Single-->
+      <!-- ------------------rate ---------------------- -->
+        <!--Start Sidebar Single-->
+       
+       <div class="sidebar__single sidebar__donation wow animated fadeInUp" data-wow-delay="0.1s">
+         <div class="sidebar__donation-box text-center">
+            <div class="sidebar__donation-bg"
+            style="background-image: url('{% static "images/shapes/sidebar-donation-shape.jpg" %}');">
+         </div>
+         <div class="title">
+            <h2>How Your Rate Makes <br> a Difference</h2>
+         </div>
+         <div class="btn-box">
+            {% if rateForm %}
+            <form method="post" enctype="multipart/form-data" action="{% url 'rateProject' project.id  %}">
+               {% csrf_token %}
+               {% crispy rateForm %}
+            </form>
+            {% else %}
+            <div class="btn-box">
+               <a >{{user_rate_to_show}}</a>
+            </div>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+   
+   <!--End Sidebar Single-->
       <div class="sidebar__bottom wow animated fadeInUp" data-wow-delay="0.3s">
          <div class="sidebar__bottom-bg"
          style="background-image: url('{% static "images/shapes/sidebar-bottom-shape.jpg" %}');">

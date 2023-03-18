@@ -5,8 +5,9 @@ from django.utils.text import slugify
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from .models import Project, Categories, Tags,Image
-
-
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+from django.core.validators import MaxValueValidator,MinValueValidator
 
 class NewProjectForm(forms.ModelForm):
     class Meta:
@@ -17,7 +18,11 @@ class NewProjectForm(forms.ModelForm):
         widget=forms.ClearableFileInput(attrs={'multiple': True}),
         required=False,
     )
-
+    target_budget = forms.DecimalField(
+        max_digits=10, 
+        decimal_places=2, 
+        validators=[MinValueValidator(10),MaxValueValidator(1500)]
+    )
     tags = forms.ModelMultipleChoiceField(
         queryset=Tags.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -30,11 +35,11 @@ class NewProjectForm(forms.ModelForm):
         }),
         help_text='Enter the end date for your project.'
     )
-    # features = forms.CharField(
-    #     label='Project Features',
-    #     widget=forms.Textarea(attrs={'rows': 3}),
-    #     help_text='Enter features of your project separated by coma.'
-    # )
+    title = forms.CharField(
+        label='Project Title',
+        max_length=50,
+        help_text='Enter your project Title.'
+    )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -55,21 +60,23 @@ class NewProjectForm(forms.ModelForm):
                 Submit('submit', 'Submit Now!')
             )
         )
+    def clean_target_budget(self):
+        target_budget = self.cleaned_data['target_budget']
+        if target_budget > 1500 or target_budget < 10:
+            raise forms.ValidationError("The value for target budget must be between $10 & $1500 .")
+        return target_budget
+    def clean_end_at(self):
+        end_at = self.cleaned_data['end_at']
+        if end_at < timezone.now().date():
+            raise ValidationError("End date must be in the future.")
+        return end_at
+    # def clean_start_at(self):
+    #     start_at = self.cleaned_data['start_at']
+    #     if start_at >timezone.now().date():
+    #         raise ValidationError("Start date must further than now.")
+    #     return start_at
 
-    def clean_slug(self):
-        slug = slugify(self.cleaned_data.get('title'))
-        if Project.objects.filter(slug=slug).exists():
-            raise forms.ValidationError(
-                'A project with this title already exists.')
-        return slug
-
-    def save(self, commit=True):
-        project = super().save(commit=False)
-        project.slug = self.cleaned_data.get('slug', slugify(project.title))
-        if commit:
-            project.save()
-            self.save_m2m()
-        return project
+    
 
 
 
