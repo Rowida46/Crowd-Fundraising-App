@@ -40,13 +40,19 @@ def user_project(request, id):
 
 # @login_required
 def delete_profile(request, id):
-    user = UserProfile.objects.get(id=id)
-    if request.method == 'POST':
-        user.delete()
-        return redirect('donation')
-    elif request.method == 'GET':
-        user.delete()
-        return redirect('donation')
+    if request.user.is_authenticated:
+
+        user = UserProfile.objects.get(id=id)
+        if request.method == 'POST':
+            user.delete()
+            return redirect('login')
+        elif request.method == 'GET':
+            user.delete()
+            return redirect('login')
+    else :
+         
+        return redirect("login")
+        
 
 
 def user_donation(request,id):
