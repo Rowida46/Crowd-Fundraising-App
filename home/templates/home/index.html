@@ -549,9 +549,9 @@ Home
                 <div class="row">
                     <!--Start Gallery One Single-->
                    {%for cat in categories%}
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">
-                        <div class="gallery-one__single">
-                            <div class="gallery-one__single-img">
+                   <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.4s">
+                    <div class="gallery-one__single">
+                        <div class="gallery-one__single-img bg4">
                                 <img src={{cat.get_image_url}} "alt="#">
                                 <div class="text-box">
                                     <h2><a href={% url 'list_Projects_byCategory' cat.id %}>{{cat.name}}</a></h2>
@@ -560,45 +560,6 @@ Home
                         </div>
                     </div>
                     {%endfor%}
-                    <!--End Gallery One Single-->
-
-                    <!--Start Gallery One Single-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.2s">
-                        <div class="gallery-one__single">
-                            <div class="gallery-one__single-img bg2">
-                                <img src="{% static 'images/gallery/gallery-v1-img2.jpg' %}" alt="#">
-                                <div class="text-box">
-                                    <h2><a href="#">Fresh Food</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Gallery One Single-->
-
-                    <!--Start Gallery One Singsle-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
-                        <div class="gallery-one__single">
-                            <div class="gallery-one__single-img bg3">
-                                <img src="{% static 'images/gallery/gallery-v1-img3.jpg' %}" alt="#">
-                                <div class="text-box">
-                                    <h2><a href="#">Education</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Gallery One Single-->
-
-                    <!--Start Gallery One Single-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.4s">
-                        <div class="gallery-one__single">
-                            <div class="gallery-one__single-img bg4">
-                                <img src="{% static 'images/gallery/gallery-v1-img4.jpg' %}" alt="#">
-                                <div class="text-box">
-                                    <h2><a href="#">Medical</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!--End Gallery One Single-->
                 </div>
             </div>

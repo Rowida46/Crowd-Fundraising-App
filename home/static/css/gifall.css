@@ -4289,6 +4289,7 @@ Gallery One
   border-radius: 40px;
   background: #17956a;
   overflow: hidden;
+  height: 200px;
   z-index: 1;
 }
 
