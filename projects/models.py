@@ -60,6 +60,8 @@ class Project(models.Model):
     #                              related_name='project_category', blank=True)
     # # tags
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+
     start_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     end_at = models.DateTimeField(null=True)
@@ -90,7 +92,11 @@ class Project(models.Model):
 
     @classmethod
     def get_projects(cls):
-        return cls.objects.all()
+        return cls.objects.all().order_by("-updated_at")
+
+    @classmethod
+    def get_approved_projects(cls):
+        return cls.objects.filter(is_approved=True).order_by("-updated_at")
 
     @classmethod
     def get_one_project(cls, id):

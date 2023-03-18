@@ -3503,10 +3503,13 @@ Case One
   display: block;
   margin-bottom: 30px;
 }
+.report{
 
+}
 .case-one__single-img {
   position: relative;
   display: block;
+  height: 400px;
 }
 
 .case-one__single-img .text-box {
@@ -7460,7 +7463,8 @@ Case One Donation List
   border-radius: 5px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  height : 150px;
+  height : 350px;
+  margin: 10px;
 }
 
 .case-one--donation-list .case-one__single-img .text-box {
