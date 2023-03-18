@@ -5,11 +5,12 @@ from user.models import User
 from django.shortcuts import HttpResponse
 from django.contrib.sites.shortcuts import get_current_site
 from django.views.generic.edit import UpdateView
+from django.contrib.auth.decorators import login_required
 
 from accounts.models import UserProfile
 
 from user.forms import RegistraionForm
-from projects.models import Project
+from projects.models import Project,Donate
 
 
 from user.forms import UpdaeData, OptionalData
@@ -37,7 +38,7 @@ def user_project(request, id):
     }
     return render(request, 'viewProject.html', context)
 
-
+@login_required
 def delete_profile(request, id):
     user = UserProfile.objects.get(id=id)
     if request.method == 'POST':
@@ -48,14 +49,14 @@ def delete_profile(request, id):
         return redirect('donation')
 
 
-# def user_donation(request,id):
-#     user=User.objects.get(id=id)
-#     project=Donation.objects.filter(user=user)
-#     context={
-#         "user":user,
-#         "project":project
-#     }
-#     return render(request,'viewProject.html',context)
+def user_donation(request,id):
+    user=User.objects.get(id=id)
+    donate=Donate.objects.filter(user=user)
+    context={
+        "user":user,
+        "donate":donate
+    }
+    return render(request,'viewProject.html',context)
 
 
 # class Optional(UpdateView):

@@ -1,5 +1,7 @@
 
 {% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+
 {% load static %}
 
 {% block 'title' %} Registration {% endblock %}
@@ -21,19 +23,22 @@
         </div>
     </div>
 </section>
+<div class="container">
+
 <form method="post">
     <br/>
     <br/>
     {%csrf_token%}
-    {{form}}
+    {{form|crispy}}
 
-    <button type="submit" class="btn btn-dark">
+    <button type="submit" class="btn btn-dark m-2 w-25">
         Update
     </button>
 
 </form>
-    </div>
-    <a href="{% url 'profile' user.id %}"  class='btn btn-danger' > cancel</a>
+
+    <a href="{% url 'profile' user.id %}"  class='btn btn-danger m-2' > cancel</a>
+</div>
     <script src="{% static './js/script.js' %}"> </script>
 
 {% endblock %}

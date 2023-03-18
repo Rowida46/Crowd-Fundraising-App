@@ -48,7 +48,7 @@
                         <div class="col-xl-6">
                             <div class="case-one__single-content">
                                 <div class="inner">
-                                    <h2><a href="{% url 'home' %}">{{pro.title}}</a></h2>
+                                    <h2>{{pro.title}}</h2>
                                     <p>{{pro.details}}</p>
                                 </div>
                                 <div class="case-one__progress">
@@ -78,6 +78,62 @@
             </div>
         </section>
         <!--End Case One -->
+    </section>
+    <!--End Page Header-->
+
+    <!--Start Case One -->
+    <section class="case-one case-one--donation-list">
+        <div class="container">
+
+            <!--Start Case One Single-->
+            {%  for pro in donate %}
+
+            <div class="case-one__single wow animated fadeInUp" data-wow-delay="0.1s">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="case-one__single-img">
+                            <div class="inner">
+                                <img src="{{ pro.image.url }}" style="height:300px"  alt="#">
+                            </div>
+                            <div class="text-box">
+                                {{pro.title}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="case-one__single-content">
+                            <div class="inner">
+                                <h2><a href="{% url 'home' %}">{{pro.amount_of_donation}}</a></h2>
+                                <p>{{pro.details}}</p>
+                            </div>
+                            <div class="case-one__progress">
+                                <div class="case-one__progress-box">
+                                    <div class="bar">
+                                        <div class="bar-inner count-bar" data-percent="45%">
+                                            <div class="count-text">45%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-text">
+                                    <div class="left-text">
+                                        <p>{{pro.total_donation}} <span>Raised </span></p>
+                                    </div>
+                                    <div class="right-text">
+                                        <p> {{pro.total_donation}} of  {{pro.target_budget}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Case One Single-->
+            {% endfor %}
+       
+        </div>
+    </section>
+    <!--End Case One -->
 
 
         <!--Start Counter One -->
