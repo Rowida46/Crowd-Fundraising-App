@@ -5,6 +5,7 @@
 Home
 {% endblock 'title' %}
 
+{% load custom_tags %}
 
 {% block 'content' %}
 {% if messages %}
@@ -204,6 +205,50 @@ Home
                     </div>
                 </div>
                 <!--End Feature One Single-->
+
+                
+            </div>
+        </div>
+    </section>
+    <!--End Feature One --> 
+
+    <!--Start Feature One -->
+    <section class="feature-one">
+        <div class="container">
+            <div class="row" id="trusted_projects">
+                <div class="sec-title text-center">
+                    <div class="sec-title__tagline">
+                        <h6>Our approvedprojects so far</h6>
+                    </div>
+                    <h2 class="sec-title__title">Our Trustworthy Projects </h2>
+                </div>
+
+                <!--Start Feature One Single-->
+                {%for approved_proj in approved_projects%}
+                <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.1s">
+                    <div class="feature-one__single text-center">
+                        <div class="shape2"><img src="{% static  'images/shapes/feature-v1-shape1.png' %} " alt="#"></div>
+                        <div class="shape3"><img src="{% static  'images/shapes/feature-v1-shape2.png' %} " alt="#"></div>
+                        <div class="feature-one__single-icon">
+                            <div class="shape1"></div>
+                            <span class="icon-donation-1"></span>
+                        </div>
+
+                        <div class="feature-one__single-content">
+                            {% get_user_info approved_proj.user as user_info %}
+
+                            <h2><a href="{% url 'singleproject' approved_proj.id %}">{{approved_proj.title}}</a></h2>
+                            <p>Donec scelerisque egestas purus eget
+                                 <br> by {{user_info.username|capfirst}} {{user_info.last_name|capfirst}}</p>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+                <!--End Feature One Single-->
+
+              
+
+                
             </div>
         </div>
     </section>
@@ -369,7 +414,7 @@ Home
                             <div class="inner">
                                 <div class="case-one__single-content-bg"
                                     style="background-image: url("{% static 'images/shapes/case-v1-shape1.png' %}");"></div>
-                                <h2><a href="events-single.html">{{proj.slug}}
+                                <h2><a href={% url 'singleproject' proj.id %}>{{proj.slug}}
                                    </a>
                                 </h2>
                                 <p> {{proj.details}}Help us touch there are many variations  </p>

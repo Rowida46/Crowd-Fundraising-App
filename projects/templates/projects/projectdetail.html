@@ -5,11 +5,7 @@
 Donation
 {% endblock %}
 {% block 'content' %}
-{% if messages %}
-<div class="container m-5 p-2">
-    {% include 'includes/messages.html' %}
-</div>
-{% endif %}
+
 <!--Start Page Header-->
 <section class="page-header">
    <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header-bg.jpg" %}')">
@@ -24,8 +20,14 @@ Donation
       </div>
    </div>
 </section>
+
 <!--End Page Header-->
 <!--Start Donation Details-->
+{% if messages %}
+<div class="container m-4 p-2">
+    {% include 'includes/messages.html' %}
+</div>
+{% endif %}
 <section class="donation-details">
    <div class="container">
       <div class="row">
@@ -154,12 +156,13 @@ Donation
                <div class="comment-one__single m-2">
                   <div class="comment-one__single-inner">
                      <div class="comment-one__image">
-                        {% get_user_info comment.user as user_info %}
                         <img src="{{user_info.photo.url}}" alt="user imgae">
                      </div>
                      <div class="comment-one__content">
                         <div class="top-box">
                            <div class="text-box">
+                              {% get_user_info comment.user as user_info %}
+
                               <h3>{{user_info.username}} {{user_info.last_name}}</h3>
                            </div>
                            <div class="btn-box">
@@ -168,7 +171,7 @@ Donation
                                  aria-controls="collapseExample"
                                  class="comment-one__btn">Reply</a>
                               {% comment %} report comment {% endcomment %}
-                              <a class="btn btn-danger" href={% url 'reportComment'  project.id comment.id %} >
+                              <a class="btn btn-danger " href={% url 'reportComment'  project.id comment.id %} >
                               Reprot</a>
                            </div>
                         </div>

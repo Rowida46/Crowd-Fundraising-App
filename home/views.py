@@ -1,5 +1,6 @@
+from django.contrib import messages
 import datetime
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.shortcuts import render, reverse, redirect, HttpResponse, get_object_or_404
 
 # Create your views here.
 
@@ -14,6 +15,7 @@ from accounts.models import UserProfile
 
 def home(request):
     print("inside home")
+    approved_projects = Project.get_approved_projects()
     recently_creatd_projects = Project.get_recently_created_projects()
     projs_by_cat,  projs_by_tag = [], []
     categories = Categories.get_categories()
@@ -45,7 +47,7 @@ def home(request):
 
     return render(request, "home/index.html",
                   context={"recently_creatd_projects": recently_creatd_projects,
-                           "categories": categories,
+                           "categories": categories, "approved_projects": approved_projects,
                            "projs_by_cat": projs_by_cat,
                            "images": images, "supported_users": supported_users,
                            "number_of_registered_ppl": number_of_registered_ppl,
@@ -63,5 +65,12 @@ def becomevolunteer(request):
 
 def toggle_approve_project(request, project_id):
     project = Project.get_one_project(project_id)
-    project.is_approved = not project.is_approved
+    is_approved = project.is_approved
+    project.is_approved = not is_approved
     project.save()
+    msg_state = "you as an admin have {approvedState} this project {proj_name}".format(
+        approvedState="disapproved" if is_approved else "approverd",
+        proj_name=project
+    )
+    messages.success(request,  msg_state)
+    return redirect(reverse("home") + "#trusted_projects")
