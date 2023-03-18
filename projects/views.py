@@ -1,3 +1,4 @@
+from tags.models import Tags
 from re import sub
 from decimal import Decimal
 from comments.forms import CommentForm
@@ -100,6 +101,21 @@ def singledonation(request, id):
     donationForm = DonationForm()
     commentForm = CommentForm()
     replyForm = CommentForm()
+
+    # tag_caption = project.tags.all
+    # print("---------------TAGS-------------------------",
+    #       [tag for tag in project.tags.all()])
+    # # tags
+    # tag = Tags.get_spesific_tag(tag_caption)
+
+    for tag in project.tags.all():
+        tag_caption = Tags.get_spesific_tag(tag)
+        print("----------------inside query params(tag) ---------",
+              tag_caption,
+              '\n', tag)
+
+        projs_by_tag = Project.filter_projects_by_tag(tag_caption)
+        print("------projc by TAG -----", projs_by_tag)
 
     images = Image.objects.all()
 

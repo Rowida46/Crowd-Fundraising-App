@@ -412,7 +412,7 @@ Donation
             </div>
             <ul class="sidebar__popular-tags-list">
                {%for tag in project.tags.all %}
-               <li><a href={% url 'filter_Projects_by_tag' tag %}>{{tag}}</a></li>
+               <li><a >{{tag}}</a></li>
                {%endfor%}
                {% comment %} 
                <li><a href="#">Food</a></li>

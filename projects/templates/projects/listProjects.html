@@ -42,7 +42,7 @@ Donation List
                         style="height:300px" alt="#">
                      {%  endif %}
                      {% endfor %}
-                     {% if not request.user.is_authenticated %}
+                     {% if   request.user.is_superuser %}
                      {%if pro.is_approved%}
                      <a class="btn btn-info"
                      href={% url 'toggle_approve_project' pro.id %}

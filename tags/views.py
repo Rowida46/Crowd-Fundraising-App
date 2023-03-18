@@ -4,7 +4,10 @@ from django.shortcuts import render, reverse, redirect, HttpResponse, get_object
 # Create your views here.
 
 
-def filter_Projects_by_tag(request, tag_id):
-    category = Tags.get_spesific_tag(tag_id)
+def filter_Projects_by_tag(request, tag):
+    tags = Tags.get_spesific_tag(tag)
 
-    return redirect(reverse('home') + f"?tag_id={tag_id}")
+    return redirect(reverse('home') + f"?tag={tag}")
+
+
+# def lst_projects_by_tags(request , ):
