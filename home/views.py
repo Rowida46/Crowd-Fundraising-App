@@ -52,3 +52,7 @@ def notfound(request):
 
 def becomevolunteer(request):
     return render(request, "becomeVoluenteer.html")
+
+
+def approve_project(request, project_id):
+    pass

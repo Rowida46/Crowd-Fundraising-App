@@ -73,11 +73,12 @@ def submitDonation(request, id):
     newdonation = Donate(project=project, amount_of_donation=amount)
     newdonation.user = request.user
     print("--------------newdonation---", newdonation)
-            # newdonation.amount_of_donation = Money(
-            #     donationForm.cleaned_data["donation"], 'USD')
+    # newdonation.amount_of_donation = Money(
+    #     donationForm.cleaned_data["donation"], 'USD')
 
+    messages.success(request, "donation sumbited sussesfully")
     newdonation.save()
-    
+
     return redirect("singleproject", id=id)
 
 
@@ -164,6 +165,7 @@ def newproject(request):
                     img.save()
 
             # Redirect to the detail view of the new project
+
             return redirect('singleproject', id=project.id)
         else:
             project_form = NewProjectForm()
@@ -190,11 +192,16 @@ def deleteproject(request, id):
     print("------------------- target", total_target.amount)
     print("------project_total_donation", project_total_donation)
 
-    if project_total_donation > total_target.amount:
+    if project_total_donation < total_target.amount:
         project.delete()
+        messages.warning(request, 'Project Deleted !!')
+
         return redirect('home')
 
     print("--------not valid -----------")
+    messages.error(
+        request, "You exceeded 25 '%' of your total target donation!")
+
     return redirect("singleproject", id=id)
 
 
@@ -222,6 +229,10 @@ def editproject(request, id):
                 img.image = filename
                 img.project = project
                 img.save()
+
+            messages.success(
+                request, "Project UPdated Successfully")
+
             return redirect('singleproject', id=project.id)
     elif request.method == 'GET':
         project_form = NewProjectForm(instance=project)
