@@ -8,7 +8,7 @@ from .donation_forms import DonationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm
 from comments.models import Comments, Reply
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.shortcuts import render, reverse, redirect, HttpResponse, get_object_or_404
 from .donation_forms import DonationForm
 from .forms import NewProjectForm, Project_Image_Form
 from django.core.files.storage import FileSystemStorage
@@ -104,15 +104,18 @@ def singledonation(request, id):
     donationForm = DonationForm()
     commentForm = CommentForm()
     replyForm = CommentForm()
-    rated_before = Rating.objects.filter(user=request.user, project=project).exists()
+    rated_before = Rating.objects.filter(
+        user=request.user, project=project).exists()
     if rated_before:
         rateForm = None
-        user_rate_to_show=Rating.objects.filter(user=request.user, project=project).first().rate
-        print("7878788888888888888888888888888888888888888888888888 rated before",user_rate_to_show)
+        user_rate_to_show = Rating.objects.filter(
+            user=request.user, project=project).first().rate
+        print("7878788888888888888888888888888888888888888888888888 rated before",
+              user_rate_to_show)
     else:
-        user_rate_to_show=None
+        user_rate_to_show = None
         rateForm = RateForm()
-        print("7878788888888888888888888888888888888888888888888888 didn't rated before",request.user)
+        print("7878788888888888888888888888888888888888888888888888 didn't rated before", request.user)
     images = Image.objects.all()
 
     print("---------donation total----------------------", project_total_donation)
@@ -124,7 +127,7 @@ def singledonation(request, id):
                            "replys": replys, 'images': images,
                            "project_comments_number": project_comments_number,
                            "project_total_donation": project_total_donation if project_total_donation else 0,
-                           "commentForm": commentForm, "project_comments": project_comments, "rateForm":rateForm,'user_rate_to_show':user_rate_to_show
+                           "commentForm": commentForm, "project_comments": project_comments, "rateForm": rateForm, 'user_rate_to_show': user_rate_to_show
                            })
 
 
@@ -141,12 +144,15 @@ def single_project_view(request, id):
 
 
 def projectslist(request):
-    query = request.GET.get('query','')
+    query = request.GET.get('query', '')
     projects = Project.get_projects()
     if query:
-        projects = projects.filter(Q(title__icontains=query)| Q(details__icontains=query))
+        projects = projects.filter(
+            Q(title__icontains=query) | Q(details__icontains=query))
     images = Image.objects.all()
-    return render(request, "projects/listProjects.html", {'projects': projects, 'images': images,'query':query})
+
+    return render(request, "projects/listProjects.html/#projects",
+                  {'projects': projects, 'images': images, 'query': query})
 
 
 # @login_required

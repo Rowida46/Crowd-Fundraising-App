@@ -4,7 +4,6 @@
 Donation List
 {% endblock %}
 {% block 'content' %}
-
 <!--Start Page Header-->
 <section class="page-header">
    <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header-bg.jpg" %}')">
@@ -24,26 +23,29 @@ Donation List
 <!--Start Case One -->
 {% if messages %}
 <div class="container m-4 p-2">
-    {% include 'includes/messages.html' %}
+   {% include 'includes/messages.html' %}
 </div>
 {% endif %}
+
 <section class="case-one case-one--donation-list">
-   <div class="container">
-      
-            <form method="get" action="{% url 'projectslist' %}">
-               <div class="row">
-                  <div class='col-6'>
-               <div class="mb-3">
-                 <input type="text" class="form-control" name="query" value="{{query}}" placeholder="find project to donate">
-               </div>
+   <div class="container " >
+      <div style="width:1500px" class="mb-3">
+      <form method="get" action="{% url 'projectslist' %}">
+         <div class="row no-gutters mt-3 align-items-center">
+            <div class="col col-md-4">
+                <input class="form-control border-secondary rounded-pill pr-5" type="search"
+                name="query" value="{{query}}" placeholder="find project to donate"id="example-search-input2">
             </div>
-            <div class='col-3'>
-               <button type="submit" class="btn btn-success">Search</button>
+            <div class="col-auto">
+                <button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
          </div>
+      </form>
+      </div>
+      <div id="projects" >
 
-             </form>
-     
       <!--Start Case One Single-->
       {%  for pro in projects %}
       <div class="case-one__single wow animated fadeInUp" data-wow-delay="0.1s">
@@ -102,6 +104,7 @@ Donation List
             </div>
          </div>
       </div>
+   </div>
    </div>
    <!--End Case One Single-->
    {% endfor %}
