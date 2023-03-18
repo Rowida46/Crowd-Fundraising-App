@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from .config import *
 import os
 from pathlib import Path
 
@@ -104,11 +105,11 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_project',
-        'USER': 'postgres',
-        'PASSWORD': 'dana46',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': DB_NAME,
+        'USER': DATA_BASE_USER_NAME,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
@@ -177,12 +178,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGOUT_REDIRECT_URL = "/"
 
+
 # Email Sittings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = 'eng.youssef2023@gmail.com'
-EMAIL_HOST_USER = 'eng.youssef2023@gmail.com'
-EMAIL_HOST_PASSWORD = 'kgmjcsnyqyqciuta'
-EMAIL_PORT = 587
+EMAIL_FROM = EMAIL_FROM
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
 EMAIL_USE_TLS = True
-PASSWORD_RESET_TIMEOUT = 86400
+PASSWORD_RESET_TIMEOUT = PASSWORD_RESET_TIMEOUT
