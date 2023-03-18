@@ -107,45 +107,40 @@ def singledonation(request, id):
     commentForm = CommentForm()
     replyForm = CommentForm()
 
-    # tag_caption = project.tags.all
-    # print("---------------TAGS-------------------------",
-    #       [tag for tag in project.tags.all()])
-    # # tags
-    # tag = Tags.get_spesific_tag(tag_caption)
+    tags = project.tags.all()
 
-    for tag in project.tags.all():
-        tag_caption = Tags.get_spesific_tag(tag)
-        print("----------------inside query params(tag) ---------",
-              tag_caption,
-              '\n', tag)
+    # tags = project.tags.values_list('caption', flat=True)
+    print("---------------TAGS-------------------------", tags)
 
-        projs_by_tag = Project.filter_projects_by_tag(tag_caption)
-        print("------projc by TAG -----", projs_by_tag)
+    res = Project.objects.filter(tags__in=tags).exclude(id=id)
+    similar_projects = res.annotate(same_tags=Count(
+        'tags')).order_by('-same_tags', '-created_at')
 
+    print("------RES-------", res)
+    # rating
     rated_before = Rating.objects.filter(
         user=request.user, project=project).exists()
     if rated_before:
         rateForm = None
         user_rate_to_show = Rating.objects.filter(
             user=request.user, project=project).first().rate
-        print("7878788888888888888888888888888888888888888888888888 rated before",
-              user_rate_to_show)
+
     else:
         user_rate_to_show = None
         rateForm = RateForm()
-        print("7878788888888888888888888888888888888888888888888888 didn't rated before", request.user)
     images = Image.objects.all()
 
-    print("---------donation total----------------------", project_total_donation)
+    # print("---------donation total----------------------", project_total_donation)
 
     avg_rate = Rating.get_project_avg_rate(project)
 
-    print("----avg_rate-------", avg_rate)
+    # print("----avg_rate-------", avg_rate)
     return render(request, "projects/projectdetail.html",
                   context={"donationForm": donationForm, "project": project,
                            "replyForm": replyForm, "avg_rate": avg_rate,
                            # "comments_replys": comments_replys,
                            "replys": replys, 'images': images,
+                           "similar_projects": similar_projects,
                            "project_comments_number": project_comments_number,
                            "project_total_donation": project_total_donation if project_total_donation else 0,
                            "commentForm": commentForm, "project_comments": project_comments, "rateForm": rateForm, 'user_rate_to_show': user_rate_to_show
@@ -168,12 +163,6 @@ def projectslist(request):
     query = request.GET.get('query', '')
     projects = Project.get_projects()
 
-    # avg_rate = Rating.get_project_avg_rate(project)
-    # for proj in projects:
-    #     all_rates = Rating.get_project_avg_rate(proj)
-    #     print("--------opo---", proj, all_rates)
-
-    # Post.objects.annotate(vote_total=Sum('vote__value')).order_by('-vote_total')
     all_rates = Project.objects.annotate(avg_rate=Avg(
         'project_rate')).order_by("-avg_rate")
 
@@ -181,8 +170,7 @@ def projectslist(request):
         print("--------opo---", rate)
 
     images = Image.objects.all()
-    return render(request, "projects/listProjects.html", {'projects': projects, "all_rates": all_rates,
-                                                          'images': images})
+
     if query:
         projects = projects.filter(
             Q(title__icontains=query) | Q(details__icontains=query))

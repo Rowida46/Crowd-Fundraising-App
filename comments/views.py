@@ -22,8 +22,6 @@ from django.contrib import messages
 def addComment(request, id):
     project = Project.get_one_project(id)
     user = UserProfile.objects.get(username=request.user)
-    print("000000000 USER", user)
-    print("------------type--------------", type(user))
 
     if request.method == "POST":
         newCommentContent = CommentForm(request.POST)
@@ -51,12 +49,10 @@ def addReply(request, project_id, comment_id):
 
    # project = get_object_or_404(Project, id=project_id)
 
-    print("-----------", project_id)
     project = Project.get_one_project(project_id)
 
     user = UserProfile.objects.get(username=request.user)
 
-    print("------------type--------------", type(request.user))
     comment = Comments.objects.filter(id=comment_id).first()
 
     print("reply proj ---------", project)
@@ -66,9 +62,9 @@ def addReply(request, project_id, comment_id):
         newReplyContent = CommentForm(request.POST)
 
         if newReplyContent.is_valid():
-            print("-------------------------------",
-                  newReplyContent.cleaned_data['comment_content'])
-            print("----------------user reply-------", request.user)
+            # print("-------------------------------",
+            #     newReplyContent.cleaned_data['comment_content'])
+            # print("----------------user reply-------", request.user)
 
             newReply = Reply(comment_id=comment, project=project,
                              user=user,
@@ -87,7 +83,7 @@ def addReply(request, project_id, comment_id):
 @login_required
 def reportComment(request,  project_id, comment_id):
     comment = Comments.get_spesific_comment(comment_id)
-    print("----------replay comment ----------", comment)
+    # print("----------replay comment ----------", comment)
     newReport = ReportComment(comment=comment, user=request.user)
 
     messages.warning(request, "you've reproted this comment")

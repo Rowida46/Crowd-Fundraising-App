@@ -15,13 +15,15 @@ from django.db.models import Avg
 
 
 def home(request):
-    print("inside home")
     approved_projects = Project.get_approved_projects()
+
     recently_creatd_projects = Project.get_recently_created_projects()
     projs_by_cat,  projs_by_tag = [], []
+
     categories = Categories.get_categories()
     images = Image.objects.all()
     number_of_registered_ppl = UserProfile.objects.all().count() - 1
+
     print("------------nums---------------------", number_of_registered_ppl)
 
     supported_users = UserProfile.objects.all()[:3]

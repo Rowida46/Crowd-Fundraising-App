@@ -13,4 +13,5 @@ class Tags(models.Model):
 
     @classmethod
     def get_spesific_tag(cls, caption):
+        print("---------", caption)
         return cls.objects.filter(caption=caption)

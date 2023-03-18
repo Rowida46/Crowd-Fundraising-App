@@ -126,8 +126,8 @@ class Project(models.Model):
 
     @classmethod
     def filter_projects_by_tag(cls, tag):
-        
-        return cls.objects.filter(tags__in=tag)
+
+        return cls.objects.filter(tags__caption__in=tag)
 
     @classmethod
     def filter_projects_by_slug(cls, slug):
