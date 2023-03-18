@@ -9,4 +9,6 @@ media
 
 /django_project/settings.py
 
+/django_project/config.py
+
 
