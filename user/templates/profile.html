@@ -2,15 +2,15 @@
 {% extends 'home/base.html' %}
 {% load static %}
 
-{% block 'title' %} Registration {% endblock %}
+{% block 'title' %} Profile {% endblock %}
 {% block 'content' %}
 
 <section class="page-header">
     <div class="container">
-        <div class="page-header__inner text-center">
-            <h2>Donation List</h2>
-            <ul class="thm-breadcrumb">
-                <li><a href="{% url 'viewproject' user.id %}">Home</a></li>
+        <div class="page-header__inner text-center text-dark">
+            <h2 class="text-dark">Donation List</h2>
+            <ul class="thm-breadcrumb ">
+                <li><a href="{% url 'viewproject' user.id %}">Project</a></li>
     
 
 
@@ -24,7 +24,7 @@
 
 <div class=" container ">
 
-    <img class="img-radius profile-image" src="{{user.photo}}" alt="Card image cap" style="width:100%; max-width: 300px;height: 100%;max-height: 300px;">
+    {% comment %} <img class="img-radius profile-image" src="{{user.photo.url}}" alt="Card image cap" style="width:100%; max-width: 300px;height: 100%;max-height: 300px;"> {% endcomment %}
     <div class="card-body">
         <h5 class="card-title username" style="font-size: 2em; color: yellow;">{{user.username}}</h5>
         <p class="card-text"><span class="data">First Name: </span><span>{{user.first_name}}</span></p>
@@ -41,8 +41,8 @@
             <br/>
             <a href="{% url 'deleteprofile' user.id %}" class="btn btn-outline-danger  active" role="button"
                aria-pressed="true">Delete Account</a>
-            <a href="{%url 'editprofile' user.id %}" class="btn btn-outline-success  active" role="button"
-               aria-pressed="true">Edit Account</a>
+            <a href="{%url 'viewproject' user.id %}" class="btn btn-outline-success  active" role="button"
+               aria-pressed="true">View Project</a>
 
         </p>
 

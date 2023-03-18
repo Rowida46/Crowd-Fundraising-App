@@ -38,7 +38,7 @@ def user_project(request, id):
     }
     return render(request, 'viewProject.html', context)
 
-@login_required
+# @login_required
 def delete_profile(request, id):
     user = UserProfile.objects.get(id=id)
     if request.method == 'POST':
