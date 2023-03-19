@@ -176,7 +176,7 @@ def projectslist(request):
             Q(title__icontains=query) | Q(details__icontains=query))
     images = Image.objects.all()
 
-    return render(request, "projects/listProjects.html/#projects",
+    return render(request, "projects/listProjects.html/",
                   {'projects': projects, 'images': images, 'query': query})
 
 
