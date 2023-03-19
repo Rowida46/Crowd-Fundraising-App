@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+# fill in your `env.py` file by your configration and uncomment the blew line
+# from .env import *
 from .config import *
 import os
 from pathlib import Path
