@@ -10,4 +10,6 @@ media
 
 django_project/config.py
 
+django_project/setting.py
+
 
