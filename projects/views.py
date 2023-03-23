@@ -191,13 +191,19 @@ def newproject(request):
             image_form = Project_Image_Form(request.POST, request.FILES)
 
             print(request.FILES)
-            print("------------type--------------", type(request.user))
+           # print("------------type--------------", type(request.user))
 
+            print("------youssef-------", request.POST)
             if project_form.is_valid():
                 # Create a new Project object with the form data
                 project = project_form.save(commit=False)
                 project.user = request.user
+                print("test cLeann", project_form.cleaned_data['tags'])
+                # project.tags = project_form.cleaned_data['tags']
                 project.save()
+                project_form.save_m2m()
+
+
                 # Get the uploaded images and create an Image object for each one
                 for image in request.FILES.keys():
                     image_file = request.FILES.getlist(image)

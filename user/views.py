@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import UserProfile
 
 from user.forms import RegistraionForm
-from projects.models import Project,Donate
+from projects.models import Project, Donate
 
 
 from user.forms import UpdaeData, OptionalData
@@ -23,10 +23,17 @@ from user.forms import UpdaeData, OptionalData
 #                 # user=RegistraionForm(instance=request.user)
 #                 return render(request,"profile.html",context={'user':user})
 
+from projects.models import Project, Donate, Image
+
+
 def showprofile(request, id):
     user = get_object_or_404(UserProfile, id=id)
-
-    return render(request, "profile.html", context={'user': user})
+    user_project = Project.objects.filter(user=user)
+    user_donation = Donate.objects.filter(user=user)
+    images = Image.objects.all()
+    return render(request, "profile.html", context={'user': user, "images": images,
+                                                    "user_donation": user_donation,
+                                                    "user_project": user_project, })
 
 
 def user_project(request, id):
@@ -39,6 +46,8 @@ def user_project(request, id):
     return render(request, 'viewProject.html', context)
 
 # @login_required
+
+
 def delete_profile(request, id):
     if request.user.is_authenticated:
 
@@ -49,20 +58,19 @@ def delete_profile(request, id):
         elif request.method == 'GET':
             user.delete()
             return redirect('login')
-    else :
-         
+    else:
+
         return redirect("login")
-        
 
 
-def user_donation(request,id):
-    user=User.objects.get(id=id)
-    donate=Donate.objects.filter(user=user)
-    context={
-        "user":user,
-        "donate":donate
+def user_donation(request, id):
+    user = User.objects.get(id=id)
+    donate = Donate.objects.filter(user=user)
+    context = {
+        "user": user,
+        "donate": donate
     }
-    return render(request,'viewProject.html',context)
+    return render(request, 'viewProject.html', context)
 
 
 # class Optional(UpdateView):

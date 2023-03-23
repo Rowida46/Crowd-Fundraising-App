@@ -146,7 +146,7 @@ class Project(models.Model):
     @classmethod
     def get_recently_created_projects(cls):
         # dsc order
-        res = cls.objects.order_by("-created_at")[:6]
+        res = cls.objects.order_by("-created_at")[:5]
         return res
 
     def get_spefic_project(self):
